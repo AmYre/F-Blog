@@ -1,0 +1,176 @@
+*
+{
+	font-family: Roboto, 'arial black', arial, verdana, 'sans-serif'; 
+}
+
+html{
+    background: url("img/Background3.jpg") no-repeat center center fixed; 
+    background-size: cover;
+}
+
+/******************************HEADER AVEC IDENTITE DU SITE SUR BANNIERE FIXE - TITRE ET LOGO **********************************/
+
+header{
+    position: sticky;
+	z-index: 5; 
+	height: 130px;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	background-color: rgba(255, 255, 255, 0.808);
+}
+
+.banner-flex{
+    display: flex;
+    justify-content: space-between;
+}
+
+.title-flex{
+    display: flex;
+    flex-direction: column;
+}
+
+.logo{
+    margin: auto;
+    width : 300px;
+    height: 80px;
+}
+
+.logo1{
+    position: sticky;
+    margin-top: 20px;
+    width : 100px;
+    height: 80px;
+    right : 100vw;
+}
+
+.logo2{
+    position: sticky;
+    width : 200px;
+    height: 100px;
+    left : 100vw;
+    margin-top: 5px;
+}
+
+h2{
+    font-size : 1.3em;
+    font-weight: 500;
+    text-align: center;
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.795);
+    margin: 0;
+}
+
+/***********FOOTER*************************/
+
+
+.footer{
+    width: 100% ;
+    height: 30px;
+    padding-top: 10px;
+    margin: 0;
+    text-align: center;
+    letter-spacing: 1px;
+    font-style: italic;
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.623);
+    box-shadow: 0px 0px 55px 0px rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.808);
+    color: rgb(0, 0, 0);
+}
+
+.footer-title{
+    font-size: 1.2;
+    font-weight: bold;
+    font-style: none;
+    color:  rgba(16, 88, 146, 0.74);
+}
+
+/*************************************************MEDIAQUERIES*************************************************/
+
+@media all and (max-width: 480px) 
+{
+    .logo{
+        position: relative;
+        top : 0px;
+        width : 200px;
+        height: 50px;
+    }
+
+    header{
+        height: 50px;
+    }
+
+    h2{
+        display: none;
+    }
+
+    .logo1{
+        display: none;
+    }
+    
+    .logo2{
+        display: none;
+    }
+
+    .banner-flex {
+        display: flex;
+        justify-content: center;
+    }
+
+}
+
+@media all and (min-width: 480px) and (max-width: 640px) /*==============================TAILLE 2=================================*/
+{
+
+    .logo{
+        position: relative;
+        top : 2px;
+        width : 250px;
+        height: 75px;
+    }
+
+    header{
+        height: 80px;
+    }
+
+    h2{
+        display: none;
+    }
+
+    .logo1{
+        display: none;
+    }
+    
+    .logo2{
+        display: none;
+    }
+
+    .banner-flex {
+        display: flex;
+        justify-content: center;
+    }
+
+}
+
+@media all and (min-width: 640px) and (max-width: 840px) /*===============================TAILLE 3========================================*/
+{
+
+    h2{
+        font-size : 1.2em;
+        letter-spacing: 1px;
+    }
+
+    .logo1{
+        display: none;
+    }
+    
+    .logo2{
+        display: none;
+    }
+
+    .banner-flex {
+        display: flex;
+        justify-content: center;
+    }
+
+}
