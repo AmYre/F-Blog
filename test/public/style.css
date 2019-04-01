@@ -1,0 +1,15 @@
+html {
+    height: 100%;
+  }
+  
+  .bg {
+    background-image: url('img/1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .tchat-box{
+    background-color: blue;
+    color : red;
+  }
