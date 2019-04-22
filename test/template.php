@@ -13,7 +13,7 @@
     <body class='bg'>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="http://localhost/test/home.php">Jean Forteroche</a>
+            <a class="navbar-brand" href="http://localhost/test/index.php?redir=home">Jean Forteroche</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -21,20 +21,21 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="http://localhost/test/home.php"><i class="fas fa-home"></i> <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="http://localhost/test/index.php?redir=home"><i class="fas fa-home"></i> <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/test/controller/tchat_control.php">Le Tchat des Rocheux</a>
+                        <a class="nav-link" href="http://localhost/test/index.php?redir=tchat">Le Tchat des Rocheux</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="http://localhost/test/index.php?redir=chapters" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Lire en ligne
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Par thème</a>
-                            <a class="dropdown-item" href="#">Par livre</a>
+                            <a class="dropdown-item" href="#">Par Livres</a>
+                            <a class="dropdown-item" href="#">Par Volumes</a>
+                            <a class="dropdown-item" href="http://localhost/test/index.php?redir=listing">Par Chapitres</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="#">Vous aurez aussi la possibilité de laisser un commentaire en fin de lecture</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -49,10 +50,13 @@
                 </ul>
                     <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/test/controller/connexion_control.php">Se connecter</a>
+                        <a class="nav-link" href="http://localhost/test/index.php?redir=connexion">Se connecter</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/test/controller/create_control.php">Devenir Rocheux</a>
+                        <a class="nav-link" href="http://localhost/test/index.php?redir=create">Devenir Rocheux</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/test/index.php?redir=write">ADMIN</a>
                     </li>
                 </ul>
 
