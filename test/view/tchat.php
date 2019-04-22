@@ -3,20 +3,20 @@
 $title = 'Tchat de la communauté';
 $h1 = 'Bienvenue sur le Tchat';
 $h2 = 'L\'espace de partage de la communauté des Rocheux';
-$style = '../public/style.css';
+$style = 'public/style.css';
 
 ?>
 
 <?php ob_start(); ?>
 
-        <p class="tchat_feedback"> <?php echo $tchat_feedback; ?> </p>
+        <p class="tchat_feedback"><?php echo $feedback; ?> </p>
 
-        <form action="../controller/tchat_control.php" method="post">
+        <form action="http://localhost/test/index.php?redir=tchat_sent" method="post">
             
             <div class="form-group">
                 <label for="pseudonyme">Pseudonyme
-                <input type="text" name="pseudonyme" class="form-control" placeholder="Pseudo" value="<?php if ( isset($_POST['pseudonyme']) )
-                        { echo $_POST['pseudonyme'];
+                <input type="text" name="pseudonyme" class="form-control" placeholder="Pseudo" value="<?php if ( isset($pseudonyme) )
+                        { echo $pseudonyme;
                 }?>"></label>
             </div>
             
@@ -31,8 +31,7 @@ $style = '../public/style.css';
         <div class="shadow-lg p-3 mb-5 bg-white rounded mt-5"> 
             
         <?php 
-            $membres = show_tchat();
-            while($membre = $membres->fetch())
+            while($membre = $show_tchat->fetch())
             {
                 echo '<p class="tchat-box">'.'<strong>'.$membre['pseudonyme'].'</strong>'.' :'.'<br/>'.$membre['mess'].'<br/>'.'<i>'.'Posté le :   '.$membre['timywoo'].'</i>'.'</p>';
             }
@@ -41,4 +40,4 @@ $style = '../public/style.css';
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('../template.php'); ?>
+<?php require('template.php'); ?>

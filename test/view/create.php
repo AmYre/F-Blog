@@ -3,30 +3,28 @@
 $title = 'Inscription';
 $h1 = 'Formulaire d\'inscription';
 $h2 = 'Une fois inscrit vous aurez accès au tchat et aux commentaires';
-$style = '../public/style.css';
+$style = 'public/style.css';
 
 ?>
 
 <?php ob_start(); ?>
 
-         
-
-	<form action="../controller/create_control.php" method="post">
+	<form action="http://localhost/test/index.php?redir=create_sent" method="post">
 
 		<div class="form-group">
 			<label for="pseudo">Votre pseudo :
-				<input type="text" name="pseudo" class="form-control" placeholder="Pseudo" value="<?php if ( isset($_POST['pseudo']) )
+				<input type="text" name="pseudo" class="form-control" placeholder="Pseudo" value="<?php if ( isset($pseudo) )
 				{ 
-					echo $_POST['pseudo'];
+					echo $pseudo;
 				}?>" >
 			</label> 
 		</div>
 		
 		<div class="form-group">
 				<label for="pseudo">Votre email: 
-					<input type="text" name="email" class="form-control" placeholder="@" value="<?php if ( isset($_POST['email']) )
+					<input type="text" name="email" class="form-control" placeholder="@" value="<?php if ( isset($email) )
 					{ 
-							echo $_POST['email'];
+							echo $email;
 					}?>">
 				</label> 
 		</div>
@@ -41,11 +39,11 @@ $style = '../public/style.css';
 					<input type="password" name="conf_mdp" class="form-control" placeholder="Pour être sûr"></label>
 		</div>
 
-		<small class="form-text text-danger"><?php echo $register_feedback; ?></small>
+		<small class="form-text text-danger"><?php echo $feedback; ?></small>
 		<button type="submit" class="btn btn-primary mt-3" name="register_btn">S'inscrire</button>
 	
 	</form>
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('../template.php'); ?>
+<?php require('template.php'); ?>
