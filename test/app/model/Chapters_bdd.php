@@ -13,7 +13,7 @@ class Chapters_bdd{
     {
         $database = $this->database;
         $save_chapter = $database->prepare('INSERT INTO chapters (chapter, title, book, volume, num, timy) VALUES(?, ?, ?, ?, ?, NOW())');
-        $insert_chapter = $save_chapter->execute(array(htmlspecialchars($chapter), htmlspecialchars($chapter_title), htmlspecialchars($chapter_book), htmlspecialchars($chapter_volume), htmlspecialchars($chapter_num) ));
+        $insert_chapter = $save_chapter->execute(array($chapter, $chapter_title, $chapter_book, $chapter_volume, $chapter_num ));
 
         return $insert_chapter;
     }

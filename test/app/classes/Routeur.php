@@ -19,6 +19,7 @@ class Routeur {
         "tchat" => ["controller" => 'Tchat_control', "method" => 'show_tchat'],
         "tchat_sent" => ["controller" => 'Tchat_control', "method" => 'insert_tchat'],
         "user" => ["controller" => 'User_control', "method" => 'show_user'],
+        "user_sent" => ["controller" => 'User_control', "method" => 'disconnect_user'],
     ];
 
     public function __construct ()

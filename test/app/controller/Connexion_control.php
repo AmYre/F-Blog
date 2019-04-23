@@ -39,7 +39,7 @@ class Connexion_control {
                             $_SESSION['identifiant'] = $pseudo;
                             $feedback = 'Vous êtes connecté !';
                             $myView = new View('home');
-                            $myView->show(/*array ('feedback' => $feedback)*/);
+                            $myView->show(array ('feedback' => $feedback));
                         }
                     }
                     else { $feedback = 'Mauvais identifiant ou mot de passe !';}                   
