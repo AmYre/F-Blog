@@ -47,10 +47,12 @@ class Chapter_manager_control{
             $id = $_GET['id'];
             $feedback = 'Chapitre supprimé avec tous ses commentaires';
             #ajouter confirmation de suppression
-            $delete_chapterANDcomment = $myBdd->delete_chapterANDcomment($id);
+            $delete_chapterANDcomment = $myBdd->delete_chapter($id);
 
-            $myView = new View('chapter_manager');
-            $myView->show(array ('feedback' => $feedback, 'select_chapter' => $select_chapter, 'show_comments' => $show_comments) );
+            $show_chapter = $myBdd->show_chapter();
+
+            $myView = new View('write');
+            $myView->show(array ('feedback' => $feedback, 'show_chapter' => $show_chapter) );
             
         }
         

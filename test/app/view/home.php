@@ -19,21 +19,21 @@ $style = '../public/style.css';
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="public/img/fire.jpg" class="d-block w-100" alt="...">
+        <img src="../public/img/fire.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>On fire and Ice</h5>
           <p>Le livre qui à propulsé Jean dans le monde litteraire.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="public/img/deus.png" class="d-block w-100" alt="...">
+        <img src="../public/img/deus.png" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Pour que notre joie demeure</h5>
           <p>Un pollar angoissant à ne pas mettre entre toute les mains.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="public/img/ville.jpg" class="d-block w-100" alt="...">
+        <img src="../public/img/ville.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Et si c'étais nous?</h5>
           <p>Un roman poétique et politique sur l'évolution des civilisations.</p>
