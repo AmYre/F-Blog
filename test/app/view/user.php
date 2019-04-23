@@ -1,4 +1,4 @@
-<?php 
+<?php if (!isset($_SESSION))  { session_start(); } 
 
 $title = 'Votre Compte';
 $h1 = 'Bienvenue '.$_SESSION['identifiant'];
@@ -8,6 +8,10 @@ $style = '../public/style.css';
 ?>
 
 <?php ob_start(); ?>
+
+    <form action="http://localhost/test/app/user_sent" method="post">
+    <button type="submit" name="disconnect_btn">Se déconnecter</button>
+    </form>
 
     <div>vos infos : identifiant, mail, mdp, les changer</div>
     

@@ -15,11 +15,11 @@ $style = '../public/style.css';
             
             <div class="form-group">
 
-                <label for="title">Titre du Chapitre
-                <input type="text" name="title" class="form-control" placeholder="Titre"></label>
-
                 <label for="title">Titre du Livre
                 <input type="text" name="book" class="form-control" placeholder="Livre"></label>
+
+                <label for="title">Titre du Chapitre
+                <input type="text" name="title" class="form-control" placeholder="Chapitre"></label>
             
             <label for="title">Chapitre
                 <input type="text" name="num" class="form-control" placeholder="Numéro de chapitre"></label>
@@ -30,7 +30,7 @@ $style = '../public/style.css';
             </div>
 
             <div class="form-group">
-            <label for="chapter">Contenu du Chapitre : <textarea name="chapter" class="form-control"></textarea> </label>
+            <label for="chapter">Contenu du Chapitre : <textarea name="chapter" class="form-control tinymce"></textarea> </label>
             </div>
 
             <button type="submit" class="btn btn-primary" name="publish_btn">Publier le Chapitre</button>

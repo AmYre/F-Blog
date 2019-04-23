@@ -19,11 +19,11 @@ class Write_control{
         $myBdd = new Chapters_bdd();
         $myView = new View('write');
 
-        $chapter =  htmlspecialchars($_POST['chapter']);
-        $chapter_title =  htmlspecialchars($_POST['title']);
-        $chapter_book =  htmlspecialchars($_POST['book']);
-        $chapter_volume =  htmlspecialchars($_POST['volume']);
-        $chapter_num =  htmlspecialchars($_POST['num']);
+        $chapter =  $_POST['chapter'];
+        $chapter_title =  $_POST['title'];
+        $chapter_book =  $_POST['book'];
+        $chapter_volume =  $_POST['volume'];
+        $chapter_num =  $_POST['num'];
         
         if ( isset($_POST['publish_btn']) ) 
         {
