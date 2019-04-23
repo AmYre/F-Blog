@@ -55,15 +55,11 @@ class Chapters_bdd{
         return $updated_chapter;
     }
 
-    public function delete_chapterANDcomment($id)
+    public function delete_chapter($id)
     {
         $database = $this->database;
         $delete_chapter = $database->prepare(' DELETE FROM chapters WHERE id = ? ');
         $deleted_chapter = $delete_chapter->execute(array( $id ));
-
-        $delete_comment = $database->prepare(' DELETE FROM comments WHERE chapter_id = ? ');
-        $deleted_comment = $delete_comment->execute(array( $id ));
-
     }
 
 }
