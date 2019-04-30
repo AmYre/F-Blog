@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=0zyt0uc363koowi3vpni9xwls9t0s9tzss66rx4o3098iije"></script>
         <script>tinymce.init({selector:'textarea.tinymce', width: '850px', height : '400px',});</script>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
 
     <body class='bg'>

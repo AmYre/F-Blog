@@ -36,7 +36,7 @@ class Routeur {
 
             $instanceController = new $controller();
             $instanceController->$method();
-        } else {echo 'NOT FOUND error 404';}
+        } else {echo 'Access Denied';}
 
     }
 

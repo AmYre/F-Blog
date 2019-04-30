@@ -7,6 +7,20 @@ $h1 = 'Me contacter';
 $h2 = 'Je répondrais personnellement à vos messages';
 $style = '../public/style.css';
 
+require_once('recaptcha/autoload.php');
+if (isset($_POST['g-recaptcha-response']))
+{
+    $recaptcha = new \ReCaptcha\ReCaptcha('6LeUEKEUAAAAAO7l-75MqUpV7q4oIrCReE4NO1Rt');
+    $resp = $recaptcha->setExpectedHostname('recaptcha-demo.appspot.com')
+                  ->verify($_POST['g-recaptcha-response']);
+    if ($resp->isSuccess()) 
+    {
+    // Verified!
+    } else {
+    $errors = $resp->getErrorCodes();}   
+}
+
+
 ?>
 
 <?php ob_start(); ?>
@@ -29,6 +43,7 @@ $style = '../public/style.css';
   <div class="form-group">
     <textarea class="form-control" name="mess" id="exampleFormControlTextarea1" placeholder="Votre message" rows="3"></textarea>
   </div>
+  <div class="g-recaptcha" name="g-recaptcha-response" data-sitekey="6LeUEKEUAAAAABSqgNj61Bb4iszLsWpSL33ZtXWa"></div>
 
   <button type="submit" class="btn btn-primary">Envoyer</button>
 </form>
