@@ -30,12 +30,22 @@ class Reading_bdd {
     {
         $database =  $this->database;
         $show_comments = $database->query(
-            "SELECT chapter_id, title, chapter, author, comment, chapters.timy AS chap_timy, comments.timy AS com_timy
+            "SELECT chapter_id, title, chapter, author, comment, comments.id AS com_id, chapters.timy AS chap_timy, comments.timy AS com_timy
             FROM comments
             JOIN chapters ON (comments.chapter_id = chapters.id)
             WHERE (comments.chapter_id = $id AND chapters.id = $id ) ORDER BY com_timy DESC");
 
         return $show_comments;
     }
+
+    public function update_comments($comment_update, $com_id)
+    {
+        $database = $this->database;
+        $update_chapter = $database->prepare(" UPDATE comments SET comment = ? WHERE id = ? ");
+        $updated_chapter = $update_chapter->execute(array( htmlspecialchars($comment_update), $com_id ));
+
+        return $updated_chapter;
+    }
+
 
 }

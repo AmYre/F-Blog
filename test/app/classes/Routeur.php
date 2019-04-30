@@ -14,12 +14,15 @@ class Routeur {
         "write_sent" => ["controller" => 'Write_control', "method" => 'insert_chapter'],
         "reading" => ["controller" => 'Reading_control', "method" => 'show_reading'],
         "reading_sent" => ["controller" => 'Reading_control', "method" => 'insert_comment'],
+        "reading_update" => ["controller" => 'Reading_control', "method" => 'update_comment'],
         "connexion" => ["controller" => 'Connexion_control', "method" => 'show_connexion'],
         "connexion_sent" => ["controller" => 'Connexion_control', "method" => 'check_info'],
         "tchat" => ["controller" => 'Tchat_control', "method" => 'show_tchat'],
         "tchat_sent" => ["controller" => 'Tchat_control', "method" => 'insert_tchat'],
         "user" => ["controller" => 'User_control', "method" => 'show_user'],
         "user_sent" => ["controller" => 'User_control', "method" => 'disconnect_user'],
+        "contact" => ["controller" => 'Contact_control', "method" => 'show_contact'],
+        "contact_sent" => ["controller" => 'Contact_control', "method" => 'contact'],
     ];
 
     public function __construct ()

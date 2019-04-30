@@ -20,7 +20,8 @@ class Tchat_control{
 
         if ( isset($_POST['tchat_btn']) ) 
         {
-            $pseudonyme = htmlspecialchars($_POST['pseudonyme']); 
+            session_start();
+            $pseudonyme = $_SESSION['identifiant'];
             $mess = htmlspecialchars($_POST['mess']);
             $feedback = '';
 

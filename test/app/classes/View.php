@@ -14,6 +14,6 @@ class View
         extract($params);
 
         $template = $this->template;
-        include_once (VIEW.$template.'.php');
+        require(VIEW.$template.'.php');
     }
 }
