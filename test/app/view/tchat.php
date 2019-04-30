@@ -1,5 +1,7 @@
 <?php 
 
+if (!isset($_SESSION))  { session_start();  }
+
 $title = 'Tchat de la communauté';
 $h1 = 'Bienvenue sur le Tchat';
 $h2 = 'L\'espace de partage de la communauté des Rocheux';
@@ -13,18 +15,19 @@ $style = '../public/style.css';
 
         <form action="http://localhost/test/app/tchat_sent" method="post">
             
-            <div class="form-group">
-                <label for="pseudonyme">Pseudonyme
-                <input type="text" name="pseudonyme" class="form-control" placeholder="Pseudo" value="<?php if ( isset($pseudonyme) )
-                        { echo $pseudonyme;
-                }?>"></label>
-            </div>
-            
-            <div class="form-group">
-            <label for="mess">Message : <textarea name="mess" class="form-control"></textarea> </label>
-            </div>
+            <?php 
+                if ( isset($_SESSION['identifiant']) ) 
+                {
+                   echo '<p> Vous ête connecté en tant que : '.$_SESSION['identifiant'].' </p>
+                    
+                    <div class="form-group">
+                        <label for="mess">Message : <textarea name="mess" class="form-control"></textarea> </label>
+                    </div>
 
-            <button type="submit" class="btn btn-primary" name="tchat_btn">Send Message</button>
+                    <button type="submit" class="btn btn-primary" name="tchat_btn">Send Message</button>';
+
+                } else { echo "Connectez-vous pour accéder au Tchat";}
+            ?>
         
         </form>
 

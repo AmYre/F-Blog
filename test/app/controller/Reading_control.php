@@ -27,7 +27,8 @@ class Reading_control {
 
        if ( isset($_POST['comment_btn']) ) 
         {
-            $pseudonyme =  htmlspecialchars($_POST['pseudonyme']);
+            session_start();
+            $pseudonyme =  $_SESSION['identifiant'];
             $mess =  htmlspecialchars($_POST['mess']);
 
             if ( !empty($pseudonyme) AND !empty($mess) ) 
@@ -47,6 +48,25 @@ class Reading_control {
             
             $myView = new View('reading');
             $myView->show(array ('feedback' => $feedback, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
+    }
+
+    public function update_comment () 
+    {
+        $feedback = '';
+        $id = $_GET['id'];
+        $com_id = $_POST['com_id'];
+        $author = $_POST['author'];
+        $comment_update =  htmlspecialchars($_POST['comment']);
+        $time = $_POST['timy'];
+
+        $myBdd = new Reading_bdd;
+        $update_comment = $myBdd->update_comments($comment_update, $com_id);
+        $show_chapter = $myBdd->select_chapter($id);
+        $show_comments = $myBdd->show_comments($id);
+                
+        $myView = new View('reading');
+        $myView->show(array ('feedback' => $feedback, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
+       
     }
 
 
