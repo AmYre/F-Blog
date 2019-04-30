@@ -14,13 +14,21 @@ class Contact_control {
     {
         $feedback = '';
 
+        $headers = 'FROM: "forteroche@blog.com"';
         $contact_name = $_POST['name'];
         $contact_firstname = $_POST['firstname'];
         $contact_mail = $_POST['mail'];
-        $contact_mess = $_POST['mess'];
-        $headers = 'FROM: "forteroche@blog.com"';
+        $message = $_POST['mess'];
+        $contact_mess = 
+        'De la part de :  '.$contact_name .'  '.$contact_firstname.'
 
-        if ( !empty($contact_name) || !empty($contact_firstname) || !empty($contact_mail) || !empty($contact_mess) ) 
+        Mail de contact :  '.$contact_mail.'
+                    
+        Message :          
+        '.($message);
+        
+
+        if ( !empty($contact_name) || !empty($contact_firstname) || !empty($contact_mail) || !empty($message) ) 
         {
                 if ( preg_match('`^[a-zA-Z0-9]+(?:[\ \-\.\'][a-zA-Z0-9]+)*$`', $contact_name) && preg_match('`^[a-zA-Z0-9]+(?:[\ \-\.\'][a-zA-Z0-9]+)*$`', $contact_firstname ) )
                 {
