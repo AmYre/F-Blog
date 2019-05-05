@@ -3,13 +3,13 @@
 $title = 'Inscription';
 $h1 = 'Formulaire d\'inscription';
 $h2 = 'Une fois inscrit vous aurez accès au tchat et aux commentaires';
-$style = '../public/style.css';
+$style = 'http://localhost/test/public/style.css';
 
 ?>
 
 <?php ob_start(); ?>
 
-	<form action="http://localhost/test/app/create_sent" method="post">
+	<form action="http://localhost/test/app/create/checkANDregister" method="post">
 
 		<div class="form-group">
 			<label for="pseudo">Votre pseudo :

@@ -3,13 +3,7 @@
 $title = 'Liste des chapitres';
 $h1 = 'Tous les chapitres';
 $h2 = 'Utilisez la barre de recherche pour trouver le chapitre désiré';
-$style = '../public/style.css';
-/*while($comments_fields = $comments->fetch())
-    {
-        $chapter_id = $comments_fields['chapter_id'];
-        var_dump ($chapter_id);
-    }*/
-    
+$style = 'http://localhost/test/public/style.css';
 
 ob_start(); ?>
 
@@ -21,7 +15,7 @@ ob_start(); ?>
                 echo '<p class="tchat-box">'.'<strong>'.$publication['title'].'</strong>'.' :'.
                 '<br/>'.$publication['chapter'].'<br/>'.'<i>'.'
                 Posté le :   '.$publication['timywoo'].'</i>'.'</p>'
-                .'<a href="http://localhost/test/app/reading&amp;id='.$publication["id"].'&amp;title='.$publication["title"].'"><button name="read-btn">Lire la suite</button></a>'.'<br>'.'<br>'.'<br>';
+                .'<a href="http://localhost/test/app/reading/show_reading/'.$publication["id"].'/'.$publication["title"].'"><button name="read-btn">Lire la suite</button></a>'.'<br>'.'<br>'.'<br>';
             }
         ?> 
         </div> 

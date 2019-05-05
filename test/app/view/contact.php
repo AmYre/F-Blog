@@ -5,7 +5,7 @@ if (!isset($_SESSION))  { session_start();  }
 $title = 'Me contacter';
 $h1 = 'Me contacter';
 $h2 = 'Je répondrais personnellement à vos messages';
-$style = '../public/style.css';
+$style = 'http://localhost/test/public/style.css';
 
 require_once('recaptcha/autoload.php');
 if (isset($_POST['g-recaptcha-response']))
@@ -26,7 +26,7 @@ if (isset($_POST['g-recaptcha-response']))
 <?php ob_start(); ?>
 
 <br><br>
-<form action="http://localhost/test/app/contact_sent" method="post">
+<form action="http://localhost/test/app/contact/contact_mail" method="post">
   <div class="form-row">
     <div class="col">
        

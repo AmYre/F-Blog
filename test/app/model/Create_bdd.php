@@ -41,5 +41,4 @@ class Create_bdd {
         return $registration;
     }
 
-
 }

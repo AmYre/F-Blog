@@ -10,7 +10,7 @@ class Contact_control {
         $myView->show(array('feedback' => $feedback));
     }
 
-    public function contact()
+    public function contact_mail()
     {
         $feedback = '';
 

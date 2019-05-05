@@ -31,5 +31,26 @@ class Connexion_bdd {
         return $mdp_exist;
     }
     
+    public function get_mail($pseudo)
+
+    {
+        $database = $this->database;
+        $check_mail = $database->prepare("SELECT email FROM membres WHERE pseudo = ?");
+        $check_mail->execute([$pseudo]);
+        $mail_exist = $check_mail->fetch();
+
+        return $mail_exist['email'];
+    }
+
+    public function get_id($pseudo)
+
+    {
+        $database = $this->database;
+        $check_id = $database->prepare("SELECT id FROM membres WHERE pseudo = ?");
+        $check_id->execute([$pseudo]);
+        $id_exist = $check_id->fetch();
+
+        return $id_exist['id'];
+    }
 
 }

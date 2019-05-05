@@ -1,8 +1,54 @@
 <?php
 
 class Routeur {
+
+    private $controller;
+    private $method;
+    private $params = [];
+
+    public function __construct ()
+    {
+       $url = $this->routing();
+
+       if( file_exists(_CONTROLLER_.$url[0].'_control.php') )
+       {
+           $this->controller = $url[0].'_control';
+           unset($url[0]);
+       } else { echo'Something is wrong with controller exist ';}
+       
+       require_once(_CONTROLLER_.$this->controller.'.php');
+       $this->controller = new $this->controller;
+       
+       if (isset($url[1]))
+       {
+           if( method_exists($this->controller, $url[1]))
+           {
+               $this->method = $url[1];
+               unset($url[1]);
+           }
+       } else { echo'Something is wrong with method exist ';}
+       
+       if ($url) 
+       {
+            $this->params = array_values($url);
+       } 
+
+       call_user_func_array (array($this->controller, $this->method), $this->params);
+
+    }
+
+    public function routing ()
+    {
+        if (isset ($_GET['url']))
+        {
+            return $url = explode('/', filter_var( rtrim($_GET['url'], '/'), FILTER_SANITIZE_URL));
+        }
+    }
     
-    private $routes = 
+}
+
+//VERSION DU ROUtEUR AVEC MOT CLEF
+     /*private $routes = 
     [
         "home" => ["controller" => 'Home_control', "method" => 'show_home'],
         "chapter_manager" => ["controller" => 'Chapter_manager_control', "method" => 'show_manager'],
@@ -23,30 +69,13 @@ class Routeur {
         "user_sent" => ["controller" => 'User_control', "method" => 'disconnect_user'],
         "contact" => ["controller" => 'Contact_control', "method" => 'show_contact'],
         "contact_sent" => ["controller" => 'Contact_control', "method" => 'contact'],
-    ];
-
-    public function __construct ()
-    {
-       $url = $this->routing();
-       
-       if(key_exists($url[0], $this->routes))
+    ];*/      
+    
+    /*if(key_exists($url[0], $this->routes))
         {
             $controller = $this->routes[$url[0]]['controller'];
             $method = $this->routes[$url[0]]['method'];
 
             $instanceController = new $controller();
             $instanceController->$method();
-        } else {echo 'Access Denied';}
-
-    }
-
-    public function routing ()
-    {
-        if (isset ($_GET['url']))
-        {
-            return $url = explode('/', filter_var( rtrim($_GET['url'], '/'), FILTER_SANITIZE_URL));
-        }
-    }
-    
-}
- 
+        } else {echo 'Access Denied';}*/
