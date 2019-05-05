@@ -18,7 +18,7 @@
     <body class='bg'>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="http://localhost/test/app/home">Jean Forteroche</a>
+            <a class="navbar-brand" href="http://localhost/test/app/home/show_home">Jean Forteroche</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -26,19 +26,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="http://localhost/test/app/home"><i class="fas fa-home"></i> <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="http://localhost/test/app/home/show_home"><i class="fas fa-home"></i> <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/test/app/tchat">Le Tchat des Rocheux</a>
+                        <a class="nav-link" href="http://localhost/test/app/tchat/show_tchat">Le Tchat des Rocheux</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="http://localhost/test/app/chapters" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Lire en ligne
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Par Livres</a>
                             <a class="dropdown-item" href="#">Par Volumes</a>
-                            <a class="dropdown-item" href="http://localhost/test/app/listing">Par Chapitres</a>
+                            <a class="dropdown-item" href="http://localhost/test/app/listing/show_listing">Par Chapitres</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Vous aurez aussi la possibilité de laisser un commentaire en fin de lecture</a>
                         </div>
@@ -50,7 +50,7 @@
                         <a class="nav-link" href="#">L'auteur</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/test/app/contact">Contact</a>
+                        <a class="nav-link" href="http://localhost/test/app/contact/show_contact">Contact</a>
                     </li>
                 </ul>
 
@@ -59,29 +59,29 @@
                             if (isset ($_SESSION['identifiant']) && $_SESSION['identifiant'] == 'ADMIN' ) {
                              echo '
                         <li class="nav-item">
-                            <a id="admin" class="nav-link" href="http://localhost/test/app/write">ADMIN</a>
+                            <a id="admin" class="nav-link" href="http://localhost/test/app/write/show_write">ADMIN</a>
                         </li>
-                        <li class="nav-item"> <form action="http://localhost/test/app/user_sent" method="post">
-                            <button type="submit" name="disconnect_btn">Me déconnecter</button>
+                        <li class="nav-item"> <form action="http://localhost/test/app/user/disconnect_user" method="post">
+                            <button type="submit" class="btn btn-dark" name="disconnect_btn">Me déconnecter</button>
                             </form>
                         </li>'; } 
                         
                             elseif (isset ($_SESSION['identifiant'])) {
                                 echo '
                                 <li class="nav-item">
-                                    <a id="connected" class="nav-link" href="http://localhost/test/app/user">Mon Espace</a> 
+                                    <a id="connected" class="nav-link" href="http://localhost/test/app/user/show_user">Mon Espace (<strong>'.$_SESSION['identifiant'].'</strong>)</a> 
                                 </li>
-                                <li class="nav-item"> <form action="http://localhost/test/app/user_sent" method="post">
-                                    <button type="submit" name="disconnect_btn">Me déconnecter</button>
+                                <li class="nav-item"> <form action="http://localhost/test/app/user/disconnect_user" method="post">
+                                    <button type="submit" class="btn btn-dark" name="disconnect_btn">Me déconnecter</button>
                                     </form>
                                 </li>'; 
 
                             }else { echo '
                                 <li class="nav-item">
-                                    <a id="connect" class="nav-link" href="http://localhost/test/app/connexion">Se connecter</a>
+                                    <a id="connect" class="nav-link" href="http://localhost/test/app/connexion/show_connexion">Se connecter</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a id="create" class="nav-link" href="http://localhost/test/app/create">Devenir Rocheux</a>
+                                    <a id="create" class="nav-link" href="http://localhost/test/app/create/show_create">Devenir Rocheux</a>
                                 </li>';}
                         ?>
                     </ul>
@@ -107,20 +107,12 @@
 
         
         <script
-  src="https://code.jquery.com/jquery-3.4.0.js"
-  integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
-        <script type="text/javascript" src="public/js/index.js"></script>
+        <script type="text/javascript" src="http://localhost/test/public/js/index.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>  
-    
-        <script>
-        $('#myModal').modal(options);
-        function form_submit() {
-        document.getElementById("modal_com").submit();
-   } 
-        
-        </script>
-    
+
     </body>
 </html>

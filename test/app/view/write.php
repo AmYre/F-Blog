@@ -3,15 +3,16 @@
 $title = 'Les derniers chapitres';
 $h1 = 'Derniers Chapitres Publiés';
 $h2 = 'Séléctionnez un chapitre pour y accéder complètement';
-$style = '../public/style.css';
+$style = 'http://localhost/test/public/style.css';
 
 ?>
 
 <?php ob_start(); ?>
 
-        <p class="chapters_feedback"> <?php echo $feedback; ?> </p>
 
-        <form action="http://localhost/test/app/write_sent" method="post">
+        <p class="chapters_feedback"> <?php echo $feedback; ?> </p>    
+
+        <form action="http://localhost/test/app/write/insert_chapter" method="post">
             
             <div class="form-group">
 
@@ -46,7 +47,7 @@ $style = '../public/style.css';
                 echo '<p class="tchat-box">'.'<strong>'.$publication['title'].'</strong>'.' :'.
                 '<br/>'.$publication['chapter'].'<br/>'.'<i>'.'
                 Posté le :   '.$publication['timywoo'].'</i>'.'</p>'
-                .'<a href="http://localhost/test/app/chapter_manager&amp;id='.$publication["id"].'&amp;title='.$publication["title"].'"><button name="read">Gérer ce chapitre</button></a>'.'<br>'.'<br>'.'<br>';
+                .'<a href="http://localhost/test/app/chapter_manager/show_manager/'.$publication['id'].'/'.$publication['title'].'"><button name="read">Gérer ce chapitre</button></a>'.'<br>'.'<br>'.'<br>';
             }
         ?> 
         </div> 

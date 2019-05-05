@@ -5,15 +5,14 @@ if (!isset($_SESSION))  { session_start();  }
 $title = 'Tchat de la communauté';
 $h1 = 'Bienvenue sur le Tchat';
 $h2 = 'L\'espace de partage de la communauté des Rocheux';
-$style = '../public/style.css';
-
+$style = 'http://localhost/test/public/style.css';
 ?>
 
 <?php ob_start(); ?>
 
         <p class="tchat_feedback"><?php echo $feedback; ?> </p>
 
-        <form action="http://localhost/test/app/tchat_sent" method="post">
+        <form action="http://localhost/test/app/tchat/insert_tchat" method="post">
             
             <?php 
                 if ( isset($_SESSION['identifiant']) ) 

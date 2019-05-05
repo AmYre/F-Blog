@@ -1,11 +1,9 @@
 <?php 
 
 $title = 'Commentaires';
-$h1 = $_GET['title'];
+$h1 = $chap_title;
 $h2 = 'Connectez vous pour laisser un commentaire';
-$style = '../public/style.css';
-$id = $_GET['id'];
-$title = $_GET['title'];
+$style = 'http://localhost/test/public/style.css';
 
 ?>
 
@@ -13,7 +11,7 @@ $title = $_GET['title'];
 
     <p class="chapter_manager_feedback"> <?php echo $feedback; ?> </p>
 
-        <form action="http://localhost/test/app/chapter_manager_sent&amp;id=<?php echo $id; ?>&amp;title=<?php echo $title ?>" method="post">
+        <form action="http://localhost/test/app/chapter_manager/updateANDdelete_chapter/<?php echo $id; ?>/<?php echo $chap_title ?>" method="post">
         
         <textarea type="text" name="chapter_update" rows="5" cols="33"><?php 
             while($chapter = $select_chapter->fetch())

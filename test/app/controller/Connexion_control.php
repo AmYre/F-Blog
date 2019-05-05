@@ -31,11 +31,14 @@ class Connexion_control {
 
                     if ($check_pseudo == 1 && $mdp_verify)
                     { 
-                            session_start();
-                            $_SESSION['identifiant'] = $pseudo;
-                            $feedback = 'Vous êtes connecté !';
-                            $myView = new View('home');
-                            $myView->show(array ('feedback' => $feedback));
+                        session_start();
+                        $_SESSION['identifiant'] = $pseudo;
+                        $_SESSION['mdp'] = $mdp;
+                        $_SESSION['mail'] = $myBdd->get_mail($pseudo);
+                        $_SESSION['id'] = $myBdd->get_id($pseudo);
+                        $feedback = 'Vous êtes connecté !';
+                        $myView = new View('home');
+                        $myView->show(array ('feedback' => $feedback));
                     }
                     else { $feedback = 'Mauvais identifiant ou mot de passe !';
                            $myView = new View('connexion');

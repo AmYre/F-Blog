@@ -3,14 +3,14 @@
 $title = 'Connexion';
 $h1 = 'Connectez-vous';
 $h2 = 'Une fois connecté vous aurez accès au tchat et aux commentaires';
-$style = '../public/style.css';
+$style = 'http://localhost/test/public/style.css';
 
 ?>
 
 <?php ob_start(); ?>
 
     
-        <form action="http://localhost/test/app/connexion_sent" method="post">
+        <form action="http://localhost/test/app/connexion/check_info" method="post">
 
             <div class="form-group">
                 <label for="pseudo">Identifiant : 

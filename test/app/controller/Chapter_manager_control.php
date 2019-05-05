@@ -2,23 +2,21 @@
 
 class Chapter_manager_control{
 
-    public function show_manager()
+    public function show_manager($id, $chap_title)
     {
         $feedback = '';
-        $id = $_GET['id'];
 
         $myBdd = new Chapters_bdd;
         $select_chapter = $myBdd->select_chapter($id);
         $show_comments = $myBdd->show_comments($id);
 
         $myView = new View('chapter_manager');
-        $myView->show(array ('feedback' => $feedback, 'select_chapter' => $select_chapter, 'show_comments' => $show_comments) );
+        $myView->show(array ('feedback' => $feedback, 'chap_title' => $chap_title, 'id' => $id, 'select_chapter' => $select_chapter, 'show_comments' => $show_comments) );
     }
 
-    public function updateANDdelete_chapter(){
+    public function updateANDdelete_chapter($id, $chap_title){
 
         $feedback = '';
-        $id = $_GET['id'];
 
         $myBdd = new Chapters_bdd;
         $select_chapter = $myBdd->select_chapter($id);
@@ -27,7 +25,6 @@ class Chapter_manager_control{
         if ( isset($_POST['chap_btn_update']) ) 
         {
             $chapter_update =  htmlspecialchars($_POST['chapter_update']);
-            $id = $_GET['id'];
 
             if ( isset($_POST['chapter_update']) && !empty($chapter_update) )
             {
@@ -36,7 +33,7 @@ class Chapter_manager_control{
                 $update_chapter = $myBdd->update_chapter($chapter_update, $id);
                 $select_chapter = $myBdd->select_chapter($id);
                 $myView = new View('chapter_manager');
-                $myView->show(array ('feedback' => $feedback, 'select_chapter' => $select_chapter, 'show_comments' => $show_comments) );
+                $myView->show(array ('feedback' => $feedback, 'chap_title' => $chap_title, 'id' => $id, 'select_chapter' => $select_chapter, 'show_comments' => $show_comments) );
 
             }else { $feedback = 'Pas de modifications apportées';}
             
@@ -52,7 +49,7 @@ class Chapter_manager_control{
             $show_chapter = $myBdd->show_chapter();
 
             $myView = new View('write');
-            $myView->show(array ('feedback' => $feedback, 'show_chapter' => $show_chapter) );
+            $myView->show(array ('feedback' => $feedback, 'chap_title' => $chap_title, 'id' => $id, 'show_chapter' => $show_chapter) );
             
         }
         

@@ -17,11 +17,11 @@ class Reading_bdd {
         return $selected_chapter;
     }
 
-    public function insert_comment ($pseudonyme, $mess, $id)
+    public function insert_comment ($pseudonyme, $mess, $id, $membre_id)
     {
         $database =  $this->database;
-        $save_comment = $database->prepare('INSERT INTO comments (chapter_id, author, comment, timy) VALUES(?, ?, ?, NOW())');
-        $insert_comment = $save_comment->execute(array( $id, htmlspecialchars($pseudonyme), htmlspecialchars($mess)));
+        $save_comment = $database->prepare('INSERT INTO comments (chapter_id, author, author_id, comment, timy) VALUES(?, ?, ?, ?, NOW())');
+        $insert_comment = $save_comment->execute(array( $id, htmlspecialchars($pseudonyme), $membre_id, htmlspecialchars($mess)));
 
         return $insert_comment;
     }
@@ -45,6 +45,13 @@ class Reading_bdd {
         $updated_chapter = $update_chapter->execute(array( htmlspecialchars($comment_update), $com_id ));
 
         return $updated_chapter;
+    }
+
+    public function delete_comments($com_id)
+    {
+        $database = $this->database;
+        $delete_chapter = $database->prepare(' DELETE FROM comments WHERE id = ? ');
+        $deleted_chapter = $delete_chapter->execute(array( $com_id ));
     }
 
 

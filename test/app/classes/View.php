@@ -9,11 +9,11 @@ class View
         $this->template = $template;
     }
 
-    public function show($params = array())
+    public function show($param = array())
     {
-        extract($params);
+        extract($param);
 
         $template = $this->template;
-        require(VIEW.$template.'.php');
+        require(_VIEW_.$template.'.php');
     }
 }
