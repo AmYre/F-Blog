@@ -7,7 +7,6 @@ $(document).ready( function() {
             $('.modal_id').prepend($(this).prevAll().eq(3).html());
         });
 
-
     $('#search').keyup( function() {
 
         var search = $(this).val();
@@ -15,23 +14,11 @@ $(document).ready( function() {
         if (search.length > 2) 
         {
             $.ajax('/forteroche/app/Search/find/' + search).done( function (response) {
-
-                console.log ('response is :' + response);
-                $('#search_results').html(response).show();
-
+                var words = response.split('<br>');
+                /*$('#search_results').html(response).show();*/
+                $("#search").autocomplete({ source: words });
             });
-            
-            /*({
-                type : "GET",
-                url : '/forteroche/app/Search/find/' + search,
-                data : data,
-
-                success : function (server_response) {
-                    console.log ('response is :' + server_response);
-                    $('#search_results').html(server_response).show();
-
-                }
-            });*/
+        
         }
     });
 
