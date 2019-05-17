@@ -5,16 +5,7 @@ ini_set("display_errors", 1);
 
 $currentCookieParams = session_get_cookie_params();  
 $sidvalue = session_id();  
-setcookie(  
-    'PHPSESSID',//name  
-    $sidvalue,//value  
-    0,//expires at end of session  
-    $currentCookieParams['path'],//path  
-    $currentCookieParams['domain'],//domain  
-    true, //secure  
-    true //http  
-); 
-
+setcookie( 'PHPSESSID', $sidvalue, 0, $currentCookieParams['path'], $currentCookieParams['domain'], true,  true ); 
 
 include_once('config.php');
 
