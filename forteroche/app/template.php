@@ -19,7 +19,7 @@ error_reporting(E_ALL);?>
     <body class='bg'>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href='/forteroche/app/Home/show'>Jean Forteroche</a>
+            <a class="navbar-brand" href='/forteroche/app/Home/show'><img src="/forteroche/public/img/logoj.png" id="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -41,14 +41,14 @@ error_reporting(E_ALL);?>
                             <a class="dropdown-item" href="#">Par Genres</a>
                             <a class="dropdown-item" href="/forteroche/app/Listing/show_chapters">Par Chapitres</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Vous aurez aussi la possibilité de laisser un commentaire en fin de lecture</a>
+                            <a class="dropdown-item" href="#">Vous aurez la possibilité de laisser un commentaire en fin de lecture</a>
                         </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Acheter les Livres</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">L'auteur</a>
+                        <a class="nav-link" href="/forteroche/app/Jean/show">L'auteur</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/forteroche/app/Contact/show">Contact</a>
@@ -88,10 +88,10 @@ error_reporting(E_ALL);?>
                     </ul>
 
                     <!-- BARRE DE RECHERCHE AJAX -->
-                <div class="form-inline my-2 my-lg-0">
+                <!--<div class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" name ='search' id='search' placeholder="Recherche.." aria-label="Recherche">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-                </div>
+                </div> -->
 
             </div>
         </nav>
@@ -108,7 +108,9 @@ error_reporting(E_ALL);?>
             </section>
         </div>
 
-        
+        <div class="loader-wrapper">
+            <span class="loader"><span class="loader-inner"></span></span>
+        </div>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script
