@@ -148,25 +148,36 @@ error_reporting(E_ALL);?>
 		</header>
 
 		<!-- Page Content -->
-		<section class="py-5 tchat">
+		<div class="bg">
+			<section class="py-5 tchat">
 
-			<div class="container">
-				<h2 class="display-4 tchat-title gradient">UNE COMMNAUTÉ ACTIVE</h2>
-				<p class="lead tchat-sub">Partagez toutes vos impressions entre rocheux endurcis sur le tchat de la communauté !</p>
-			</div>
+				<div class="container">
+					<h2 class="display-4 tchat-title gradient">UNE COMMNAUTÉ ACTIVE</h2>
+					<p class="lead tchat-sub">Partagez toutes vos impressions entre rocheux endurcis sur le tchat de la communauté !</p>
+					<img class="tchat-img" src="/forteroche/public/img/tchat.png">
+				</div>
 
-			<div class="tchat-btn">
-				<a href="#" class="fancy-button bg-gradient1"><span class="span"><i class="fa fa-wheelchair-alt"></i>COMMENCER À TCHATER</span></a>
-			</div>
+				<div class="tchat-btn">
+					<a href="#" class="fancy-button bg-gradient1"><span class="span"><i class="fa fa-wheelchair-alt"></i>COMMENCER À TCHATER</span></a>
+				</div>
 
-		</section>
+			</section>
 
-		<section class="py-5">
-			<div class="container">
-				<h1 class="display-4 com-title gradient">UNE INTERACTION INEDITE</h1>
-				<p class="lead">À la fin de chaque chapitre réagissez à chaud à l'aide des commentaires. Forteroche vous lis et réponds!</p>
-			</div>
-		</section>
+			<section class="py-5 com">
+
+				<div class="container">
+					<h1 class="display-4 com-title gradient">UNE INTERACTION INEDITE</h1>
+					<p class="lead com-sub">À la fin de chaque chapitre réagissez à chaud à l'aide des commentaires. Forteroche vous lis et réponds!</p>
+					<img class="com-img" src="/forteroche/public/img/interact.png">
+
+					<div class="com-btn">
+						<a href="#" class="fancy-button bg-gradient1"><span class="span"><i class="fa fa-wheelchair-alt"></i>LAISSER UN COMMENTAIRE</span></a>
+					</div>
+				</div>
+
+			</section>
+			
+		</div>
 
 		<div class="loader-wrapper">
 			<span class="loader"><span class="loader-inner"></span></span>
@@ -180,6 +191,15 @@ error_reporting(E_ALL);?>
         <script type="text/javascript" src="/forteroche/public/js/index.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>  
+
+
+		<footer class="page-footer font-small cyan darken-3">
+
+			<div class="footer-copyright text-center py-3">
+			<a href="https://mdbootstrap.com/education/bootstrap/"> © Copyright 2019 - All rights reserved | PROJET4 AMIR | Développeur Web Junior</a>
+			</div>
+
+		</footer>
 
     </body>
 </html>

@@ -1,13 +1,16 @@
 html {
-    height: 100%;
-  }
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
   
 .bg {
-    background-image: url('img/1.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
+    background: url("img/1.jpg") no-repeat center center fixed; 
     background-size: cover;
-  }
+}
 
 #logo{
   height: 50px;
@@ -92,9 +95,6 @@ html {
 
 .tchat{
   min-height: 800px;
-  background-image: url("/forteroche/public/img/tchat.png");
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .tchat-title{
@@ -107,9 +107,40 @@ html {
 }
 
 .tchat-btn{
+position: absolute;
+right: 30%;
+top : 1600px;
+}
+
+.tchat-img{
+  position: relative;
+  height: 600px;
+  right: 30%;
+}
+
+.com{
+  min-height: 800px;
+}
+.com-title{
+  margin-top: 5px;
+  text-align: center;
+}
+
+.com-sub{
+  text-align: center;
+}
+
+.com-btn{
   position: absolute;
-  right: 20%;
-  top : 1600px;
+  left: 20%;
+  bottom : -1500px;
+}
+
+.com-img{
+  position: relative;
+  height: 600px;
+  margin-top: 50px;
+  left: 40%;
 }
 
 /*-----------TITLE GRADIENT ANIMATION EFFECT----------*/
@@ -265,7 +296,6 @@ a:hover, a:focus, a:active {
 
 .fancy-button {
   display: inline-block;
-  margin: 30px;
   font-family: 'Poiret One', cursive, Helvetica, Arial, sans-serif;
   font-size: 17px;
   letter-spacing: 2px;
