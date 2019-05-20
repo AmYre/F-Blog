@@ -20,7 +20,7 @@ error_reporting(E_ALL);?>
 	<body>
 
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
-          <a class="navbar-brand" href='/forteroche/app/Home/show'><img src="/forteroche/public/img/logoj.png" id="logo"></a>
+          <a class="navbar-brand" href='/forteroche/app/Home/show'><img src="/forteroche/public/img/logoj.png" id="logo"><i class="fas fa-home"></i></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
           </button>
@@ -111,7 +111,7 @@ error_reporting(E_ALL);?>
 			<div class="carousel-inner" role="listbox">
 
 			<div class="lecture">
-				<a href="#" class="fancy-button bg-gradient1"><span class="span"><i class="fa fa-wheelchair-alt"></i>COMMENCER LA LECTURE</span></a>
+				<a href="/forteroche/app/Listing/show_books" class="fancy-button bg-gradient1"><span class="span"><i class="fa fa-wheelchair-alt"></i>COMMENCER LA LECTURE</span></a>
 			</div>
 
 			<!-- Slide One - Set the background image for this slide in the line below -->
@@ -158,7 +158,7 @@ error_reporting(E_ALL);?>
 				</div>
 
 				<div class="tchat-btn">
-					<a href="#" class="fancy-button bg-gradient1"><span class="span"><i class="fa fa-wheelchair-alt"></i>COMMENCER À TCHATER</span></a>
+					<a href="/forteroche/app/Tchat/show" class="fancy-button bg-gradient1"><span class="span"><i class="fa fa-wheelchair-alt"></i>COMMENCER À TCHATER</span></a>
 				</div>
 
 			</section>
@@ -171,12 +171,12 @@ error_reporting(E_ALL);?>
 					<img class="com-img" src="/forteroche/public/img/interact.png">
 
 					<div class="com-btn">
-						<a href="#" class="fancy-button bg-gradient1"><span class="span"><i class="fa fa-wheelchair-alt"></i>LAISSER UN COMMENTAIRE</span></a>
+						<a href="/forteroche/app/Listing/show_chapters" class="fancy-button bg-gradient1"><span class="span"><i class="fa fa-wheelchair-alt"></i>LAISSER UN COMMENTAIRE</span></a>
 					</div>
 				</div>
 
 			</section>
-			
+
 		</div>
 
 		<div class="loader-wrapper">
@@ -195,8 +195,8 @@ error_reporting(E_ALL);?>
 
 		<footer class="page-footer font-small cyan darken-3">
 
-			<div class="footer-copyright text-center py-3">
-			<a href="https://mdbootstrap.com/education/bootstrap/"> © Copyright 2019 - All rights reserved | PROJET4 AMIR | Développeur Web Junior</a>
+			<div id="footer" class="footer-copyright text-center py-3">
+			<p> © Copyright 2019 - All rights reserved | <span class="p4">PROJET4 AMIR</span> | Développeur Web Junior</p>
 			</div>
 
 		</footer>
