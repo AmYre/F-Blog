@@ -72,11 +72,29 @@ body {
   color: red;
 }
 
-/*------GENERAL-----------*/
+.fa-facebook{
+padding-right: 2px;
+color: #0e587a
+}
+
+.fa-twitter{
+  padding-right: 2px;
+  color: #77d4ff
+}
+
+.fa-instagram{
+    padding-right: 2px;
+    color: #b68c03
+  }
+
+/*------HOMEPAGE-----------*/
+
+.cont{
+  min-height: calc(100vh - 70px);
+}
 
 .carousel-item {
-  height: 100vh;
-  min-height: 350px;
+  min-height: 90vh;
   background: no-repeat center center scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -84,7 +102,17 @@ body {
   background-size: cover;
 }
 
-.box_title{
+.home-title{	
+  font-size: 5.2rem;
+  letter-spacing: 1px;
+  }
+
+.home-sub{
+    font-size: 1.8rem;
+    color: rgb(0, 0, 0)
+  }
+
+.box-hide{
   position: absolute;
 	z-index: 1;
   width: 100%;
@@ -93,15 +121,34 @@ body {
   flex-direction: column;
   height: auto;
   width: 100%;
-  background: #07070754;
-  border-radius: 15px;
+  background: #ffffff00;
   padding: 50px;
-  box-shadow:  0px 0px 12px black;
+  box-shadow: 0px -18px 15px rgba(0, 0, 0, 0.200);
+}
+
+.box-title{
+  padding: 20px;
+  width: auto;
+  background: #ffffffcb;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+  box-shadow: 0px 0px 25px white;
+}
+
+.lecture {
+  text-align: center;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  position: absolute;
+  bottom : 250px;
+  z-index: 2;
+  width: 100%;
 }
 
 .tchat{
   min-height: 800px;
-  
 }
 
 .tchat-title{
@@ -117,6 +164,9 @@ body {
 position: absolute;
 right: 30%;
 top : 1600px;
+-webkit-transform-style: preserve-3d;
+transform-style: preserve-3d;
+perspective: 800px;
 }
 
 .tchat-img{
@@ -141,6 +191,9 @@ top : 1600px;
   position: absolute;
   left: 20%;
   bottom : -1500px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  perspective: 800px;
 }
 
 .com-img{
@@ -149,6 +202,142 @@ top : 1600px;
   margin-top: 50px;
   left: 40%;
 }
+
+/*----------------TCHAT-PAGE-----------*/
+
+.tchat-pseudo{
+  font-size: 1.5em;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.tchat-mess{
+font-family: 'Quicksand', sans-serif;
+letter-spacing: 1px;
+}
+
+/*----------------BOOK-PAGE-----------*/
+
+.panel{
+  width: auto;
+  background: #ffffffb9;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+  box-shadow: 0px 0px 25px rgb(255, 255, 255);
+  padding: 10px;
+}
+
+.books{
+  min-height: 300px;
+  box-shadow: 0px 0px 15px rgb(255, 0, 0);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Billet{
+  background-image: url('https://images4.alphacoders.com/132/132008.jpg');
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
+
+.Spectre{
+  background-image: url('https://digitalart.io/storage/artworks/281/Gods-of-Land-vs-Water-Epic-Wallpaper.jpeg');
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
+
+.Rencontre{
+  background-image: url('https://images6.alphacoders.com/492/492493.jpg');
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
+
+/*----------------JEAN-PAGE-----------*/
+
+.prez{
+  background: rgba(0, 0, 0, 0.479);
+  border-radius: 15px;
+  padding: 50px;
+  box-shadow: 0px 0px 15px black;
+}
+
+.jean{
+  background-image: url('/forteroche/public/img/jean.jpg');
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover;
+}
+
+.panel-jean{
+  width: auto;
+  background: #ffffffb9;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+  box-shadow: 0px 0px 25px rgb(255, 255, 255);
+  padding: 30px;
+}
+
+/*----------------CONTACT-PAGE-----------*/
+
+.contact-box{
+  max-width : 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact{
+  padding-top: 50px;
+  padding-bottom: 100px;
+  max-width : 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*----------------CONNECT-PAGE-----------*/
+
+.connect-box{
+  margin-top: 80px;
+  margin-bottom: 80px;
+  max-width : 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.connect{
+  padding-top: 50px;
+  padding-bottom: 100px;
+  max-width : 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*----------------CREATE-PAGE-----------*/
+
+.create-box{
+  margin-top: 80px;
+  margin-bottom: 80px;
+  max-width : 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.create{
+  padding-top: 50px;
+  padding-bottom: 100px;
+  max-width : 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+/*-----------FOOTER ANIMATED----------*/
 
 #footer{
   animation: flow 10s ease-in-out infinite;
@@ -180,18 +369,9 @@ top : 1600px;
 }
 
 
-/*-----------TITLE GRADIENT ANIMATION EFFECT----------*/
+/*----------- GRADIENT ANIMATION EFFECT----------*/
 
-.h1{	
-  font-size: 2.5em;
-  
-  }
-  .h2{
-    font-size: 1em;
-  }
-  
 .gradient{
-  font-size: 2.2em;
   animation: flow 10s ease-in-out infinite;
   background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
   background-size: 300%;
@@ -223,6 +403,18 @@ top : 1600px;
   position: relative;
   border: 4px solid #Fff;
   animation: loader 2s infinite ease;
+}
+
+.loader-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #242f3f;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .loader-inner {
@@ -289,7 +481,7 @@ top : 1600px;
   }
 }
 
-/*---------------FANCY BUTTON "COMMENCER LA LECTURE"-----------*/
+/*---------------FANCY BUTTON-----------*/
 
 .bg-gradient1 .span,
 .bg-gradient1:before {
@@ -310,17 +502,6 @@ top : 1600px;
   background: #fa6c9f;
   background: -webkit-gradient(linear, left top, right top, from(#fa6c9f), color-stop(80%, #ffe140), to(#ffe140));
   background: linear-gradient(to right, #fa6c9f 0%, #ffe140 80%, #ffe140 100%);
-}
-
-.lecture {
-  text-align: center;
-  -webkit-transform-style: perserve-3d;
-  transform-style: perserve-3d;
-  perspective: 800px;
-  position: absolute;
-  bottom : 250px;
-  z-index: 2;
-  width: 100%;
 }
 
 a {

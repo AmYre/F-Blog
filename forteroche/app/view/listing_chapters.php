@@ -4,8 +4,8 @@
     ini_set("display_errors", 1); 
 
 $title = 'Liste des chapitres';
-$h1 = 'Les derniers chapitres';
-$h2 = 'Utilisez la barre de recherche pour trouver le chapitre désiré';
+$h1 = 'Les Derniers Chapitres';
+$h2 = 'Ne ratez rien des dernières parutions en suivant nos réseaux sociaux <i class="fab fa-facebook"></i> <i class="fab fa-twitter"></i> <i class="fab fa-instagram"></i>';
 $style = '/forteroche/public/style.css';
 
 ob_start(); ?>
@@ -15,10 +15,14 @@ ob_start(); ?>
         <?php 
             while($publication = $chapters->fetch())
             {
-                echo '<p class="tchat-box">'.'<strong>'.$publication['book'].'</strong>'.' - '.'<strong>Chapitre n°'.$publication['num_chapter'].'</strong>'.' - '.'<strong>'.$publication['title'].'</strong>'.' :'.
-                '<br/>'.substr($publication['chapter'],0,1000).'...<br/>'.'<i>'.'
-                <br/>Posté le :   '.$publication['timywoo'].'</i>'.'</p>'
-                .'<a href="/forteroche/app/Reading/show/'.$publication["id"].'/'.$publication["title"].'"><button name="read-btn">Lire la suite</button></a>'.'<br>'.'<br>'.'<br>';
+                echo '<div class="shadow-lg p-3 mb-5 bg-white rounded mt-2">
+
+                        <p class="tchat-pseudo gradient">'.$publication['book'].' - Chapitre n°'.$publication['num_chapter'].' - '.$publication['title'].' :</p>
+                        <p class="text-justify">'.substr($publication['chapter'],0,1000).'...</p>
+                        <p class="font-italic font-weight-ligh text-center blockquote-footer">Posté le :   '.$publication['timywoo'].'</p>
+                        <a href="/forteroche/app/Reading/show/'.$publication["id"].'/'.$publication["title"].'"><button class="btn btn-info" name="read-btn">Lire la suite</button></a>
+                   
+                    </div>';
             }
         ?> 
         </div> 

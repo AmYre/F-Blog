@@ -9,36 +9,56 @@ $style = '/forteroche/public/style.css';
 
 ob_start(); ?>
 
-        <p class="tchat_feedback"><?php echo $feedback; ?> </p>
-
         <form action="/forteroche/app/Tchat/insert" method="post">
             
             <?php 
                 if ( isset($_SESSION['identifiant']) ) 
                 {
-                   echo '<p> Vous ête connecté en tant que : '.$_SESSION['identifiant'].' </p>
-                    
-                    <div class="form-group">
-                        <label for="mess">Message : <textarea name="mess" class="form-control"></textarea> </label>
-                    </div>
+                   echo '<div class="shadow-lg p-3 mb-5 bg-dark rounded mt-5 text-center">
+                                <p class="lead text-light"> Vous ête connecté en tant que : <span class="tchat-pseudo gradient">| '.$_SESSION['identifiant'].' |</span></p>
+                                
+                                <div class="form-group">
+                                    <label class="lead text-light" for="mess">Votre message : <textarea name="mess" class="form-control"></textarea> </label>
+                                </div>
 
-                    <button type="submit" class="btn btn-primary" name="tchat_btn">Send Message</button>';
+                                <button type="submit" class="btn btn-info" name="tchat_btn">Envoyer</button>
+                        </div>';
 
-                } else { echo 'Connectez-vous pour accéder au Tchat
-            
-            <button type="button" id="tchat_modal_btn" name="update_com" class="btn btn-primary pt-0 pb-0 pl-2 pr-2" data-toggle="modal" data-target="#tchat_modal">
-                            Se Connecter
-                        </button>  <br><br>' ;}#Bouton de la modal
+                } else { echo '<div class="shadow-lg p-3 mb-5 bg-dark rounded mt-5 text-center">
+                                
+                                    <p class="lead text-light">Connectez-vous pour accéder au Tchat</p>
+                
+                                    <button type="button" id="tchat_modal_btn" name="tchat_modal_btn" class="btn btn-info pt-0 pb-0 pl-2 pr-2" data-toggle="modal" data-target="#tchat_modal">
+                                        Se Connecter
+                                    </button>
+
+                            </div>' ;}#Bouton de la modal
+
             ?>
         
         </form>
 
         <div class="shadow-lg p-3 mb-5 bg-white rounded mt-5"> 
+            <p class="tchat_feedback bg-info text-light text-center p-3 rounded lead"><?php echo $feedback; ?> </p>
             
         <?php 
             while($membre = $show_tchat->fetch())
             {
-                echo '<p class="tchat-box">'.'<strong>'.$membre['pseudonyme'].'</strong>'.' :'.'<br/>'.$membre['mess'].'<br/>'.'<i>'.'Posté le :   '.$membre['timywoo'].'</i>'.'</p>';
+                echo '<div class="shadow-lg p-3 mb-3 bg-white rounded mt-2">
+                        <textarea style="display:none" class="com_id" name="com_id">'.$membre['id'].'</textarea>
+                        <p class="tchat-pseudo gradient">'.$membre['pseudonyme'].' :</p>
+                        <p class="tchat-mess text-justify">'.$membre['mess'].'</p>
+                        <p class="font-italic font-weight-ligh text-center blockquote-footer">Posté le :   '.$membre['timywoo'].'</p>';
+                
+                if (isset($_SESSION['identifiant']) && $membre['pseudonyme'] == $_SESSION['identifiant'])
+                {
+                    echo '<!-- Button trigger modal -->
+                        <button type="button" name="update_modal_btn" class="modal_btn btn btn-info" data-toggle="modal" data-target="#modal_update">
+                        Modifier votre commentaire
+                        </button> 
+                    </div>';
+                } else { echo "</div>"; }
+
             }
         ?> 
         </div>
@@ -133,5 +153,32 @@ ob_start(); ?>
             </div>
         </div>
     </div>
+
+    <!-- Modal de MODIFICATION -->
+
+    <div class="modal fade" id="modal_update" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Modifiez votre commentaire</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/forteroche/app/Tchat/updateANDdelete_comment" method="post">
+                            <textarea style="display:none" class="modal_id" name="com_id"></textarea>
+                            <textarea style="border: none" class="modal_com" name="comment"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                            <button type="submit" name="update_btn" class="btn btn-success">Modifier</button>
+                            <button type="submit" name="delete_btn" class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
 
 <?php $content = ob_get_clean(); ?><?php require(_ROOT_.'template.php'); ?>
