@@ -14,12 +14,13 @@ error_reporting(E_ALL);?>
 		<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=0zyt0uc363koowi3vpni9xwls9t0s9tzss66rx4o3098iije"></script>
 		<script>tinymce.init({selector:'textarea.tinymce', width: '850px', height : '400px',});</script>
 		<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
 		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	</head>
 
 	<body>
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
           <a class="navbar-brand" href='/forteroche/app/Home/show'><img src="/forteroche/public/img/logoj.png" id="logo"><i class="fas fa-home"></i></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -95,9 +96,11 @@ error_reporting(E_ALL);?>
           </div>
       	</nav>
 
-		<div class="box_title">
-			<h1 class="h1 text-light text-center"><span class="gradient">FORTEROCHE LIVE</span></h1>
-			<h2 class="h2 text-light text-center">Vivez toute les publications de votre auteur préféré directement en ligne</h2>
+		  <div class="box-hide">
+			<div class="box-title">
+				<h1 class="home-title text-center"><span class="gradient">FORTEROCHE LIVE</span></h1>
+				<h2 class="home-sub text-center">Vivez toute les publications de votre auteur préféré directement en ligne</h2>
+			</div>
 		</div>
     
 

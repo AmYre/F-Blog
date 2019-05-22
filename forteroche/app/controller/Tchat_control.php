@@ -156,5 +156,33 @@ class Tchat_control{
     }
 
 
+    public function updateANDdelete_comment() 
+    {
+        $myBdd = new Tchat_bdd();
+
+        if ( isset($_POST['update_btn']) ) 
+        {
+            $feedback = 'Commentaire modifié avec succès';
+            $comment_update =  htmlspecialchars($_POST['comment']);
+            $com_id = $_POST['com_id'];
+
+            $update_comment = $myBdd->update_comments($comment_update, $com_id);
+            $show_tchat = $myBdd->show_tchat();  
+        }
+        
+        if ( isset($_POST['delete_btn']) ) 
+        {
+            $feedback = 'Commentaire supprimé';
+            $com_id = $_POST['com_id'];
+
+            $delete_comment = $myBdd->delete_comments($com_id);
+            $show_tchat = $myBdd->show_tchat();
+        }
+
+            $myView = new View('tchat');
+            $myView->show(array ('feedback' => $feedback, 'show_tchat' => $show_tchat));
+       
+    }
+
    
 }
