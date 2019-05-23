@@ -3,47 +3,48 @@
     error_reporting(E_ALL ^ E_NOTICE); 
 
 $title = 'Espace utilisateur';
-$h1 = 'Bienvenue sur votre espace, '.$_SESSION['identifiant'].'.';
-$h2 = 'Gérez vos informations';
+$h1 = 'Bienvenue sur votre espace, '.$_SESSION['identifiant'];
+$h2 = 'Gérez librement toute vos informations';
 $style = '/forteroche/public/style.css';
 
 ?>
 
 <?php ob_start(); ?>
-
-    <form action="/forteroche/app/User/disconnect" method="post">
-        <button type="submit" class="btn btn-dark" name="disconnect_btn">Se déconnecter</button>
-    </form>
     
-    <div class="shadow-lg p-3 mb-5 bg-white rounded mt-5"><strong>Mon compte Rocheux : </strong><br><br>
-    Mon identifiant : <strong>  <?php echo $_SESSION['identifiant']; ?></strong> <!-- Button trigger modal -->
-                        <button type="button" id="modal_btn" name="update_com" class="btn btn-primary pt-0 pb-0 pl-2 pr-2" data-toggle="modal" data-target="#user_modal">
-                            Modifier
-                        </button>  <br><br>
-    
-    Mon mail de connexion : <strong>  <?php echo $_SESSION['mail'] ?> </strong> <!-- Button trigger modal -->
-                        <button type="button" id="modal_btn" name="update_com" class="btn btn-primary pt-0 pb-0 pl-2 pr-2" data-toggle="modal" data-target="#mail_modal">
-                            Modifier
-                        </button> <br><br>
+    <div class="shadow-lg p-3 mb-5 bg-dark lead rounded mt-5">
+        <p class="tchat-pseudo text-light">Mon compte Rocheux :</p>
+        <div class="shadow-lg p-3 mb-2 bg-white lead rounded mt-2">
+            <p>Mon identifiant : <span class="gradient"><?php echo $_SESSION['identifiant']; ?></span> <!-- Button trigger modal -->
+                <button type="button" id="modal_btn" name="update_com" class="btn btn-info pt-0 pb-0 pl-2 pr-2" data-toggle="modal" data-target="#user_modal">
+                    Modifier
+                </button></p>
+        
+            <p>Mon mail de connexion : <span class="gradient"><?php echo $_SESSION['mail']; ?></span> <!-- Button trigger modal -->
+                <button type="button" id="modal_btn" name="update_com" class="btn btn-info pt-0 pb-0 pl-2 pr-2" data-toggle="modal" data-target="#mail_modal">
+                    Modifier
+                </button></p>
 
-    Modifiez votre Mot de Passe : <button type="button" id="modal_btn" name="update_com" class="btn btn-primary pt-0 pb-0 pl-2 pr-2" data-toggle="modal" data-target="#mdp_modal">
-                            Modifier
-                        </button> </div>
+            <p>Modifiez votre Mot de Passe : 
+                <button type="button" id="modal_btn" name="update_com" class="btn btn-info pt-0 pb-0 pl-2 pr-2" data-toggle="modal" data-target="#mdp_modal">
+                    Modifier
+                </button></p>
+        </div>
+    </div>
 
     <?php if (isset($feedback)){ echo ' <small class="bg-danger text-light shadow-lg rounded pt-1 pl-4 pr-4 pb-1">'.$feedback.'</small>';} ?>
     
-    <div class="shadow-lg p-3 mb-5 bg-white rounded mt-5"> 
-        <p><strong>Mes commentaires :</strong></p>  
+    <div class="shadow-lg p-3 mb-5 bg-dark lead rounded mt-5"> 
+        <p class="tchat-pseudo text-light">Mes commentaires :</p>  
         <?php 
             while($comments = $show_comments->fetch())
             {
-                echo '<div class="shadow-lg rounded pt-4 pl-4 pb-4">
+                echo '<div class="shadow-lg p-3 mb-2 bg-white lead rounded mt-2">
                         <textarea style="display:none" id="com_id" name="com_id">'.$comments['id'].'</textarea>
-                        <p><strong>'.$comments['author'].'</strong>'.' :'.'</p>
-                        <p>'.$comments['comment'].'</p>
-                        <p><i>Posté le :   '.$comments['timy'].'</i></p>
+                        <p class="tchat-pseudo gradient">'.$comments['author'].' :</p>
+                        <p class="tchat-mess text-justify">'.$comments['comment'].'</p>
+                        <p class="font-italic font-weight-ligh text-center blockquote-footer">Posté le :   '.$comments['timy'].'</p>
 
-                        <button type="button" name="update_com" class="modal_btn btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                        <button type="button" name="update_com" class="modal_btn btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">
                         Modifier votre commentaire
                         </button> 
                     </div>';  

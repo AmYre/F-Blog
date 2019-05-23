@@ -25,8 +25,7 @@ ob_start(); ?>
                 <div class="form-group">
                     <label for="mdp">Mot de passe : 
                         <input type="password" class="form-control" name="mdp" placeholder="Mot de passe"/> 
-                    </label>  
-                    <small class="text-danger"><?php echo $feedback; ?></small>
+                    </label>
                 </div>
 
                 <button id ="connect_btn" type="submit" class="btn btn-info" name="connect_btn">Connexion</button>

@@ -21,6 +21,9 @@ body {
   height: 60px;
 }
 
+#admin{
+  margin-right: 30px;
+}
 /*------ICONS-----------*/
 
 .fa-home{
@@ -87,6 +90,11 @@ color: #0e587a
     color: #b68c03
   }
 
+.fa-user-cog{
+  padding-right: 2px;
+  color: #9c27b0;
+  }
+
 /*------HOMEPAGE-----------*/
 
 .cont{
@@ -137,6 +145,7 @@ color: #0e587a
 }
 
 .lecture {
+  position: relative;
   text-align: center;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
@@ -147,8 +156,13 @@ color: #0e587a
   width: 100%;
 }
 
+.lecture400 {
+  display: none;
+}
+
 .tchat{
   min-height: 800px;
+  overflow : hidden;
 }
 
 .tchat-title{
@@ -160,19 +174,67 @@ color: #0e587a
   text-align: center;
 }
 
+.box-btn{
+  width: 100%;
+  background-color: rgba(156, 153, 153, 0);
+}
+
 .tchat-btn{
-position: absolute;
-right: 30%;
-top : 1600px;
--webkit-transform-style: preserve-3d;
-transform-style: preserve-3d;
-perspective: 800px;
+  position: relative;
+  right: -50%;
+  top: -50px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+.tchat-btn400{
+  display: none;
 }
 
 .tchat-img{
   position: relative;
   height: 600px;
   right: 30%;
+}
+
+.tchat-img800{
+  display: none;
+}
+
+.tchat-img600{
+  display: none;
+}
+
+.tchat-img400{
+  display: none;
+}
+
+.tchat-img200{
+  display: none;
+}
+
+.com-img{
+  position: relative;
+  height: 600px;
+  margin-top: 50px;
+  left: 40%;
+}
+
+.com-img800{
+  display: none;
+}
+
+.com-img600{
+  display: none;
+}
+
+.com-img400{
+  display: none;
+}
+
+.com-img200{
+  display: none;
 }
 
 .com{
@@ -196,12 +258,10 @@ perspective: 800px;
   perspective: 800px;
 }
 
-.com-img{
-  position: relative;
-  height: 600px;
-  margin-top: 50px;
-  left: 40%;
+.com-btn400{
+ display: none;
 }
+
 
 /*----------------TCHAT-PAGE-----------*/
 
@@ -612,4 +672,234 @@ a:hover, a:focus, a:active {
           filter: blur(10px) brightness(0.95);
   -webkit-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
+}
+
+
+
+@media all and (max-width: 480px) 
+{
+  .home-title{	
+    font-size: 2.2rem;
+    letter-spacing: 0.5px;
+    }
+  
+  .home-sub{
+    font-size: 1.8rem;
+    color: rgb(0, 0, 0)
+  }
+
+  .lecture {
+    display: none; 
+  }
+  
+  .lecture400 {
+    display: block;  
+    text-align: center;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    perspective: 800px;
+    position: absolute;
+    bottom : 250px;
+    z-index: 2;
+    width: 100%;
+  }
+
+  .tchat-btn400{
+    display: block;
+    position: relative;
+    right: -50%;
+    top: -50px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    perspective: 800px;
+  }
+
+  .tchat-btn{
+     display: none;
+  }
+
+  .tchat-btn400{
+    display: block;
+    position: relative;
+    margin-top: 50px;
+    right: -30%;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    perspective: 800px;
+  }
+  
+  .com-btn{
+    display: none;  
+  }
+
+  .tchat-img{
+    position: relative;
+    height: 200px;
+    right: 30%;
+  }
+
+  .com-img{
+    position: relative;
+    height: 300px;
+    margin-top: 50px;
+    left: 20%;
+  }
+
+}
+
+@media all and (min-width: 480px) and (max-width: 640px) 
+{
+  .home-title{	
+    font-size: 2.5rem;
+    letter-spacing: 0.7px;
+    }
+  
+  .home-sub{
+    font-size: 1.2rem;
+    color: rgb(0, 0, 0)
+  }
+
+  .tchat-btn400{
+    display: block;
+    position: relative;
+    margin-top: 50px;
+    right: -30%;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    perspective: 800px;
+  }
+
+  .tchat-btn{
+    display: none;
+  }
+
+  .com-btn400{
+    display: block;
+    position: absolute;
+    left: 20%;
+    bottom : -1500px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    perspective: 800px;
+  }
+
+  .com-btn{
+    display: none;
+  }
+
+  .tchat-img{
+    position: relative;
+    height: 250px;
+    right: 10%;
+  }
+ 
+  .com-img{
+    position: relative;
+    height: 300px;
+    margin-top: 50px;
+    left: 20%;
+  }
+
+}
+
+@media all and (min-width: 640px) and (max-width: 840px) 
+{
+  .home-title{	
+    font-size: 2.8rem;
+    letter-spacing: 0.8px;
+    }
+  
+  .home-sub{
+    font-size: 1.5rem;
+    color: rgb(0, 0, 0)
+  }
+
+  .tchat-btn400{
+    display: block;
+    position: absolute;
+    right: 30%;
+    top : 1600px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    perspective: 800px;
+  }
+
+  .tchat-btn{
+     display: none;
+  }
+  
+  .tchat-img{
+    position: relative;
+    height: 320px;
+    right: 10%;
+  }
+
+  .com-img{
+    position: relative;
+    height: 400px;
+    margin-top: 50px;
+    left: 20%;
+  }
+  
+}
+
+@media all and (min-width: 840px) and (max-width: 1080px)
+{
+  .home-title{	
+    font-size: 3rem;
+    letter-spacing: 0.8px;
+    }
+  
+  .home-sub{
+    font-size: 1.7rem;
+    color: rgb(0, 0, 0)
+  }
+
+  .tchat-img{
+    position: relative;
+    height: 400px;
+    right: 10%;
+  }
+
+  .com-img{
+    position: relative;
+    height: 500px;
+    margin-top: 50px;
+    left: 20%;
+  }
+
+}
+
+@media all and (min-width: 1080px) and (max-width: 1280px)
+{
+  .tchat-img{
+    position: relative;
+    height: 500px;
+    right: 10%;
+  }
+
+  .com-img{
+    position: relative;
+    height: 500px;
+    margin-top: 50px;
+    left: 20%;
+  }
+
+}
+
+@media all and (min-width: 1280px) and (max-width: 1680px)
+{
+  .tchat-img{
+    position: relative;
+    height: 500px;
+    right: 10%;
+  }
+
+  .com-img{
+    position: relative;
+    height: 600px;
+    margin-top: 50px;
+    left: 40%;
+  }
+
 }
