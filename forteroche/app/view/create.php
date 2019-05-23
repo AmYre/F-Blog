@@ -46,7 +46,6 @@ $style = '/forteroche/public/style.css';
 							<input type="password" name="conf_mdp" class="form-control" placeholder="Pour être sûr"></label>
 				</div>
 
-				<small class="form-text text-danger"><?php echo $feedback; ?></small>
 				<button type="submit" class="btn btn-info mt-3" name="register_btn">S'inscrire</button>
 			
 			</form>

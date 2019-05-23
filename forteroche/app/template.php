@@ -12,7 +12,7 @@ error_reporting(E_ALL);?>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 		<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=0zyt0uc363koowi3vpni9xwls9t0s9tzss66rx4o3098iije"></script>
-		<script>tinymce.init({selector:'textarea.tinymce', width: '850px', height : '400px',});</script>
+		<script>tinymce.init({selector:'textarea.tinymce', max_width: '1250px', height : '600px',});</script>
         <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
 		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -30,11 +30,11 @@ error_reporting(E_ALL);?>
               <ul class="navbar-nav mr-auto">
                  
                   <li class="nav-item">
-                      <a class="nav-link" href="/forteroche/app/Tchat/show"><i class="far fa-comments"></i> Le Tchat des Rocheux</a>
+                      <a class="nav-link" href="/forteroche/app/Tchat/show"><i class="far fa-comments"></i> Tchat</a>
                   </li>
                   <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      	<i class="fab fa-readme"></i> Lire en ligne
+                      	<i class="fab fa-readme"></i> Lire
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <a class="dropdown-item" href="/forteroche/app/Listing/show_books"><i class="fas fa-book"></i>  Par Livres</a>
@@ -45,7 +45,7 @@ error_reporting(E_ALL);?>
                       </div>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Acheter les Livres</a>
+                      <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Acheter</a>
                   </li>
                   <li class="nav-item">
                       <a class="nav-link" href="/forteroche/app/Jean/show"><i class="fas fa-pen-fancy"></i> L'auteur</a>
@@ -60,7 +60,7 @@ error_reporting(E_ALL);?>
                           if (isset ($_SESSION['identifiant']) && $_SESSION['identifiant'] == 'ADMIN' ) {
                             echo '
                       <li class="nav-item">
-                          <a id="admin" class="nav-link" href="/forteroche/app/Write/show">ADMIN</a>
+                          <a id="admin" class="nav-link" href="/forteroche/app/Write/show"><i class="fas fa-user-cog"></i><span class="gradient">| ADMIN |<span></a>
                       </li>
                       <li class="nav-item"> <form action="/forteroche/app/User/disconnect" method="post">
                           <button type="submit" class="btn btn-dark" name="disconnect_btn"><i class="fas fa-user-times"></i> Me déconnecter</button>
@@ -70,7 +70,7 @@ error_reporting(E_ALL);?>
                           elseif (isset ($_SESSION['identifiant'])) {
                               echo '
                               <li class="nav-item">
-                                  <a id="connected" class="nav-link" href="/forteroche/app/User/show"><i class="far fa-user"></i> Mon Espace (<strong>'.$_SESSION['identifiant'].'</strong>)</a> 
+                                  <a id="connected" class="nav-link" href="/forteroche/app/User/show"><i class="far fa-user"></i> Mon Espace (<span class="gradient">'.$_SESSION['identifiant'].'</span>)</a> 
                               </li>
                               <li class="nav-item"> <form action="/forteroche/app/User/disconnect" method="post">
                                   <button type="submit" class="btn btn-dark" name="disconnect_btn"><i class="fas fa-user-times"></i> Me déconnecter</button>
@@ -79,10 +79,10 @@ error_reporting(E_ALL);?>
 
                           }else { echo '
                               <li class="nav-item">
-                                  <a id="connect" class="nav-link" href="/forteroche/app/Connexion/show"><i class="far fa-user"></i> Se connecter</a>
+                                  <a id="connect" class="nav-link" href="/forteroche/app/Connexion/show"><i class="far fa-user"></i> Connexion</a>
                               </li>
                               <li class="nav-item">
-                                  <a id="create" class="nav-link" href="/forteroche/app/Create/show"><i class="fas fa-link"></i> Devenir Rocheux</a>
+                                  <a id="create" class="nav-link" href="/forteroche/app/Create/show"><i class="fas fa-link"></i> S\'inscrire</a>
                               </li>';}
                       ?>
                   </ul>

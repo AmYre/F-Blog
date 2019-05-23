@@ -3,15 +3,16 @@
     error_reporting(E_ALL); 
     ini_set("display_errors", 1); 
 
-$title = 'Les derniers chapitres';
-$h1 = 'Derniers Chapitres Publiés';
-$h2 = 'Séléctionnez un chapitre pour y accéder complètement';
+$title = 'Espace de Rédaction';
+$h1 = 'Espace de Rédaction - Forteroche';
+$h2 = 'TinyMCE est installé pour un plus grand confort d\'écriture';
 $style = '/forteroche/public/style.css';
 
 ?>
 
 <?php ob_start(); ?>
 
+<div class="shadow-lg p-3 mb-5 bg-dark lead rounded mt-5 text-center text-light"> 
 
         <p class="chapters_feedback"> <?php echo $feedback; ?> </p>    
 
@@ -37,23 +38,29 @@ $style = '/forteroche/public/style.css';
             <label for="chapter">Contenu du Chapitre : <textarea name="chapter" class="form-control tinymce"></textarea> </label>
             </div>
 
-            <button type="submit" class="btn btn-primary" name="publish_btn">Publier le Chapitre</button>
+            <button type="submit" class="btn btn-info" name="publish_btn">Publier le Chapitre</button>
         
         </form>
+    </div>
 
-        <div class="shadow-lg p-3 mb-5 bg-white rounded mt-5"> 
+    <div class="shadow-lg p-3 mb-5 bg-white rounded mt-5"> 
             
         <?php 
-            
             while($publication = $show_chapter->fetch())
             {
-                echo '<p class="tchat-box">'.'<strong>'.$publication['title'].'</strong>'.' :'.
-                '<br/>'.substr($publication['chapter'],0,1000).'...<br/>'.'<i>'.'
-                <br/>Posté le :   '.$publication['timywoo'].'</i>'.'</p>'
-                .'<a href="/forteroche/app/Chapter_manager/show/'.$publication['id'].'/'.$publication['title'].'"><button name="read">Gérer ce chapitre</button></a>'.'<br>'.'<br>'.'<br>';
+                echo '<div class="shadow-lg p-3 mb-5 bg-white rounded mt-2">
+
+                <p class="tchat-pseudo gradient">'.$publication['book'].' - Chapitre n°'.$publication['num_chapter'].' - '.$publication['title'].' :</p>
+                <p class="text-justify">'.substr($publication['chapter'],0,1000).'...</p>
+                <p class="font-italic font-weight-ligh text-center blockquote-footer">Posté le :   '.$publication['timywoo'].'</p>
+                <a href="/forteroche/app/Chapter_manager/show/'.$publication['id'].'/'.$publication['title'].'"><button class="btn btn-info" name="read">Gérer ce chapitre</button></a>
+           
+            </div>';
             }
         ?> 
-        </div> 
+        
+    </div> 
+            
 
 <?php $content = ob_get_clean(); ?>
 

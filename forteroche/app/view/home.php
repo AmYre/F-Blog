@@ -20,7 +20,7 @@ error_reporting(E_ALL);?>
 
 	<body>
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
+	<nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
           <a class="navbar-brand" href='/forteroche/app/Home/show'><img src="/forteroche/public/img/logoj.png" id="logo"><i class="fas fa-home"></i></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -30,11 +30,11 @@ error_reporting(E_ALL);?>
               <ul class="navbar-nav mr-auto">
                  
                   <li class="nav-item">
-                      <a class="nav-link" href="/forteroche/app/Tchat/show"><i class="far fa-comments"></i> Le Tchat des Rocheux</a>
+                      <a class="nav-link" href="/forteroche/app/Tchat/show"><i class="far fa-comments"></i> Tchat</a>
                   </li>
                   <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      	<i class="fab fa-readme"></i> Lire en ligne
+                      	<i class="fab fa-readme"></i> Lire
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <a class="dropdown-item" href="/forteroche/app/Listing/show_books"><i class="fas fa-book"></i>  Par Livres</a>
@@ -45,7 +45,7 @@ error_reporting(E_ALL);?>
                       </div>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Acheter les Livres</a>
+                      <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Acheter</a>
                   </li>
                   <li class="nav-item">
                       <a class="nav-link" href="/forteroche/app/Jean/show"><i class="fas fa-pen-fancy"></i> L'auteur</a>
@@ -55,12 +55,12 @@ error_reporting(E_ALL);?>
                   </li>
               </ul>
 
-                  <ul class="navbar-nav mr-auto">
+			  <ul class="navbar-nav mr-auto">
                       <?php 
                           if (isset ($_SESSION['identifiant']) && $_SESSION['identifiant'] == 'ADMIN' ) {
                             echo '
                       <li class="nav-item">
-                          <a id="admin" class="nav-link" href="/forteroche/app/Write/show">ADMIN</a>
+                          <a id="admin" class="nav-link" href="/forteroche/app/Write/show"><i class="fas fa-user-cog"></i><span class="gradient">| ADMIN |<span></a>
                       </li>
                       <li class="nav-item"> <form action="/forteroche/app/User/disconnect" method="post">
                           <button type="submit" class="btn btn-dark" name="disconnect_btn"><i class="fas fa-user-times"></i> Me déconnecter</button>
@@ -70,7 +70,7 @@ error_reporting(E_ALL);?>
                           elseif (isset ($_SESSION['identifiant'])) {
                               echo '
                               <li class="nav-item">
-                                  <a id="connected" class="nav-link" href="/forteroche/app/User/show"><i class="far fa-user"></i> Mon Espace (<strong>'.$_SESSION['identifiant'].'</strong>)</a> 
+                                  <a id="connected" class="nav-link" href="/forteroche/app/User/show"><i class="far fa-user"></i> Mon Espace (<span class="gradient">'.$_SESSION['identifiant'].'</span>)</a> 
                               </li>
                               <li class="nav-item"> <form action="/forteroche/app/User/disconnect" method="post">
                                   <button type="submit" class="btn btn-dark" name="disconnect_btn"><i class="fas fa-user-times"></i> Me déconnecter</button>
@@ -79,10 +79,10 @@ error_reporting(E_ALL);?>
 
                           }else { echo '
                               <li class="nav-item">
-                                  <a id="connect" class="nav-link" href="/forteroche/app/Connexion/show"><i class="far fa-user"></i> Se connecter</a>
+                                  <a id="connect" class="nav-link" href="/forteroche/app/Connexion/show"><i class="far fa-user"></i> Connexion</a>
                               </li>
                               <li class="nav-item">
-                                  <a id="create" class="nav-link" href="/forteroche/app/Create/show"><i class="fas fa-link"></i> Devenir Rocheux</a>
+                                  <a id="create" class="nav-link" href="/forteroche/app/Create/show"><i class="fas fa-link"></i> S\'inscrire</a>
                               </li>';}
                       ?>
                   </ul>
@@ -92,11 +92,10 @@ error_reporting(E_ALL);?>
                   <input class="form-control mr-sm-2" type="search" name ='search' id='search' placeholder="Recherche.." aria-label="Recherche">
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
               </div> -->
-
-          </div>
+              </div>
       	</nav>
 
-		  <div class="box-hide">
+		<div class="box-hide">
 			<div class="box-title">
 				<h1 class="home-title text-center"><span class="gradient">FORTEROCHE LIVE</span></h1>
 				<h2 class="home-sub text-center">Vivez toute les publications de votre auteur préféré directement en ligne</h2>
@@ -115,6 +114,10 @@ error_reporting(E_ALL);?>
 
 			<div class="lecture">
 				<a href="/forteroche/app/Listing/show_books" class="fancy-button bg-gradient1"><span class="span"><i class="fa fa-wheelchair-alt"></i>COMMENCER LA LECTURE</span></a>
+			</div>
+
+			<div class="lecture400">
+				<a href="/forteroche/app/Listing/show_books" class="fancy-button bg-gradient1"><span class="span"><i class="fa fa-wheelchair-alt"></i>LIRE</span></a>
 			</div>
 
 			<!-- Slide One - Set the background image for this slide in the line below -->
@@ -158,10 +161,20 @@ error_reporting(E_ALL);?>
 					<h2 class="display-4 tchat-title gradient">UNE COMMNAUTÉ ACTIVE</h2>
 					<p class="lead tchat-sub">Partagez toutes vos impressions entre rocheux endurcis sur le tchat de la communauté !</p>
 					<img class="tchat-img" src="/forteroche/public/img/tchat.png">
+					<img class="tchat-img800" src="/forteroche/public/img/tchat800.png">
+					<img class="tchat-img600" src="/forteroche/public/img/tchat600.png">
+					<img class="tchat-img400" src="/forteroche/public/img/tchat400.png">
+					<img class="tchat-img200" src="/forteroche/public/img/tchat200.png">
 				</div>
 
-				<div class="tchat-btn">
-					<a href="/forteroche/app/Tchat/show" class="fancy-button bg-gradient1"><span class="span"><i class="fa fa-wheelchair-alt"></i>COMMENCER À TCHATER</span></a>
+				<div class="box-btn">
+					<div class="tchat-btn">
+						<a href="/forteroche/app/Tchat/show" class="fancy-button bg-gradient1"><span class="span"><i class="fa fa-wheelchair-alt"></i>COMMENCER À TCHATER</span></a>
+					</div>
+
+					<div class="tchat-btn400">
+						<a href="/forteroche/app/Tchat/show" class="fancy-button bg-gradient1"><span class="span"><i class="fa fa-wheelchair-alt"></i>TCHATER</span></a>
+					</div>
 				</div>
 
 			</section>
@@ -169,12 +182,22 @@ error_reporting(E_ALL);?>
 			<section class="py-5 com">
 
 				<div class="container">
-					<h1 class="display-4 com-title gradient">UNE INTERACTION INEDITE</h1>
+					<h2 class="display-4 com-title gradient">UNE INTERACTION INEDITE</h2>
 					<p class="lead com-sub">À la fin de chaque chapitre réagissez à chaud à l'aide des commentaires. Forteroche vous lis et réponds!</p>
 					<img class="com-img" src="/forteroche/public/img/interact.png">
+					<img class="com-img800" src="/forteroche/public/img/interact800.png">
+					<img class="com-img600" src="/forteroche/public/img/interact600.png">
+					<img class="com-img400" src="/forteroche/public/img/interact400.png">
+					<img class="com-img200" src="/forteroche/public/img/interact200.png">
+				</div>
 
+				<div class="box-btn">
 					<div class="com-btn">
 						<a href="/forteroche/app/Listing/show_chapters" class="fancy-button bg-gradient1"><span class="span"><i class="fa fa-wheelchair-alt"></i>LAISSER UN COMMENTAIRE</span></a>
+					</div>
+
+					<div class="com-btn400">
+						<a href="/forteroche/app/Listing/show_chapters" class="fancy-button bg-gradient1"><span class="span"><i class="fa fa-wheelchair-alt"></i>COMMENTER</span></a>
 					</div>
 				</div>
 
