@@ -4,7 +4,7 @@
     ini_set("display_errors", 1); 
 
 $title = 'Liste des chapitres de votre livre';
-$h1 = ''.preg_replace('/(?=(?<!^)[[:upper:]])/', ' ', $book).'';
+
 $h2 = 'Ne ratez rien des dernières parutions en suivant nos réseaux sociaux <i class="fab fa-facebook"></i> <i class="fab fa-twitter"></i> <i class="fab fa-instagram"></i>';
 $style = '/forteroche/public/style.css';
 
@@ -19,8 +19,10 @@ ob_start(); ?>
                         <p class="tchat-pseudo gradient">'.$publication["book"].' : Chapitre n°'.$publication['num_chapter'].' - '.$publication['title'].' :</p>
                         <p class="text-justify">'.substr($publication['chapter'],0,1000).'...</p>
                         <p class="font-italic font-weight-ligh text-center blockquote-footer">Posté le :   '.$publication['timy'].'</p>
-                        <a href="/forteroche/app/Reading/show/'.$publication["id"].'/'.$publication["title"].'"><button class="btn btn-info" name="read-btn">Lire la suite</button></a>
+                        <form action="/forteroche/app/Reading/show/'.$publication["id"].'/'.$publication["num_chapter"].'" method="post"><button class="btn btn-info" name="read-btn">Lire la suite</button></form>
                     </div> ';
+                    
+                $h1 = $publication["book"];
             }
         ?> 
 

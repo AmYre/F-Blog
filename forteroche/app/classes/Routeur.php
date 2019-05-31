@@ -1,7 +1,5 @@
 <?php
 
-    error_reporting(E_ALL);
-
 class Routeur {
 
     private $controller;
@@ -15,7 +13,8 @@ class Routeur {
        {
            $this->controller = $url[0].'_control';
            unset($url[0]);
-       } else { echo'Controller NOT FOUND ';}
+
+       } else { $this->controller = 'Home_control';}
        
        require_once(_CONTROLLER_.$this->controller.'.php');
        $this->controller = new $this->controller;
@@ -26,8 +25,9 @@ class Routeur {
            {
                $this->method = $url[1];
                unset($url[1]);
-           }
-       } else { echo'Method NOT FOUND ';}
+           }else { $this->method = 'show';}
+
+       } else { $this->method = 'show';}
        
        if ($url) 
        {

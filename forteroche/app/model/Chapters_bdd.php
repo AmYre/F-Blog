@@ -1,19 +1,25 @@
 <?php
 error_reporting(E_ALL);
+ini_set("display_errors", 1); 
+
 class Chapters_bdd{
 
     private $database;
 
     public function __construct()
     {
-        $this->database = new PDO('mysql:host=localhost;dbname=benhqabf_roche;charset=utf8', 'benhqabf_roche', 'Zelda28*');
+        try {
+            $this->database = new PDO('mysql:host=localhost;dbname=benhqabf_roche;charset=utf8', 'benhqabf_roche', 'Zelda28*');
+            $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+         echo 'Échec lors de la connexion : ' . $e->getMessage();}
     }
 
-    public function insert_chapter ($book, $chapter, $chapter_title, $chapter_genre, $chapter_num)
+    public function insert_chapter ($book, $book_id, $chapter_title, $chapter_num, $chapter_genre, $chapter)
     {
         $database = $this->database;
-        $save_chapter = $database->prepare('INSERT INTO chapters (book, chapter, title, genre, num_chapter, timy) VALUES(?, ?, ?, ?, ?, NOW())');
-        $insert_chapter = $save_chapter->execute(array($book, $chapter, $chapter_title, $chapter_genre, $chapter_num ));
+        $save_chapter = $database->prepare('INSERT INTO chapters (book, book_id, title, num_chapter, genre, chapter, timy) VALUES(?, ?, ?, ?, ?, ?, NOW())');
+        $insert_chapter = $save_chapter->execute(array($book, $book_id, $chapter_title, $chapter_num, $chapter_genre, $chapter));
 
         return $insert_chapter;
     }
@@ -21,15 +27,15 @@ class Chapters_bdd{
     public function show_chapter ()
     {
         $database = $this->database;
-        $chapters = $database->query('SELECT DATE_FORMAT(timy, "%d/%m/%Y à %Hh%imin") AS timywoo, book, num_chapter, id, title, chapter FROM chapters ORDER BY id DESC LIMIT 5');
+        $chapters = $database->query('SELECT DATE_FORMAT(timy, "%d/%m/%Y à %Hh%imin") AS timywoo, book, book_id, num_chapter, id, title, chapter FROM chapters ORDER BY id DESC LIMIT 5');
 
         return $chapters;
     }
 
-    public function select_chapter($id)
+    public function select_chapter($id, $num_chapter)
     {
         $database = $this->database;
-        $selected_chapter = $database->query("SELECT * FROM chapters WHERE id = $id");
+        $selected_chapter = $database->query("SELECT * FROM chapters WHERE id = $id AND num_chapter = $num_chapter");
 
         return $selected_chapter;
     }
