@@ -52,6 +52,7 @@ class Write_control{
             $feedback = 'Titre du Livre mis à jour';
             $myBdd = new Books_bdd();
             $book_chapters = $myBdd->update_book_title($id, $title); 
+            $book_title = $myBdd->update_chapter_title($id, $title);
             $books = $myBdd->show_books();
             
             $myView = new View('write');
@@ -101,8 +102,13 @@ class Write_control{
                 $myBdd = new Chapters_bdd();
                 $bdd = new Books_bdd();
                 $myView = new View('write');
-                
-                $insert_book = $bdd->insert_book($book_id, $book);
+
+                $check_book = $bdd->check_books($book_id);
+                if ($check_book == 0) 
+                {  
+                    $insert_book = $bdd->insert_book($book_id, $book);
+                }
+
                 $books = $bdd->show_books();
                 $insert_chapter = $myBdd->insert_chapter($book, $book_id, $chapter_title, $chapter_num, $chapter_genre, $chapter);
                 $show_chapter = $myBdd->show_chapter();
