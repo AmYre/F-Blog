@@ -102,17 +102,17 @@ $style = '/forteroche/public/style.css';
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h5 class="modal-title">Modification du Titre</h5>
+                        <h5 class="modal-title text-center">Modification du Titre</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
 
                     <form action="/forteroche/app/Write/update_book_title/" method="post">
-                        <div class="modal-body">
+                        <div class="modal-body text-center text-light bg-info">
                             <textarea style="display:none" class="write_title_id" name="title_id"></textarea>
 
-                            <textarea id="modal_title" name="update_title"></textarea>
+                            <textarea class="rounded shadow lead p-3" style="border : none" id="modal_title" name="update_title"></textarea>
                         </div>
 
 

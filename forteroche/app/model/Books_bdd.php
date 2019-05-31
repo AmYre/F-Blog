@@ -24,7 +24,7 @@ class Books_bdd{
     public function show_books()
     {
         $database = $this->database;
-        $books = $database->query('SELECT * FROM books');
+        $books = $database->query('SELECT * FROM books ORDER BY id DESC');
 
         return $books;
     }
@@ -35,6 +35,16 @@ class Books_bdd{
         $books = $database->query('SELECT * FROM books WHERE id = '.$id.' ');
 
         return $books;
+    }
+
+    public function check_books($id)
+    {
+        $database = $this->database;
+        $check_book = $database->prepare("SELECT id FROM books WHERE id = ?");
+        $check_book->execute(array($id));
+        $book_exist = $check_book->rowcount();
+
+        return $book_exist;
     }
 
     public function show_book_chapters($book_id)
@@ -55,10 +65,19 @@ class Books_bdd{
         return $updated_book;
     }
 
+    public function update_chapter_title($id, $title)
+    {
+        $database = $this->database;
+        $select_chapter = $database->prepare('UPDATE chapters SET book = ? WHERE book_id = ?  ');
+        $updated_chapter = $select_chapter->execute(array($title, $id));
+
+        return $updated_chapter;
+    }
+
     public function delete_book($id)
     {
         $database = $this->database;
-        $select_book = $database->query("DELETE FROM books JOIN chapters ON (books.id = chapters.book_id) WHERE (books.id = $id AND chapters.book_id = $id) ");
+        $deleted_book = $database->query("DELETE FROM books WHERE id = $id");
 
         return $deleted_book;
     }
