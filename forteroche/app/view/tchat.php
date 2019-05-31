@@ -65,20 +65,22 @@ ob_start(); ?>
 
 
                             <!-- Modal de CONNEXION -->
-    <div class="modal fade" id="tchat_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="tchat_modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
+
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Connectez-vous</h5>
+                    <h5 class="modal-title">Connectez-vous</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form action="/forteroche/app/Tchat/connect" method="post">
+                
+                <form action="/forteroche/app/Tchat/connect" method="post">
 
+                    <div class="modal-body">
                         <div class="form-group">
-                            <label for="pseudo">Identifiant : 
+                            <label>Identifiant : 
                                 <input type="text" name="pseudo" class="form-control" placeholder="Entrez votre pseudo" value="<?php if ( isset($pseudo) )
                                     { echo $pseudo;
                                 }?>"/>
@@ -86,99 +88,109 @@ ob_start(); ?>
                         </div>
 
                         <div class="form-group">
-                            <label for="mdp">Mot de passe : 
+                            <label>Mot de passe : 
                                 <input type="password" class="form-control" name="mdp" placeholder="Mot de passe"/> 
                             </label>  
                             <small class="text-danger"><?php echo $feedback; ?></small>
                         </div>
                         <small id="create_btn" data-toggle="modal" data-target="#create_modal"><a href="#">Se créer un compte</a></small>        
-                </div>
-                <div class="modal-footer">
+                    </div>
+
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                         <button id ="connect_btn" type="submit" class="btn btn-primary" name="connect_btn">Connexion</button>
-                    </form>
-                </div>
+                    </div>
+
+                </form>
+
             </div>
         </div>
     </div>
 
                     <!-- Modal de CREATION -->
-    <div class="modal fade" id="create_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="create_modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
+
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Devenir Rocheux</h5>
+                    <h5 class="modal-title">Devenir Rocheux</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form action="/forteroche/app/Tchat/register" method="post">
 
-                    <div class="form-group">
-                        <label for="pseudo">Votre pseudo :
-                            <input type="text" name="pseudo" class="form-control" placeholder="Pseudo" value="<?php if ( isset($pseudo) )
-                            { 
-                                echo $pseudo;
-                            }?>" >
-                        </label> 
-                    </div>
-                    
-                    <div class="form-group">
-                            <label for="pseudo">Votre email: 
+                <form action="/forteroche/app/Tchat/register" method="post">
+
+                    <div class="modal-body"> 
+
+                        <div class="form-group">
+                            <label>Votre pseudo :
+                                <input type="text" name="pseudo" class="form-control" placeholder="Pseudo" value="<?php if ( isset($pseudo) )
+                                { 
+                                    echo $pseudo;
+                                }?>" >
+                            </label> 
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Votre email: 
                                 <input type="text" name="email" class="form-control" placeholder="@" value="<?php if ( isset($email) )
                                 { 
                                         echo $email;
                                 }?>">
                             </label> 
+                        </div>
+
+                        <div class="form-group">
+                                <label>Votre mot de passe:
+                                    <input type="password" name="mdp" class="form-control" placeholder="Il sera sécurisé">
+                                </label> 
+                        </div>
+                        
+                        <div class="form-group">
+                                <label>Confirmez mot de passe: 
+                                    <input type="password" name="conf_mdp" class="form-control" placeholder="Pour être sûr">
+                                </label>
+                        </div>
+
                     </div>
 
-                    <div class="form-group">
-                            <label for="pseudo">Votre mot de passe:
-                                <input type="password" name="mdp" class="form-control" placeholder="Il sera sécurisé"></label> 
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-primary" name="create">S'inscrire</button>   
                     </div>
                     
-                    <div class="form-group">
-                            <label for="pseudo">Confirmez mot de passe: 
-                                <input type="password" name="conf_mdp" class="form-control" placeholder="Pour être sûr"></label>
-                    </div>
+                </form>
 
-                    <small class="form-text text-danger"><?php echo $feedback; ?></small>    
-                </div>
-                <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                        <button type="submit" class="btn btn-primary" name="create">S'inscrire</button> 
-                    </form>
-                </div>
             </div>
         </div>
     </div>
 
     <!-- Modal de MODIFICATION -->
 
-    <div class="modal fade" id="modal_update" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Modifiez votre commentaire</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+    <div class="modal fade" id="modal_update" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modifiez votre commentaire</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="/forteroche/app/Tchat/updateANDdelete_comment" method="post">
                     <div class="modal-body">
-                        <form action="/forteroche/app/Tchat/updateANDdelete_comment" method="post">
-                            <textarea style="display:none" class="modal_id" name="com_id"></textarea>
-                            <textarea style="border: none" class="modal_com" name="comment"></textarea>
+                        <textarea style="display:none" class="modal_id" name="com_id"></textarea>
+                        <textarea style="border: none" class="modal_com" name="comment"></textarea>
                     </div>
                     <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                            <button type="submit" name="update_btn" class="btn btn-success">Modifier</button>
-                            <button type="submit" name="delete_btn" class="btn btn-danger">Supprimer</button>
-                        </form>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <button type="submit" name="update_btn" class="btn btn-success">Modifier</button>
+                        <button type="submit" name="delete_btn" class="btn btn-danger">Supprimer</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
+    </div>
  
 
 <?php $content = ob_get_clean(); ?><?php require(_ROOT_.'template.php'); ?>

@@ -20,13 +20,13 @@ class Listing_control{
         $myView->show(array ('books' => $books));
     }
 
-    public function show_book_chapters($book)
+    public function show_book_chapters($book_id)
     {      
         $myBdd = new Books_bdd();
-        $book_chapters = $myBdd->show_book_chapters($book);
+        $book_chapters = $myBdd->show_book_chapters($book_id);
 
         $myView = new View('listing_book_chapters');
-        $myView->show(array ('book' => $book, 'book_chapters' => $book_chapters));
+        $myView->show(array ('book_chapters' => $book_chapters));
     }
 
 }

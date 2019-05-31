@@ -15,10 +15,10 @@ ob_start(); ?>
         <?php 
             while($publication = $books->fetch())
             {
-                echo '<div class="books '.$publication['book'].' shadow rounded mt-5 mb-5 lead text-light text-center"> 
+                echo '<div class="books '.$publication['title'].' shadow rounded mt-5 mb-5 lead text-light text-center"> 
                         <div>
-                            <p class="tchat-pseudo panel"><span class="gradient">'.$publication['book'].'</span></p>
-                            <a href="/forteroche/app/Listing/show_book_chapters/'.urlencode($publication["book"]).'"><button class="btn btn-light" name="read-btn">Lire ce livre</button></a>
+                            <p class="tchat-pseudo panel"><span class="gradient">'.$publication['title'].'</span></p>
+                            <form action="/forteroche/app/Listing/show_book_chapters/'.urlencode($publication["id"]).'" method="post"><button class="btn btn-light" name="read-btn">Lire ce livre</button></form>
                         </div>
                     </div>';
             }

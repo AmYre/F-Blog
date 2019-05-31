@@ -2,24 +2,24 @@
 
 class Chapter_manager_control{
 
-    public function show($id, $chap_title)
+    public function show( $id, $num_chapter)
     {
         $feedback = '';
 
         $myBdd = new Chapters_bdd;
-        $select_chapter = $myBdd->select_chapter($id);
+        $select_chapter = $myBdd->select_chapter($id, $num_chapter);
         $show_comments = $myBdd->show_comments($id);
 
         $myView = new View('chapter_manager');
-        $myView->show(array ('feedback' => $feedback, 'chap_title' => $chap_title, 'id' => $id, 'select_chapter' => $select_chapter, 'show_comments' => $show_comments) );
+        $myView->show(array ('feedback' => $feedback, 'id' => $id, 'select_chapter' => $select_chapter, 'show_comments' => $show_comments) );
     }
 
-    public function updateANDdelete_chapter($id, $chap_title){
-
+    public function updateANDdelete_chapter($id, $num_chapter)
+    {
         $feedback = '';
 
         $myBdd = new Chapters_bdd;
-        $select_chapter = $myBdd->select_chapter($id);
+        $select_chapter = $myBdd->select_chapter($id, $num_chapter);
         $show_comments = $myBdd->show_comments($id);
 
         if ( isset($_POST['chap_btn_update']) ) 
@@ -31,9 +31,14 @@ class Chapter_manager_control{
                 $feedback = 'Chapitre mis à jour';
 
                 $update_chapter = $myBdd->update_chapter($chapter_update, $id);
-                $select_chapter = $myBdd->select_chapter($id);
-                $myView = new View('chapter_manager');
-                $myView->show(array ('feedback' => $feedback, 'chap_title' => $chap_title, 'id' => $id, 'select_chapter' => $select_chapter, 'show_comments' => $show_comments) );
+                $select_chapter = $myBdd->select_chapter($id, $num_chapter);
+
+                $bdd = new Books_bdd();
+                $books = $bdd->show_books();
+                $show_chapter = $myBdd->show_chapter();
+
+                $myView = new View('write');
+                $myView->show(array ('feedback' => $feedback, 'id' => $id, 'select_chapter' => $select_chapter, 'show_comments' => $show_comments, 'books' => $books) );
 
             }else { $feedback = 'Pas de modifications apportées';}
             
@@ -44,15 +49,18 @@ class Chapter_manager_control{
             $feedback = 'Chapitre supprimé avec tous ses commentaires';
             #ajouter confirmation de suppression
             $delete_chapterANDcomment = $myBdd->delete_chapter($id);
+            $bdd = new Books_bdd();
+            $books = $bdd->show_books();
 
             $show_chapter = $myBdd->show_chapter();
 
             $myView = new View('write');
-            $myView->show(array ('feedback' => $feedback, 'chap_title' => $chap_title, 'id' => $id, 'show_chapter' => $show_chapter) );
+            $myView->show(array ('feedback' => $feedback, 'id' => $id, 'show_chapter' => $show_chapter, 'books' => $books) );
             
         }
         
     }
+
 
 }
 

@@ -6,46 +6,63 @@ class Books_bdd{
 
     public function __construct()
     {
-        $this->database = new PDO('mysql:host=localhost;dbname=benhqabf_roche;charset=utf8', 'benhqabf_roche', 'Zelda28*');
+        try {
+            $this->database = new PDO('mysql:host=localhost;dbname=benhqabf_roche;charset=utf8', 'benhqabf_roche', 'Zelda28*');
+            $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) { echo 'Échec lors de la connexion : ' . $e->getMessage();}
+    }
+
+    public function insert_book ($book_id, $book)
+    {
+        $database = $this->database;
+        $save_book = $database->prepare('INSERT INTO books (id, title) VALUES (?, ?)');
+        $insert_book = $save_book->execute(array($book_id, $book));
+
+        return $insert_book;
     }
 
     public function show_books()
     {
         $database = $this->database;
-        $books = $database->query('SELECT DISTINCT book FROM chapters');
+        $books = $database->query('SELECT * FROM books');
 
         return $books;
     }
 
-    public function show_book_chapters($book)
+    public function show_book($id)
     {
         $database = $this->database;
-        $selected_book = $database->query('SELECT * FROM chapters WHERE book = "'.preg_replace('/(?=(?<!^)[[:upper:]])/', ' ', $book).'"  ');
+        $books = $database->query('SELECT * FROM books WHERE id = '.$id.' ');
 
-        return $selected_book;
+        return $books;
     }
-
-   /* public function insert_book($book, $chapter_genre)
-    {
-        $database = $this->database;
-        $save_book = $database->prepare('INSERT INTO books (book, genre, timy) VALUES(?, ?, NOW())');
-        $insert_book = $save_book->execute(array($book, $chapter_genre ));
-
-        return $insert_book;
-    }
-
-
 
     public function show_book_chapters($book_id)
     {
         $database = $this->database;
-        $show_chapters = $database->query(
-            "SELECT book_id, title, chapter, author, comment, chapters.timy AS chap_timy, comments.timy AS com_timy
-            FROM comments
-            JOIN chapters ON (comments.chapter_id = chapters.id)
-            WHERE (comments.chapter_id = $book_id AND chapters.id = $book_id )");
+        $selected_book = $database->query('SELECT * FROM chapters WHERE book_id = "'.$book_id.'"  ');
+        
 
-        return $show_chapters;
-    }*/
+        return $selected_book;
+    }
+
+    public function update_book_title($id, $title)
+    {
+        $database = $this->database;
+        $select_book = $database->prepare('UPDATE books SET title = ? WHERE id = ?  ');
+        $updated_book = $select_book->execute(array($title, $id));
+
+        return $updated_book;
+    }
+
+    public function delete_book($id)
+    {
+        $database = $this->database;
+        $select_book = $database->query("DELETE FROM books JOIN chapters ON (books.id = chapters.book_id) WHERE (books.id = $id AND chapters.book_id = $id) ");
+
+        return $deleted_book;
+    }
+
+
 
 }

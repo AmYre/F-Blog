@@ -15,7 +15,7 @@ ob_start(); ?>
             <form action="/forteroche/app/Connexion/connect" method="post">
 
                 <div class="form-group">
-                    <label for="pseudo">Identifiant : 
+                    <label>Identifiant : 
                         <input type="text" name="pseudo" class="form-control" placeholder="Entrez votre pseudo" value="<?php if ( isset($pseudo) )
                             { echo $pseudo;
                         }?>"/>
@@ -23,7 +23,7 @@ ob_start(); ?>
                 </div>
 
                 <div class="form-group">
-                    <label for="mdp">Mot de passe : 
+                    <label>Mot de passe : 
                         <input type="password" class="form-control" name="mdp" placeholder="Mot de passe"/> 
                     </label>
                 </div>

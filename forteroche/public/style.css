@@ -24,6 +24,7 @@ body {
 #admin{
   margin-right: 30px;
 }
+
 /*------ICONS-----------*/
 
 .fa-home{
@@ -324,6 +325,7 @@ letter-spacing: 1px;
   border-radius: 15px;
   padding: 50px;
   box-shadow: 0px 0px 15px black;
+  margin-bottom: 50px;
 }
 
 .jean{
@@ -357,6 +359,14 @@ letter-spacing: 1px;
   max-width : 600px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.br-mail{
+  margin-bottom: 20px !important;
+}
+
+.btn-contact{
+  margin-top: 20px !important;
 }
 
 /*----------------CONNECT-PAGE-----------*/
@@ -674,17 +684,59 @@ a:hover, a:focus, a:active {
   transition: all 0.2s ease-out;
 }
 
+@media all and (max-width: 320px) 
+{
+  
+  .box-hide{
+    padding: 0;
+    border-radius : 0;
+    padding-top: 50px;
+  }
 
+}
 
 @media all and (max-width: 480px) 
 {
+
+  .display-4 {
+    font-size: 2rem !important;
+    font-weight: 300;
+    line-height: 1.2;
+  }
+
+  .lead {
+    font-size: 0.8rem !important;
+    font-weight: 300;
+  }
+
+  .tchat{
+  min-height: 550px;
+  }
+
+  .com{
+    overflow: hidden;
+  }
+
+  header{
+    overflow: hidden;
+  }
+
+  .navbar-collapse {
+    font-size: 2rem;
+    padding: 10px;
+    line-height: 60px;
+    flex-basis: 100%;
+    flex-grow: 5;
+    align-items: center;
+  }
+
   .home-title{	
     font-size: 2.2rem;
     letter-spacing: 0.5px;
     }
   
   .home-sub{
-    font-size: 1.8rem;
+    font-size: 1.1rem;
     color: rgb(0, 0, 0)
   }
 
@@ -707,8 +759,8 @@ a:hover, a:focus, a:active {
   .tchat-btn400{
     display: block;
     position: relative;
-    right: -50%;
-    top: -50px;
+    right: -10%;
+    top: 20px;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     perspective: 800px;
@@ -718,11 +770,11 @@ a:hover, a:focus, a:active {
      display: none;
   }
 
-  .tchat-btn400{
+  .com-btn400{
     display: block;
     position: relative;
     margin-top: 50px;
-    right: -30%;
+    right: -10%;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     perspective: 800px;
@@ -735,20 +787,30 @@ a:hover, a:focus, a:active {
   .tchat-img{
     position: relative;
     height: 200px;
-    right: 30%;
+    right: 10%;
   }
 
   .com-img{
     position: relative;
-    height: 300px;
+    height: 250px;
     margin-top: 50px;
-    left: 20%;
+    left: 10%;
   }
 
 }
 
 @media all and (min-width: 480px) and (max-width: 640px) 
 {
+
+  .navbar-collapse {
+    font-size: 2rem;
+    padding: 10px;
+    line-height: 100px;
+    flex-basis: 100%;
+    flex-grow: 5;
+    align-items: center;
+  }
+
   .home-title{	
     font-size: 2.5rem;
     letter-spacing: 0.7px;
@@ -804,6 +866,16 @@ a:hover, a:focus, a:active {
 
 @media all and (min-width: 640px) and (max-width: 840px) 
 {
+
+  .navbar-collapse {
+    font-size: 2rem;
+    padding: 10px;
+    line-height: 50px;
+    flex-basis: 100%;
+    flex-grow: 5;
+    align-items: center;
+  }
+
   .home-title{	
     font-size: 2.8rem;
     letter-spacing: 0.8px;

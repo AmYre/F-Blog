@@ -3,16 +3,16 @@
 class Reading_control {
 
 
-    public function show($id, $chap_title)
+    public function show($id, $num_chapter)
     {
         $feedback = '';
 
         $myBdd = new Reading_bdd();
-        $show_chapter = $myBdd->select_chapter($id);
+        $show_chapter = $myBdd->select_chapter($id, $num_chapter);
         $show_comments = $myBdd->show_comments($id);
 
         $myView = new View('reading');
-        $myView->show(array ('feedback' => $feedback, 'chap_title' => $chap_title, 'id' => $id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
+        $myView->show(array ('feedback' => $feedback, 'id' => $id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
     }
 
     public function show_book()
@@ -26,7 +26,7 @@ class Reading_control {
         $myView->show(array ('feedback' => $feedback, 'show_book' => $show_book) );
     }
 
-    public function insert_comment ($id, $chap_title) 
+    public function insert_comment ($id) 
     {
         $feedback = '';
         if (session_status() == PHP_SESSION_NONE)  {session_start();  }
@@ -56,10 +56,10 @@ class Reading_control {
         }
             
             $myView = new View('reading');
-            $myView->show(array ('feedback' => $feedback,'chap_title' => $chap_title, 'id' => $id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
+            $myView->show(array ('feedback' => $feedback,'id' => $id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
     }
 
-    public function updateANDdelete_comment ($id, $chap_title) 
+    public function updateANDdelete_comment ($id) 
     {
         if ( isset($_POST['update_btn']) ) 
         {
@@ -73,7 +73,7 @@ class Reading_control {
             $show_comments = $myBdd->show_comments($id);
                     
             $myView = new View('reading');
-            $myView->show(array ('feedback' => $feedback, 'chap_title' => $chap_title, 'id' => $id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
+            $myView->show(array ('feedback' => $feedback, 'id' => $id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
 
         }
         
@@ -88,12 +88,12 @@ class Reading_control {
             $show_comments = $myBdd->show_comments($id);
                     
             $myView = new View('reading');
-            $myView->show(array ('feedback' => $feedback, 'chap_title' => $chap_title, 'id' => $id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
+            $myView->show(array ('feedback' => $feedback, 'id' => $id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
         }
        
     }
 
-    public function connect ($id, $chap_title)
+    public function connect ($id)
     {
         $feedback = '';
 
@@ -123,28 +123,28 @@ class Reading_control {
                         $_SESSION['mail'] = $myBdd->get_mail($pseudo);
                         $_SESSION['id'] = $myBdd->get_id($pseudo);
                         $myView = new View('reading');
-                        $myView->show(array ('feedback' => $feedback, 'chap_title' => $chap_title, 'id' => $id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
+                        $myView->show(array ('feedback' => $feedback, 'id' => $id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
                     }
                     else { $feedback = 'Mauvais identifiant ou mot de passe !';
                             $myView = new View('reading');
-                            $myView->show(array ('feedback' => $feedback, 'chap_title' => $chap_title, 'id' => $id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
+                            $myView->show(array ('feedback' => $feedback, 'id' => $id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
                     }
                                 
                 }
                 else {$feedback = 'Veuillez entrer un pseudo valide';
                         $myView = new View('reading');
-                        $myView->show(array ('feedback' => $feedback, 'chap_title' => $chap_title, 'id' => $id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
+                        $myView->show(array ('feedback' => $feedback, 'id' => $id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
                 }
             }
             else { $feedback = 'Veuillez remplir tous les champs du formulaire';
                     $myView = new View('reading');
-                    $myView->show(array ('feedback' => $feedback, 'chap_title' => $chap_title, 'id' => $id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
+                    $myView->show(array ('feedback' => $feedback, 'id' => $id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
                 }
         }
  
     }
 
-    public function register($id, $chap_title)
+    public function register($id)
     {
         $feedback = '';
         $myBdd = new Reading_bdd();
@@ -201,7 +201,7 @@ class Reading_control {
         }
 
         $myView = new View('reading');
-        $myView->show(array ('feedback' => $feedback, 'chap_title' => $chap_title, 'id' => $id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
+        $myView->show(array ('feedback' => $feedback, 'id' => $id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
     }
 
 

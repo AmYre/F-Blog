@@ -31,26 +31,30 @@ if (isset($_POST['g-recaptcha-response']))
 
 		<div class="contact">
 			<form action="/forteroche/app/Contact/contact_mail" method="post">
-			<div class="form-row">
-				<div class="col">
-				
-				<input type="text" name="name" class="form-control" placeholder="Nom">
-				</div>
-				<div class="col">
-					
-				<input type="text" name="firstname" class="form-control" placeholder="Prénom">
-				</div>
-			</div>
-			<div class="form-group"><br>
-				<input type="email" name="mail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Adresse email">
-			</div><br>
-			<div class="form-group">
-				<textarea class="form-control" name="mess" id="exampleFormControlTextarea1" placeholder="Votre message" rows="3"></textarea>
-			</div>
-			<div class="g-recaptcha" name="g-recaptcha-response" data-sitekey="6LeUEKEUAAAAABSqgNj61Bb4iszLsWpSL33ZtXWa"></div>
+				<div class="form-row br-mail">
 
-			<br>
-			<button type="submit" class="btn btn-info">Envoyer</button>
+					<div class="col">
+						<input type="text" name="name" class="form-control" placeholder="Nom">
+					</div>
+
+					<div class="col">
+						<input type="text" name="firstname" class="form-control" placeholder="Prénom">
+					</div>
+
+				</div>
+
+				<div class="form-group">
+					<input type="email" name="mail" class="form-control" placeholder="Adresse email">
+				</div>
+
+				<div class="form-group">
+					<textarea class="form-control" name="mess" placeholder="Votre message" rows="3"></textarea>
+				</div>
+
+				<div class="g-recaptcha" data-sitekey="6LeUEKEUAAAAABSqgNj61Bb4iszLsWpSL33ZtXWa"></div>
+
+				<button type="submit" class="btn btn-info btn-contact">Envoyer</button>
+
 			</form>
 		</div>
 	</div>
