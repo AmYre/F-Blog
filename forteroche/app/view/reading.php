@@ -16,11 +16,13 @@ ob_start(); ?>
              {
                  echo $chapter['chapter'];
                  $h1 = $chapter['title'];
+                 $chapter_id = $chapter['id'];
+                 $num_chapter = $chapter['num_chapter'];
              }
         ?> 
         </div> 
 
-        <form action="/forteroche/app/Reading/insert_comment/<?php echo $id ?>/<?php echo urlencode($h1) ?>" method="post">
+        <form action="/forteroche/app/Reading/insert_comment/<?php echo $chapter_id ?>/<?php echo urlencode($h1) ?>" method="post">
         
             <?php 
                 if ( isset($_SESSION['identifiant']) ) 
@@ -29,7 +31,7 @@ ob_start(); ?>
                                 <p class="lead text-light"> Vous ête connecté en tant que : <span class="tchat-pseudo gradient">| '.$_SESSION['identifiant'].' |</span></p>
                                 
                                 <div class="form-group">
-                                    <label class="lead text-light" for="mess">Votre message : <textarea name="mess" class="form-control"></textarea> </label>
+                                    <label class="lead text-light" for="mess">Votre message : <textarea name="mess" class="form-control" rows="6" cols="50"></textarea> </label>
                                 </div>
 
                                 <button type="submit" class="btn btn-info" name="comment_btn">Envoyer</button>
@@ -55,22 +57,44 @@ ob_start(); ?>
             <?php
             while($comment = $show_comments->fetch())
             {
-                echo '
-                    <div class="shadow-lg p-3 mb-3 bg-white rounded mt-2">
-                        <textarea style="display:none" class="com_id" name="com_id">'.$comment['com_id'].'</textarea>
-                        <p class="tchat-pseudo gradient">'.$comment['author'].'</p>
-                        <p class="tchat-mess text-justify">'.$comment['comment'].'</p>
-                        <p class="font-italic font-weight-ligh text-center blockquote-footer">'.$comment['com_timy'].'</p>';
-
-                if (isset($_SESSION['identifiant']) && $comment['author'] == $_SESSION['identifiant'])
+                if ($comment['flag'] > 0)
                 {
-                    echo '<!-- Button trigger modal -->
-                        <button type="button" name="update_com" class="modal_btn btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">
-                        Modifier votre commentaire
-                        </button> 
-                    </div>';
+                            echo '
+                            <div class="shadow-lg p-3 mb-3 bg-white rounded mt-2">
+                                <p class="lead text-danger">Ce commentaire est en cours de signalement <i class="fas fa-exclamation-circle text-warning"></i></p>
+                                <textarea style="display:none" class="com_id" name="com_id">'.$comment['com_id'].'</textarea>
+                                <p class="tchat-pseudo gradient">'.$comment['author'].'</p>
+                                <p class="tchat-mess text-justify"><del class="blur">'.$comment['comment'].'</del></p>
+                                <p class="font-italic font-weight-ligh text-center blockquote-footer">'.$comment['com_timy'].'</p></div>';
 
-                }  else { echo "</div>"; }
+                }   else {
+                         echo '
+                                <div class="shadow-lg p-3 mb-3 bg-white rounded mt-2">
+                                    <textarea style="display:none" class="com_id" name="com_id">'.$comment['com_id'].'</textarea>
+                                    <p class="tchat-pseudo gradient">'.$comment['author'].'</p>
+                                    <p class="tchat-mess text-justify">'.$comment['comment'].'</p>
+                                    <p class="font-italic font-weight-ligh text-center blockquote-footer">'.$comment['com_timy'].'</p>';
+
+                            if (isset($_SESSION['identifiant']) && $comment['author'] == $_SESSION['identifiant'])
+                            {
+                                echo '<!-- Button trigger modal -->
+                                    <button type="button" name="update_com" class="modal_btn btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">
+                                    Modifier votre commentaire
+                                    </button> 
+                                </div>';
+
+                            } 
+                            else if (isset($_SESSION['identifiant']))
+                            { 
+                                    echo '
+                                    <form action="/forteroche/app/Reading/flag_comment/'.$comment['com_id'].'/'.$comment['author'].'/'.$comment['flag'].'/'.$chapter_id.'/'.$num_chapter.'" method="post"><button type="submit" name="flag_btn" class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="Tout abus peut mener à la suppression de votre compte">
+                                        Signaler
+                                    </button> 
+                                </div>'; 
+                            } else { echo '</div>'; }
+                    }
+
+                    
             } ?>    
 
         </div>      
@@ -87,13 +111,13 @@ ob_start(); ?>
                     </button>
                 </div>
 
-                <form action="/forteroche/app/Reading/connect/<?php echo $id; ?>/<?php echo urlencode($chap_title); ?>" method="post">
+                <form action="/forteroche/app/Reading/connect/<?php echo $chapter_id; ?>/<?php echo urlencode($chap_title); ?>" method="post">
 
-                    <div class="modal-body">
+                    <div class="modal-body text-center text-light bg-info">
 
                         <div class="form-group">
                             <label>Identifiant : 
-                                <input type="text" name="pseudo" class="form-control" placeholder="Entrez votre pseudo" value="<?php if ( isset($pseudo) )
+                                <input type="text" name="pseudo"style="border: none" class="rounded shadow m-3 p-3 form-control" placeholder="Entrez votre pseudo" value="<?php if ( isset($pseudo) )
                                     { echo $pseudo;
                                 }?>"/>
                             </label>
@@ -101,17 +125,17 @@ ob_start(); ?>
 
                         <div class="form-group">
                             <label>Mot de passe : 
-                                <input type="password" class="form-control" name="mdp" placeholder="Mot de passe"/> 
+                                <input type="password" style="border: none" class="rounded shadow m-3 p-3 form-control" name="mdp" placeholder="Mot de passe"/> 
                             </label>  
                             <small class="text-danger"><?php echo $feedback; ?></small>
                         </div>
-                        <small id="create_btn" data-toggle="modal" data-target="#create_modal"><a href="#">Se créer un compte</a></small> 
+                        <small id="create_btn" data-toggle="modal" data-target="#create_modal"><a href="#" class="create-btn text-warning">Se créer un compte</a></small> 
 
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                        <button id ="connect_btn" type="submit" class="btn btn-primary" name="connect_btn">Connexion</button>
+                        <button id ="connect_btn" type="submit" class="btn btn-info" name="connect_btn">Connexion</button>
                     </div>
 
                 </form>
@@ -132,13 +156,13 @@ ob_start(); ?>
                     </button>
                 </div>
 
-                <form action="/forteroche/app/Reading/register/<?php echo $id; ?>/<?php echo urlencode($chap_title); ?>" method="post">
+                <form action="/forteroche/app/Reading/register/<?php echo $chapter_id; ?>/<?php echo urlencode($chap_title); ?>" method="post">
 
-                    <div class="modal-body">
+                    <div class="modal-body text-center text-light bg-info">
 
                         <div class="form-group">
                             <label>Votre pseudo :
-                                <input type="text" name="pseudo" class="form-control" placeholder="Pseudo" value="<?php if ( isset($pseudo) )
+                                <input type="text" name="pseudo" style="border: none" class="rounded shadow m-3 p-3 form-control" placeholder="Pseudo" value="<?php if ( isset($pseudo) )
                                 { 
                                     echo $pseudo;
                                 }?>" >
@@ -147,7 +171,7 @@ ob_start(); ?>
                         
                         <div class="form-group">
                             <label>Votre email: 
-                                <input type="text" name="email" class="form-control" placeholder="@" value="<?php if ( isset($email) )
+                                <input type="text" name="email" style="border: none" class="rounded shadow m-3 p-3 form-control" placeholder="@" value="<?php if ( isset($email) )
                                 { 
                                         echo $email;
                                 }?>">
@@ -156,13 +180,13 @@ ob_start(); ?>
 
                         <div class="form-group">
                             <label>Votre mot de passe:
-                                <input type="password" name="mdp" class="form-control" placeholder="Il sera sécurisé">
+                                <input type="password" name="mdp" style="border: none" class="rounded shadow m-3 p-3 form-control" placeholder="Il sera sécurisé">
                             </label> 
                         </div>
                         
                         <div class="form-group">
                             <label>Confirmez mot de passe: 
-                                <input type="password" name="conf_mdp" class="form-control" placeholder="Pour être sûr">
+                                <input type="password" name="conf_mdp" style="border: none" class="rounded shadow m-3 p-3 form-control" placeholder="Pour être sûr">
                             </label>
                         </div>
 
@@ -171,7 +195,7 @@ ob_start(); ?>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                        <button type="submit" class="btn btn-primary" name="create">S'inscrire</button> 
+                        <button type="submit" class="btn btn-info" name="create">S'inscrire</button> 
                     </div> 
 
                 </form>
@@ -192,11 +216,11 @@ ob_start(); ?>
                         </button>
                     </div>
 
-                    <form action="/forteroche/app/Reading/updateANDdelete_comment/<?php echo $id ?>/<?php echo urlencode($h1) ?>" method="post">
+                    <form action="/forteroche/app/Reading/updateANDdelete_comment/<?php echo $chapter_id ?>/<?php echo urlencode($h1) ?>" method="post">
 
-                        <div class="modal-body">
+                        <div class="modal-body text-center text-light bg-info">
                             <textarea style="display:none" class="modal_id" name="com_id"></textarea>
-                            <textarea style="border: none" class="modal_com" name="comment"></textarea>
+                            <textarea style="border: none" class="rounded shadow m-3 p-3 modal_com" rows="3" cols="30" name="comment"></textarea>
                         </div>
                         
                         <div class="modal-footer">

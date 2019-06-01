@@ -1,5 +1,6 @@
 $(document).ready( function() {
 
+    //Récupération du contenu du commentaire pour pouvoir le modifier dans la modale
     $('.modal_btn').on('click', function()
         {
             $('.modal_com').html('');
@@ -7,7 +8,7 @@ $(document).ready( function() {
             $('.modal_id').prepend($(this).prevAll().eq(3).html());
         });
 
-
+    //Récupération des données en ajax pour afficher les chapitres directement dans la modale "livre"
     $('.book_btn').on('click', function()
     {
         var get = $(this).prevAll().eq(2).html();
@@ -19,6 +20,7 @@ $(document).ready( function() {
         
     });
 
+    //Récupération du titre du livre pour pouvoir le modifier directement dans la modale
     $('.title_btn').on('click', function()
     {
         var id = $(this).prevAll().eq(1).html();
@@ -30,9 +32,10 @@ $(document).ready( function() {
                 $("#modal_title").html(response);
             });
         
-    });
+    });  
+    
 
-
+    //Barre de recherche dynamique --à poursuivre
     /*$('#search').keyup( function() {
 
         var search = $(this).val();
@@ -47,10 +50,8 @@ $(document).ready( function() {
         }
     });*/
 
+
     
-    $(window).on("load",function(){
-        $(".loader-wrapper").fadeOut("slow");
-   });
 
 
 });

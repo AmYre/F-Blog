@@ -104,10 +104,10 @@ color: #0e587a
 
 .carousel-item {
   min-height: 90vh;
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -405,6 +405,9 @@ letter-spacing: 1px;
   margin-right: auto;
 }
 
+.creat-btn{
+  text-decoration: none;
+}
 
 
 /*-----------FOOTER ANIMATED----------*/
@@ -438,6 +441,12 @@ letter-spacing: 1px;
 
 }
 
+/*----------- BLUR TEXT FLAG EFFECT----------*/
+
+.blur{
+	color: transparent;
+	text-shadow: 0 0 8px #000;
+}
 
 /*----------- GRADIENT ANIMATION EFFECT----------*/
 
