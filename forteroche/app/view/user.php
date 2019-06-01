@@ -62,9 +62,9 @@ ob_start(); ?>
                     </button>
                 </div>
                 <form action="/forteroche/app/User/update_user" method="post">    
-                    <div class="modal-body">
-                        <label>Modifiez votre pseudo actuel : <input id="modal_pseudo" name="pseudo" value="<?php echo $_SESSION['identifiant']; ?>"></label>
-                        <label>Mot de passe : <input type="password" name="mdp" placeholder="Votre mot de passe"></label>
+                    <div class="modal-body text-center text-light bg-info">
+                        <label>Modifiez votre pseudo actuel : <input style="border: none" class="rounded shadow m-3 p-3" id="modal_pseudo" name="pseudo" value="<?php echo $_SESSION['identifiant']; ?>"></label>
+                        <label>Mot de passe : <input style="border: none" class="rounded shadow m-3 p-3" type="password" name="mdp" placeholder="Votre mot de passe"></label>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
@@ -87,11 +87,11 @@ ob_start(); ?>
                     </button>
                 </div>
                 <form action="/forteroche/app/User/update_mail" method="post">
-                    <div class="modal-body">
-                        <label>Mail actuel : <input style="border: none" readonly id="modal_current_mail" name="mail" value="<?php echo $_SESSION['mail']; ?>"></label>
-                        <label>Nouvel email : <input name="mail_update" placeholder="Votre nouvelle email"></label>
-                        <label>Confirmez email : <input name="mail_update_conf" placeholder="Confirmez email"></label>
-                        <label>Mot de passe : <input type="password" name="mdp" placeholder="Votre mot de passe"></label>
+                    <div class="modal-body text-center text-light bg-info">
+                        <label>Mail actuel : <input style="border: none" class="rounded shadow m-3 p-3" readonly id="modal_current_mail" name="mail" value="<?php echo $_SESSION['mail']; ?>"></label>
+                        <label>Nouvel email : <input style="border: none" class="rounded shadow m-3 p-3" name="mail_update" placeholder="Votre nouvelle email"></label>
+                        <label>Confirmez email : <input style="border: none" class="rounded shadow m-3 p-3" name="mail_update_conf" placeholder="Confirmez email"></label>
+                        <label>Mot de passe : <input style="border: none" class="rounded shadow m-3 p-3" type="password" name="mdp" placeholder="Votre mot de passe"></label>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
@@ -114,10 +114,10 @@ ob_start(); ?>
                     </button>
                 </div>
                 <form action="/forteroche/app/User/update_mdp" method="post">
-                    <div class="modal-body">
-                        <label>Nouveau Mot de passe : <input  name="update_mdp" placeholder="Nouveau mot de passe"></label>
-                        <label>Confirmez Mot de passe : <input  name="conf_mdp" placeholder="Confirmez nouveau mot de passe"></label>
-                        <label>Mot de passe actuel : <input type="password"  name="mdp" placeholder="Votre mot de passe actuel"></label>
+                    <div class="modal-body text-center text-light bg-info">
+                        <label>Nouveau Mot de passe : <input  style="border : none" class="rounded shadow m-3 p-3" type="password" name="update_mdp" placeholder="Nouveau mot de passe"></label>
+                        <label>Confirmez Mot de passe : <input  style="border : none" class="rounded shadow m-3 p-3" type="password" name="conf_mdp" placeholder="Confirmez nouveau mot de passe"></label>
+                        <label>Mot de passe actuel : <input style="border : none" class="rounded shadow m-3 p-3" type="password"  name="mdp" placeholder="Votre mot de passe actuel"></label>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
@@ -141,9 +141,9 @@ ob_start(); ?>
                     </button>
                 </div>
                 <form action="/forteroche/app/User/updateANDdelete_comment" method="post">
-                    <div class="modal-body">
+                    <div class="modal-body text-center bg-info">
                         <textarea style="display:none" class="modal_id" name="com_id"></textarea>
-                        <textarea style="border: none" class="modal_com" name="comment"></textarea>
+                        <textarea style="border : none" class="modal_com rounded shadow lead p-3" name="comment"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>

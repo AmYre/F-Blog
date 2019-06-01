@@ -18,7 +18,7 @@ ob_start(); ?>
                                 <p class="lead text-light"> Vous ête connecté en tant que : <span class="tchat-pseudo gradient">| '.$_SESSION['identifiant'].' |</span></p>
                                 
                                 <div class="form-group">
-                                    <label class="lead text-light" for="mess">Votre message : <textarea name="mess" class="form-control"></textarea> </label>
+                                    <label class="lead text-light" for="mess">Votre message : <textarea name="mess" class="form-control rows="10" cols="50""></textarea> </label>
                                 </div>
 
                                 <button type="submit" class="btn btn-info" name="tchat_btn">Envoyer</button>
@@ -78,10 +78,10 @@ ob_start(); ?>
                 
                 <form action="/forteroche/app/Tchat/connect" method="post">
 
-                    <div class="modal-body">
+                    <div class="modal-body text-center text-light bg-info">
                         <div class="form-group">
                             <label>Identifiant : 
-                                <input type="text" name="pseudo" class="form-control" placeholder="Entrez votre pseudo" value="<?php if ( isset($pseudo) )
+                                <input style="border: none" class="form-control rounded shadow m-3 p-3" type="text" name="pseudo" placeholder="Entrez votre pseudo" value="<?php if ( isset($pseudo) )
                                     { echo $pseudo;
                                 }?>"/>
                             </label>
@@ -89,16 +89,16 @@ ob_start(); ?>
 
                         <div class="form-group">
                             <label>Mot de passe : 
-                                <input type="password" class="form-control" name="mdp" placeholder="Mot de passe"/> 
+                                <input style="border: none" class="form-control rounded shadow m-3 p-3" type="password" name="mdp" placeholder="Mot de passe"/> 
                             </label>  
                             <small class="text-danger"><?php echo $feedback; ?></small>
                         </div>
-                        <small id="create_btn" data-toggle="modal" data-target="#create_modal"><a href="#">Se créer un compte</a></small>        
+                        <small  id="create_btn" data-toggle="modal" data-target="#create_modal"><a href="#" class="text-warning create-btn">Se créer un compte</a></small>        
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                        <button id ="connect_btn" type="submit" class="btn btn-primary" name="connect_btn">Connexion</button>
+                        <button id ="connect_btn" type="submit" class="btn btn-info" name="connect_btn">Connexion</button>
                     </div>
 
                 </form>
@@ -121,11 +121,11 @@ ob_start(); ?>
 
                 <form action="/forteroche/app/Tchat/register" method="post">
 
-                    <div class="modal-body"> 
+                    <div class="modal-body text-center text-light bg-info"> 
 
                         <div class="form-group">
                             <label>Votre pseudo :
-                                <input type="text" name="pseudo" class="form-control" placeholder="Pseudo" value="<?php if ( isset($pseudo) )
+                                <input style="border: none" class="form-control rounded shadow m-3 p-3" type="text" name="pseudo" placeholder="Pseudo" value="<?php if ( isset($pseudo) )
                                 { 
                                     echo $pseudo;
                                 }?>" >
@@ -134,7 +134,7 @@ ob_start(); ?>
                         
                         <div class="form-group">
                             <label>Votre email: 
-                                <input type="text" name="email" class="form-control" placeholder="@" value="<?php if ( isset($email) )
+                                <input style="border: none" class="form-control rounded shadow m-3 p-3" type="text" name="email" placeholder="@" value="<?php if ( isset($email) )
                                 { 
                                         echo $email;
                                 }?>">
@@ -143,13 +143,13 @@ ob_start(); ?>
 
                         <div class="form-group">
                                 <label>Votre mot de passe:
-                                    <input type="password" name="mdp" class="form-control" placeholder="Il sera sécurisé">
+                                    <input style="border: none" class="form-control rounded shadow m-3 p-3" type="password" name="mdp" placeholder="Il sera sécurisé">
                                 </label> 
                         </div>
                         
                         <div class="form-group">
                                 <label>Confirmez mot de passe: 
-                                    <input type="password" name="conf_mdp" class="form-control" placeholder="Pour être sûr">
+                                    <input style="border: none" class="form-control rounded shadow m-3 p-3" type="password" name="conf_mdp"  placeholder="Pour être sûr">
                                 </label>
                         </div>
 
@@ -157,7 +157,7 @@ ob_start(); ?>
 
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                            <button type="submit" class="btn btn-primary" name="create">S'inscrire</button>   
+                            <button type="submit" class="btn btn-info" name="create">S'inscrire</button>   
                     </div>
                     
                 </form>
@@ -178,9 +178,9 @@ ob_start(); ?>
                     </button>
                 </div>
                 <form action="/forteroche/app/Tchat/updateANDdelete_comment" method="post">
-                    <div class="modal-body">
+                    <div class="modal-body text-center text-light bg-info">
                         <textarea style="display:none" class="modal_id" name="com_id"></textarea>
-                        <textarea style="border: none" class="modal_com" name="comment"></textarea>
+                        <textarea style="border: none" class="modal_com rounded shadow m-3 p-3" rows="3" cols="30" name="comment"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>

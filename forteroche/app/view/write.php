@@ -52,17 +52,15 @@ $style = '/forteroche/public/style.css';
         <?php 
             while($publication = $books->fetch())
             {
-
-                echo '<div class="books '.$publication['title'].' shadow rounded mt-5 mb-5 lead text-light text-center"> 
-                        <div>
-                            <textarea style="display:none" class="write_id" name="write_id">'.$publication['id'].'</textarea>
-                            <p class="tchat-pseudo panel"><span class="gradient">'.$publication['title'].'</span></p>
-                            <button class="btn btn-warning title_btn m-2" name="read-btn" data-toggle="modal" data-target="#title_modal">Modifier le titre</button>
-                            <button class="btn btn-success book_btn m-2" name="read-btn" data-toggle="modal" data-target="#write_modal">Éditer les chapitres</button>
-                            <form action="/forteroche/app/Write/delete_book/'.$publication['id'].'" method="post"><button class="btn btn-danger book_btn m-2">Supprimer</button></form>
-                        </div>
-                    </div>';
-
+            echo '<div class="books '.$publication['title'].' shadow rounded mt-5 mb-5 lead text-light text-center"> 
+                    <div>
+                        <textarea style="display:none" class="write_id" name="write_id">'.$publication['id'].'</textarea>
+                        <p class="tchat-pseudo panel"><span class="gradient">'.$publication['title'].'</span></p>
+                        <button class="btn btn-warning title_btn m-2" name="read-btn" data-toggle="modal" data-target="#title_modal">Modifier le titre</button>
+                        <button class="btn btn-success book_btn m-2" name="read-btn" data-toggle="modal" data-target="#write_modal">Éditer les chapitres</button>
+                        <form action="/forteroche/app/Write/delete_book/'.$publication['id'].'" method="post"><button class="btn btn-danger book_btn m-2" data-toggle="tooltip" data-placement="top" title="La suppression sera définitive">Supprimer</button></form>
+                    </div>
+                </div>';
             }
         ?> 
         

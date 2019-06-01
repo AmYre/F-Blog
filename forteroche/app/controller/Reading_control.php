@@ -59,6 +59,26 @@ class Reading_control {
             $myView->show(array ('feedback' => $feedback,'id' => $id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
     }
 
+    public function flag_comment($com_id, $author, $flag, $chapter_id, $num_chapter) 
+    {
+
+        $headers = 'FROM: '.$_SESSION['identifiant'].'';
+        $mess = 'Le commentaire numéro '.$com_id.' de '.$author.' a été signalé';
+        $feedback = 'le commentaire à bien été signalé';
+
+        mail('benhammouda.amir@gmail.com', 'Signalement de commentaire', $mess, $headers);
+
+        $myBdd = new Reading_bdd();
+        $flag_com = $myBdd->flag_comments($com_id);
+        $show_chapter = $myBdd->select_chapter($chapter_id, $num_chapter);
+        $show_comments = $myBdd->show_comments($chapter_id);
+
+        $myView = new View('reading');
+        $myView->show(array ('feedback' => $feedback,'chapter_id' => $chapter_id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
+      
+
+    }
+
     public function updateANDdelete_comment ($id) 
     {
         if ( isset($_POST['update_btn']) ) 

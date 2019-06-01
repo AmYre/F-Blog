@@ -6,7 +6,11 @@ class Reading_bdd {
 
     public function __construct()
     {
-        $this->database = new PDO('mysql:host=localhost;dbname=benhqabf_roche;charset=utf8', 'benhqabf_roche', 'Zelda28*');
+        try {
+            $this->database = new PDO('mysql:host=localhost;dbname=benhqabf_roche;charset=utf8', 'benhqabf_roche', 'Zelda28*');
+            $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) { echo 'Échec lors de la connexion : ' . $e->getMessage();}
+
     }
 
     public function select_chapter($id)
@@ -28,7 +32,7 @@ class Reading_bdd {
     public function insert_comment ($pseudonyme, $mess, $id, $membre_id)
     {
         $database =  $this->database;
-        $save_comment = $database->prepare('INSERT INTO comments (chapter_id, author, author_id, comment, timy) VALUES(?, ?, ?, ?, NOW())');
+        $save_comment = $database->prepare('INSERT INTO comments (chapter_id, author, author_id, comment, flag, timy) VALUES(?, ?, ?, ?, 0, NOW())');
         $insert_comment = $save_comment->execute(array( $id, htmlspecialchars($pseudonyme), $membre_id, htmlspecialchars($mess)));
 
         return $insert_comment;
@@ -38,12 +42,20 @@ class Reading_bdd {
     {
         $database =  $this->database;
         $show_comments = $database->query(
-            "SELECT chapter_id, title, chapter, author, comment, comments.id AS com_id, chapters.timy AS chap_timy, comments.timy AS com_timy
+            "SELECT chapter_id, title, chapter, author, flag, comment, comments.id AS com_id, chapters.timy AS chap_timy, comments.timy AS com_timy
             FROM comments
             JOIN chapters ON (comments.chapter_id = chapters.id)
             WHERE (comments.chapter_id = $id AND chapters.id = $id ) ORDER BY com_timy DESC");
 
         return $show_comments;
+    }
+
+    public function flag_comments($id)
+    {
+        $database =  $this->database;
+        $flag_comment = $database->query("UPDATE comments SET flag = flag + 1 WHERE id = $id");
+
+        return $flag_comment;
     }
 
     public function update_comments($comment_update, $com_id)
