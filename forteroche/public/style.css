@@ -56,8 +56,8 @@ body {
   color: #ff9800;
 }
 
-.fa-pen-fancy{
-  color: #03a9f4;
+.fa-feather{
+  color: #27424ea6;
 }
 
 .fa-envelope{
@@ -330,8 +330,11 @@ letter-spacing: 1px;
 
 .jean{
   background-image: url('/forteroche/public/img/jean.jpg');
+  min-height: 90vh;
+  height: 100%;
+  background-attachment: fixed;
   background-position: center;
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -869,6 +872,16 @@ a:hover, a:focus, a:active {
     height: 300px;
     margin-top: 50px;
     left: 20%;
+  }
+
+  .jean{
+    background-image: url('/forteroche/public/img/jean.jpg');
+    min-height: 90vh;
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
 }

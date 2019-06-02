@@ -1,5 +1,5 @@
-<?php
-error_reporting(E_ALL);?>
+<?php error_reporting(E_ALL);
+ini_set("display_errors", 1); ?>
 
 <!DOCTYPE html>
 
@@ -52,7 +52,7 @@ error_reporting(E_ALL);?>
                         <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Acheter</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/forteroche/app/Jean/show"><i class="fas fa-pen-fancy"></i> L'auteur</a>
+                        <a class="nav-link" href="/forteroche/app/Jean/show"><i class="fas fa-feather"></i> L'auteur</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/forteroche/app/Contact/show"><i class="far fa-envelope"></i> Contact</a>

@@ -4,8 +4,8 @@ $(document).ready( function() {
     $('.modal_btn').on('click', function()
         {
             $('.modal_com').html('');
-            $('.modal_com').prepend($(this).prevAll().eq(1).html());
-            $('.modal_id').prepend($(this).prevAll().eq(3).html());
+            $('.modal_com').html($(this).prevAll().eq(1).html());
+            $('.modal_id').html($(this).prevAll().eq(3).html());
         });
 
     //Récupération des données en ajax pour afficher les chapitres directement dans la modale "livre"
@@ -33,6 +33,28 @@ $(document).ready( function() {
             });
         
     });  
+    
+    //Récupération de l'id d'un commentaire signalé pour pouvoir le traiter en admin
+    $('.modo_btn').on('click', function()
+    {
+        $('.modo_com').html('');
+        $('.modo_com').html($(this).prevAll().eq(1).html());
+        $('.modo_id').html($(this).prevAll().eq(3).html());
+        
+    });  
+
+    //Récupération de l'id du livre pour pouvoir prévenir avant suppression dans la modale
+    $('.del_btn').on('click', function()
+    {
+        $('.delete_id').html('');
+        $('.delete_id').html($(this).prevAll().eq(3).html());
+    });  
+    
+
+    //Animation de page de chargement pour une attente moins ressentie
+    $(window).on("load",function(){
+        $(".loader-wrapper").fadeOut("slow");
+   });
     
 
     //Barre de recherche dynamique --à poursuivre

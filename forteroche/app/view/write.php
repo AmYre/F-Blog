@@ -58,7 +58,7 @@ $style = '/forteroche/public/style.css';
                         <p class="tchat-pseudo panel"><span class="gradient">'.$publication['title'].'</span></p>
                         <button class="btn btn-warning title_btn m-2" name="read-btn" data-toggle="modal" data-target="#title_modal">Modifier le titre</button>
                         <button class="btn btn-success book_btn m-2" name="read-btn" data-toggle="modal" data-target="#write_modal">Éditer les chapitres</button>
-                        <form action="/forteroche/app/Write/delete_book/'.$publication['id'].'" method="post"><button class="btn btn-danger book_btn m-2" data-toggle="tooltip" data-placement="top" title="La suppression sera définitive">Supprimer</button></form>
+                        <button class="btn btn-danger m-2 del_btn" data-toggle="modal" data-target="#delete_modal">Supprimer</button>
                     </div>
                 </div>';
             }
@@ -124,6 +124,36 @@ $style = '/forteroche/public/style.css';
         </div>
     </div>
             
+        <!-----MODAL DELETE BOOK WARNING-------->
+        <div class="modal fade" id="delete_modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center">Supprimer le livre</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <form action="/forteroche/app/Write/delete_book" method="post">
+                        <div class="modal-body text-center text-light bg-info">
+                            <textarea style="display:none" class="delete_id" name="book_id"></textarea>
+
+                            <p class="rounded shadow lead p-3" style="border : none" id="modal_title" name="update_title">Etes-vous sûrs de vouloir supprimer tout ce travail? La suppression sera définitive.</p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-danger" >Confirmer Suppression</button>
+                        </div>
+                    </form>
+
+            </div>
+        </div>
+    </div>
+            
+
 
 <?php $content = ob_get_clean(); ?>
 

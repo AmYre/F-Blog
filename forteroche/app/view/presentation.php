@@ -1,6 +1,3 @@
-<?php
-error_reporting(E_ALL);?>
-
 <!DOCTYPE html>
 
 <html lang="fr">
@@ -23,82 +20,81 @@ error_reporting(E_ALL);?>
         <meta name="keywords" content="Jean Forteroche, Lecture en ligne, Alaska">
 	</head>
 
-	<body class="bg">
+	<body class="jean">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
+          <a class="navbar-brand" href='/forteroche/app/Home/show'><img src="/forteroche/public/img/logoj.png" id="logo"><i class="fas fa-home"></i></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
 
-            <a class="navbar-brand" href='/forteroche/app/Home/show'><img src="/forteroche/public/img/logoj.png" alt="logo du site" id="logo"><i class="fas fa-home"></i></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                 
+                  <li class="nav-item">
+                      <a class="nav-link" href="/forteroche/app/Tchat/show"><i class="far fa-comments"></i> Le Tchat des Rocheux</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      	<i class="fab fa-readme"></i> Lire en ligne
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="/forteroche/app/Listing/show_books"><i class="fas fa-book"></i>  Par Livres</a>
+                          <a class="dropdown-item" href="#"><i class="far fa-heart"></i>  Par Genres</a>
+                          <a class="dropdown-item" href="/forteroche/app/Listing/show_chapters"><i class="far fa-bookmark"></i>  Par Chapitres</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Vous aurez la possibilité de laisser un commentaire en fin de lecture</a>
+                      </div>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Acheter les Livres</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/forteroche/app/Jean/show"><i class="fas fa-feather"></i> L'auteur</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/forteroche/app/Contact/show"><i class="far fa-envelope"></i> Contact</a>
+                  </li>
+              </ul>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/forteroche/app/Tchat/show"><i class="far fa-comments"></i> Tchat</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fab fa-readme"></i> Lire
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/forteroche/app/Listing/show_books"><i class="fas fa-book"></i>  Par Livres</a>
-                            <a class="dropdown-item" href="#"><i class="far fa-heart"></i>  Par Genres</a>
-                            <a class="dropdown-item" href="/forteroche/app/Listing/show_chapters"><i class="far fa-bookmark"></i>  Par Chapitres</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Acheter</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/forteroche/app/Jean/show"><i class="fas fa-pen-fancy"></i> L'auteur</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/forteroche/app/Contact/show"><i class="far fa-envelope"></i> Contact</a>
-                    </li>
-                </ul>
-
-                <ul class="navbar-nav mr-auto">
-                    <?php 
-                        if (isset ($_SESSION['identifiant']) && $_SESSION['identifiant'] == 'ADMIN' ) {
-                        echo '
-                    <li class="nav-item">
-                        <a id="admin" class="nav-link" href="/forteroche/app/Write/show"><i class="fas fa-user-cog"></i><span class="gradient">| ADMIN |<span></a>
-                    </li>
-                    <li class="nav-item"> <form action="/forteroche/app/User/disconnect" method="post">
-                        <button type="submit" class="btn btn-dark" name="disconnect_btn"><i class="fas fa-user-times"></i> Me déconnecter</button>
-                        </form>
-                    </li>'; } 
-                    
-                        elseif (isset ($_SESSION['identifiant'])) {
+                  <ul class="navbar-nav mr-auto">
+                      <?php 
+                          if (isset ($_SESSION['identifiant']) && $_SESSION['identifiant'] == 'ADMIN' ) {
                             echo '
-                            <li class="nav-item">
-                                <a id="connected" class="nav-link" href="/forteroche/app/User/show"><i class="far fa-user"></i> Mon Espace (<span class="gradient">'.$_SESSION['identifiant'].'</span>)</a> 
-                            </li>
-                            <li class="nav-item"> <form action="/forteroche/app/User/disconnect" method="post">
-                                <button type="submit" class="btn btn-dark" name="disconnect_btn"><i class="fas fa-user-times"></i> Me déconnecter</button>
-                                </form>
-                            </li>'; 
-
-                        }else { echo '
-                            <li class="nav-item">
-                                <a id="connect" class="nav-link" href="/forteroche/app/Connexion/show"><i class="far fa-user"></i> Connexion</a>
-                            </li>
-                            <li class="nav-item">
-                                <a id="create" class="nav-link" href="/forteroche/app/Create/show"><i class="fas fa-link"></i> S\'inscrire</a>
-                            </li>';}
-                    ?>
-                </ul>
-
-                  <a class="navbar-brand" href='/forteroche/app/Home/show'><img src="/forteroche/public/img/book.png" alt="logo d'un livre écrit par forteroche" id="book-logo"></a>
+                      <li class="nav-item">
+                          <a id="admin" class="nav-link" href="/forteroche/app/Write/show">ADMIN</a>
+                      </li>
+                      <li class="nav-item"> <form action="/forteroche/app/User/disconnect" method="post">
+                          <button type="submit" class="btn btn-dark" name="disconnect_btn"><i class="fas fa-user-times"></i> Me déconnecter</button>
+                          </form>
+                      </li>'; } 
+                      
+                          elseif (isset ($_SESSION['identifiant'])) {
+                              echo '
+                              <li class="nav-item">
+                                  <a id="connected" class="nav-link" href="/forteroche/app/User/show"><i class="far fa-user"></i> Mon Espace (<strong>'.$_SESSION['identifiant'].'</strong>)</a> 
+                              </li>
+                              <li class="nav-item"> <form action="/forteroche/app/User/disconnect" method="post">
+                                  <button type="submit" class="btn btn-dark" name="disconnect_btn"><i class="fas fa-user-times"></i> Me déconnecter</button>
+                                  </form>
+                              </li>'; 
+                          }else { echo '
+                              <li class="nav-item">
+                                  <a id="connect" class="nav-link" href="/forteroche/app/Connexion/show"><i class="far fa-user"></i> Se connecter</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a id="create" class="nav-link" href="/forteroche/app/Create/show"><i class="fas fa-link"></i> Devenir Rocheux</a>
+                              </li>';}
+                      ?>
+                  </ul>
+                  <a class="navbar-brand" href='/forteroche/app/Home/show'><img src="/forteroche/public/img/book.png" id="book-logo"></a>
                   <!-- BARRE DE RECHERCHE AJAX -->
-              <!-- <div class="form-inline my-2 my-lg-0">
+              <!--<div class="form-inline my-2 my-lg-0">
                   <input class="form-control mr-sm-2" type="search" name ='search' id='search' placeholder="Recherche.." aria-label="Recherche">
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-              
               </div> -->
-            </div>
+
+          </div>
       	</nav>
 
         <div class="panel-jean">

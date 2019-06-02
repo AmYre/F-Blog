@@ -44,13 +44,27 @@ class Chapters_bdd{
     {
         $database = $this->database;
         $show_comments = $database->query(
-            "SELECT chapter_id, title, chapter, author, comment, chapters.timy AS chap_timy, comments.timy AS com_timy
+            "SELECT chapter_id, flag, title, chapter, author, comment, chapters.timy AS chap_timy, comments.timy AS com_timy
             FROM comments
             JOIN chapters ON (comments.chapter_id = chapters.id)
             WHERE (comments.chapter_id = $chapter_id AND chapters.id = $chapter_id )");
 
         return $show_comments;
     }
+
+    public function check_comments($chapter_id)
+    {
+        $database = $this->database;
+        $show_comments = $database->query(
+            "SELECT chapter_id, flag, title, chapter, author, comment, chapters.timy AS chap_timy, comments.timy AS com_timy
+            FROM comments
+            JOIN chapters ON (comments.chapter_id = chapters.id)
+            WHERE (comments.chapter_id = $chapter_id AND chapters.id = $chapter_id )");
+        $comments_exist = $show_comments->rowcount();
+
+        return $comments_exist;
+    }
+    
 
     public function update_chapter($chapter_update, $id)
     {

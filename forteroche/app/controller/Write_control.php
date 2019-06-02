@@ -68,12 +68,13 @@ class Write_control{
         
     }
 
-    public function delete_book($id)
+    public function delete_book()
     {
         $feedback = 'Livre supprimé avec tous ses chapitres';
+        $book_id = $_POST['book_id'];
 
         $myBdd = new Books_bdd();
-        $book_chapters = $myBdd->delete_book($id); 
+        $book_chapters = $myBdd->delete_book($book_id); 
         $books = $myBdd->show_books();
         
         $myView = new View('write');
