@@ -15,6 +15,7 @@ class Tchat_bdd{
         $save_tchat = $database->prepare('INSERT INTO tchat (pseudonyme, mess, timy) VALUES(?, ?, NOW())');
         $insert_tchat = $save_tchat->execute(array(htmlspecialchars($pseudonyme), htmlspecialchars($mess)));
 
+        return $insert_tchat;
     }
 
     public function show_tchat ()
@@ -39,6 +40,8 @@ class Tchat_bdd{
         $database = $this->database;
         $delete_chapter = $database->prepare(' DELETE FROM tchat WHERE id = ? ');
         $deleted_chapter = $delete_chapter->execute(array( $com_id ));
+
+        return $deleted_chapter;
     }
 
 

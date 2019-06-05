@@ -10,7 +10,6 @@ class Chapter_manager_control{
         $myBdd = new Chapters_bdd;
         $select_chapter = $myBdd->select_chapter($id, $num_chapter);
         $show_comments = $myBdd->show_comments($id);
-
         $check_comments = $myBdd->check_comments($id);
 
         $myView = new View('chapter_manager');
@@ -20,42 +19,81 @@ class Chapter_manager_control{
     public function moderate_comment($chap_id, $num_chapter)
     {
         $feedback = '';
-        $myBdd = new Chapters_bdd;
-        $select_chapter = $myBdd->select_chapter($chap_id, $num_chapter);
-        $show_comments = $myBdd->show_comments($chap_id);
 
-        if ( isset($_POST['chap_btn_update']) ) 
+        if ( isset($_POST['com_btn_update']) ) 
         {
-            if ( isset($_POST['update_btn']) ) 
-            {
-                $feedback = 'Commentaire modifié avec succès';
-                $comment_update =  htmlspecialchars($_POST['comment']);
-                $com_id = $_POST['com_id'];
-    
-                $myBdd = new Reading_bdd;
-                $update_comment = $myBdd->update_comments($comment_update, $com_id);
-                $select_chapter = $myBdd->select_chapter($chap_id, $num_chapter);
-                $show_comments = $myBdd->show_comments($chap_id);
-                        
-                $myView = new View('reading');
-                $myView->show(array ('feedback' => $feedback, 'chap_id' => $chap_id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
-    
-            }
-            
-            if ( isset($_POST['delete_btn']) ) 
-            {
-                $feedback = 'Commentaire supprimé';
-                $com_id = $_POST['com_id'];
-                $myBdd = new Reading_bdd;
-    
-                $delete_comment = $myBdd->delete_comments($com_id);
-                $select_chapter = $myBdd->select_chapter($chap_id, $num_chapter);
-                $show_comments = $myBdd->show_comments($chap_id);
-                        
-                $myView = new View('reading');
-                $myView->show(array ('feedback' => $feedback, 'chap_id' => $chap_id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
-            }
+            $feedback = 'Commentaire modifié avec succès';
+            $comment_update =  htmlspecialchars($_POST['comment']);
+            $com_id = $_POST['com_id'];
+
+            $bdd = new Reading_bdd;
+            $myBdd = new Chapters_bdd;
+
+            $update_comment = $bdd->update_comments($comment_update, $com_id);
+            $select_chapter = $myBdd->select_chapter($chap_id, $num_chapter);
+            $show_comments = $myBdd->show_comments($chap_id);
+            $check_comments = $myBdd->check_comments($chap_id);
+
+            $myView = new View('chapter_manager');
+            $myView->show(array ('feedback' => $feedback, 'select_chapter' => $select_chapter, 'show_comments' => $show_comments, 'check_comments' => $check_comments) );
+
         }
+        
+        if ( isset($_POST['delete_btn']) ) 
+        {
+            $feedback = 'Commentaire supprimé';
+            $com_id = $_POST['com_id'];
+
+            $bdd = new Reading_bdd;
+            $myBdd = new Chapters_bdd;
+
+            $delete_comment = $bdd->delete_comments($com_id);
+            $select_chapter = $myBdd->select_chapter($chap_id, $num_chapter);
+            $show_comments = $myBdd->show_comments($chap_id);
+            $check_comments = $myBdd->check_comments($chap_id);
+
+            $myView = new View('chapter_manager');
+            $myView->show(array ('feedback' => $feedback, 'select_chapter' => $select_chapter, 'show_comments' => $show_comments, 'check_comments' => $check_comments) );
+        }
+
+        if ( isset($_POST['ban_btn']) ) 
+        {
+            $feedback = 'Utilisateur supprimé avec tous ses commentaires';
+            $com_id = $_POST['com_id'];
+            $author_id = $_POST['author_id'];
+
+            $bdd = new Reading_bdd;
+            $myBdd = new Chapters_bdd;
+
+            $delete_user = $bdd->ban_user($author_id);
+            $delete_comments = $bdd->delete_user_comments($author_id);
+
+            $select_chapter = $myBdd->select_chapter($chap_id, $num_chapter);
+            $show_comments = $myBdd->show_comments($chap_id);
+            $check_comments = $myBdd->check_comments($chap_id);
+
+            $myView = new View('chapter_manager');
+            $myView->show(array ('feedback' => $feedback, 'select_chapter' => $select_chapter, 'show_comments' => $show_comments, 'check_comments' => $check_comments) );
+        }
+
+        if ( isset($_POST['unflag_btn']) ) /*($com_id, $author, $flag, $chapter_id, $num_chapter) */
+        {    
+            $feedback = 'le signalement à bien été retiré';
+            $com_id = $_POST['com_id'];
+    
+            $bdd = new Reading_bdd();
+            $flag_com = $bdd->unflag_comments($com_id);
+
+            $myBdd = new Chapters_bdd;
+            $select_chapter = $myBdd->select_chapter($chap_id, $num_chapter);
+            $show_comments = $myBdd->show_comments($chap_id);
+            $check_comments = $myBdd->check_comments($chap_id);
+    
+            $myView = new View('chapter_manager');
+            $myView->show(array ('feedback' => $feedback, 'select_chapter' => $select_chapter, 'show_comments' => $show_comments, 'check_comments' => $check_comments) );    
+        
+        }
+        
     }
 
     public function updateANDdelete_chapter($id, $num_chapter)

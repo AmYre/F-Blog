@@ -32,9 +32,10 @@ class Books_bdd{
     public function show_book($id)
     {
         $database = $this->database;
-        $books = $database->query('SELECT * FROM books WHERE id = '.$id.' ');
+        $books = $database->prepare("SELECT * FROM books WHERE id = ?");
+        $show_book = $books->execute(array($id));
 
-        return $books;
+        return $show_book;
     }
 
     public function check_books($id)
@@ -50,8 +51,8 @@ class Books_bdd{
     public function show_book_chapters($book_id)
     {
         $database = $this->database;
-        $selected_book = $database->query('SELECT * FROM chapters WHERE book_id = "'.$book_id.'"  ');
-        
+        $selected_book = $database->prepare("SELECT * FROM chapters WHERE book_id = ?");
+        $show_book_chapters = $selected_book->execute(array($book_id));
 
         return $selected_book;
     }
@@ -77,9 +78,10 @@ class Books_bdd{
     public function delete_book($id)
     {
         $database = $this->database;
-        $deleted_book = $database->query("DELETE FROM books WHERE id = $id");
+        $deleted_book = $database->prepare("DELETE FROM books WHERE id = ?");
+        $delete_book = $deleted_book->execute(array($id));
 
-        return $deleted_book;
+        return $delete_book;
     }
 
 

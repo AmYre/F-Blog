@@ -19,15 +19,8 @@ class Reading_bdd {
     public function select_chapter($id)
     {
         $database =  $this->database;
-        $selected_chapter = $database->query("SELECT * FROM chapters WHERE id = $id");
-
-        return $selected_chapter;
-    }
-
-    public function select_book()
-    {
-        $database =  $this->database;
-        $selected_chapter = $database->query('SELECT DATE_FORMAT(timy, "%d/%m/%Y à %Hh%imin") AS timywoo, book, num_chapter, id, title, chapter FROM chapters WHERE book = Le spectre du Soleil');
+        $selected_chapter = $database->prepare("SELECT * FROM chapters WHERE id = ? ");
+        $select_chapter = $selected_chapter->execute(array($id));
 
         return $selected_chapter;
     }
@@ -56,7 +49,17 @@ class Reading_bdd {
     public function flag_comments($id)
     {
         $database =  $this->database;
-        $flag_comment = $database->query("UPDATE comments SET flag = flag + 1 WHERE id = $id");
+        $flag_comment = $database->prepare("UPDATE comments SET flag = flag + 1 WHERE id = ?");
+        $flag = $flag_comment->execute(array($id));
+
+        return $flag_comment;
+    }
+
+    public function unflag_comments($id)
+    {
+        $database =  $this->database;
+        $flag_comment = $database->prepare("UPDATE comments SET flag = 0 WHERE id = ?");
+        $flag = $flag_comment->execute(array($id));
 
         return $flag_comment;
     }
@@ -73,9 +76,28 @@ class Reading_bdd {
     public function delete_comments($com_id)
     {
         $database = $this->database;
-        $delete_chapter = $database->prepare(' DELETE FROM comments WHERE id = ? ');
-        $deleted_chapter = $delete_chapter->execute(array( $com_id ));
+        $delete_com = $database->prepare(' DELETE FROM comments WHERE id= ? ');
+        $deleted_comments = $delete_com->execute(array( $com_id ));
+
+        return $deleted_comments;
     }
 
+    public function ban_user($author_id)
+    {
+        $database = $this->database;
+        $delete_user = $database->prepare("DELETE FROM membres WHERE id = ?");
+        $ban = $delete_user->execute(array($author_id));
+
+        return $ban;
+    }
+
+    public function delete_user_comments($author_id)
+    {
+        $database = $this->database;
+        $delete_com = $database->prepare(' DELETE FROM comments WHERE author_id= ? ');
+        $deleted_comments = $delete_com->execute(array( $author_id ));
+
+        return $deleted_comments;
+    }
 
 }

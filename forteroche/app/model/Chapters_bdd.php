@@ -35,7 +35,7 @@ class Chapters_bdd{
     public function select_chapter($id, $num_chapter)
     {
         $database = $this->database;
-        $selected_chapter = $database->query("SELECT * FROM chapters WHERE id = $id AND num_chapter = $num_chapter");
+        $selected_chapter = $database->query("SELECT * FROM chapters WHERE id = $id AND num_chapter =$num_chapter");
 
         return $selected_chapter;
     }
@@ -44,10 +44,10 @@ class Chapters_bdd{
     {
         $database = $this->database;
         $show_comments = $database->query(
-            "SELECT chapter_id, flag, title, chapter, author, comment, chapters.timy AS chap_timy, comments.timy AS com_timy
+            "SELECT chapter_id, flag, title, chapter, author, author_id, comment, comments.id AS com_id, chapters.timy AS chap_timy, comments.timy AS com_timy
             FROM comments
             JOIN chapters ON (comments.chapter_id = chapters.id)
-            WHERE (comments.chapter_id = $chapter_id AND chapters.id = $chapter_id )");
+            WHERE (comments.chapter_id = $chapter_id AND chapters.id = $chapter_id)");
 
         return $show_comments;
     }
@@ -55,11 +55,11 @@ class Chapters_bdd{
     public function check_comments($chapter_id)
     {
         $database = $this->database;
-        $show_comments = $database->query(
-            "SELECT chapter_id, flag, title, chapter, author, comment, chapters.timy AS chap_timy, comments.timy AS com_timy
-            FROM comments
-            JOIN chapters ON (comments.chapter_id = chapters.id)
-            WHERE (comments.chapter_id = $chapter_id AND chapters.id = $chapter_id )");
+        $show_comments = $database->query("SELECT chapter_id, flag, title, chapter, author, comment, chapters.timy AS chap_timy, comments.timy AS com_timy 
+        FROM comments 
+        JOIN chapters ON (comments.chapter_id = chapters.id) 
+        WHERE (comments.chapter_id = $chapter_id AND chapters.id = $chapter_id )");
+
         $comments_exist = $show_comments->rowcount();
 
         return $comments_exist;
@@ -80,6 +80,8 @@ class Chapters_bdd{
         $database = $this->database;
         $delete_chapter = $database->prepare(' DELETE FROM chapters WHERE id = ? ');
         $deleted_chapter = $delete_chapter->execute(array( $id ));
+
+        return $deleted_chapter;
     }
 
 }

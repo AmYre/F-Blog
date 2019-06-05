@@ -25,7 +25,7 @@ class Connexion_bdd {
     {
         $database = $this->database;
         $check_mdp = $database->prepare("SELECT mdp FROM membres WHERE pseudo = ?");
-        $check_mdp->execute([$pseudo]);
+        $check_mdp->execute(array($pseudo));
         $mdp_exist = $check_mdp->fetch();
 
         return $mdp_exist;
@@ -36,7 +36,7 @@ class Connexion_bdd {
     {
         $database = $this->database;
         $check_mail = $database->prepare("SELECT email FROM membres WHERE pseudo = ?");
-        $check_mail->execute([$pseudo]);
+        $check_mail->execute(array($pseudo));
         $mail_exist = $check_mail->fetch();
 
         return $mail_exist['email'];
@@ -47,7 +47,7 @@ class Connexion_bdd {
     {
         $database = $this->database;
         $check_id = $database->prepare("SELECT id FROM membres WHERE pseudo = ?");
-        $check_id->execute([$pseudo]);
+        $check_id->execute(array($pseudo));
         $id_exist = $check_id->fetch();
 
         return $id_exist['id'];

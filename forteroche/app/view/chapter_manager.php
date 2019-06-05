@@ -10,7 +10,7 @@ ob_start(); ?>
 
     <div class="shadow-lg p-3 mb-5 bg-dark lead rounded mt-5 text-center text-light">
         <p class="lead">EDITEZ LE CHAPITRE</p>
-        <p class="chapter_manager_feedback"> <?php echo $feedback; ?> </p>
+        <p class="tchat_feedback bg-info text-light text-center p-3 rounded lead"><?php echo $feedback; ?> </p>
 
             <?php 
                 while($chapter = $select_chapter->fetch())
@@ -45,7 +45,8 @@ ob_start(); ?>
             {
                 echo '<div class="shadow-lg p-3 mb-2 bg-white lead rounded mt-2">
 
-                <textarea style="display:none" name="com_id">'.$comment['id'].'</textarea>
+                <textarea style="display:none" name="author_id">'.$comment['author_id'].'</textarea>
+                <textarea style="display:none" name="com_id">'.$comment['com_id'].'</textarea>
                 <p class="tchat-pseudo gradient">'.$comment['author'].' :</p>
                 <p class="tchat-mess text-dark text-justify">'.$comment['comment'].'</p>
                 <p class="font-italic font-weight-ligh text-center blockquote-footer">Posté le :   '.$comment['com_timy'].'</p>
@@ -79,13 +80,15 @@ ob_start(); ?>
                 <form action="/forteroche/app/Chapter_manager/moderate_comment/<?php echo $chap_id.'/'.$num_chapter;?>" method="post">
 
                     <div class="modal-body text-center text-light bg-info">
+                        <textarea style="display:none" class="author_id" name="author_id"></textarea>
                         <textarea style="display:none" class="modo_id" name="com_id"></textarea>
                         <textarea style="border: none" class="rounded shadow m-3 p-3 modo_com" rows="3" cols="30" name="comment"></textarea>
                     </div>
                     
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                        <button type="submit" name="update_btn" class="btn btn-success">Modifier</button>
+                        <button type="submit" name="unflag_btn" class="btn btn-warning">Désignaler</button>
+                        <button type="submit" name="com_btn_update" class="btn btn-success">Modifier</button>
                         <button type="submit" name="delete_btn" class="btn btn-danger">Supprimer</button>
                         <button type="submit" name="ban_btn" class="btn btn-dark">Bannir</button>
                     </div>

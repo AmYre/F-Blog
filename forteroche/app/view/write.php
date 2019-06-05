@@ -14,7 +14,7 @@ $style = '/forteroche/public/style.css';
 
     <div class="shadow-lg p-3 mb-5 bg-dark lead rounded mt-5 text-center text-light"> 
 
-    <p class="tchat_feedback bg-info text-light text-center p-3 rounded lead"><?php echo $feedback; ?> </p>    
+    <p class="tchat_feedback bg-info text-warning text-center p-3 rounded lead"><?php echo $feedback; ?> </p>    
 
             <form action="/forteroche/app/Write/insert_chapter" method="post">
                 

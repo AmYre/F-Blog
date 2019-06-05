@@ -35,14 +35,18 @@ $(document).ready( function() {
     });  
     
     //Récupération de l'id d'un commentaire signalé pour pouvoir le traiter en admin
+    // et de l'id de l'auteur du commentaire pour pouvoir le bannir si besoin
     $('.modo_btn').on('click', function()
     {
         $('.modo_com').html('');
         $('.modo_com').html($(this).prevAll().eq(1).html());
+        $('.modo_id').html('');
         $('.modo_id').html($(this).prevAll().eq(3).html());
+        $('.author_id').html('');
+        $('.author_id').html($(this).prevAll().eq(4).html());
         
-    });  
-
+    }); 
+  
     //Récupération de l'id du livre pour pouvoir prévenir avant suppression dans la modale
     $('.del_btn').on('click', function()
     {
