@@ -10,7 +10,6 @@ class Create_bdd {
     }
 
     public function check_pseudo ($pseudo)
-
     {
         $database = $this->database;
         $check_pseudo = $database->prepare("SELECT pseudo FROM membres WHERE pseudo = ?");
@@ -20,9 +19,7 @@ class Create_bdd {
         return $pseudo_exist;
     }
 
-
     public function check_mail ($email)
-
     {
         $database = $this->database;
         $check_mail = $database->prepare("SELECT email FROM membres WHERE email = ?");
@@ -36,9 +33,9 @@ class Create_bdd {
     {
         $database = $this->database;
         $register = $database->prepare('INSERT INTO membres (pseudo, email, mdp, date_inscription) VALUES(?, ?, ?, NOW())');
-        $registration = $register->execute( array( $pseudo, $email, password_hash($mdp, PASSWORD_DEFAULT) ) );
+        $register->execute( array( $pseudo, $email, password_hash($mdp, PASSWORD_DEFAULT) ) );
 
-        return $registration;
+        return $register;
     }
 
 }

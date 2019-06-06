@@ -1,4 +1,4 @@
-<?php error_reporting(E_ALL); 
+<?php 
 
 $title = 'Connexion';
 $h1 = 'Connectez-vous';

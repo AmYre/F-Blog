@@ -23,16 +23,12 @@ $(document).ready( function() {
     //Récupération du titre du livre pour pouvoir le modifier directement dans la modale
     $('.title_btn').on('click', function()
     {
-        var id = $(this).prevAll().eq(1).html();
-            $.ajax('/forteroche/app/Write/show_book_title/' + id).done( function (response) {
-
-                $('.write_title_id').html('');
-                $('.write_title_id').html(id);
-                $("#modal_title").html('');
-                $("#modal_title").html(response);
-            });
+        $('.write_title_id').html('');
+        $('.write_title_id').html($(this).prevAll().eq(1).html());
+        $("#modal_title").html('');
+        $("#modal_title").html($(this).prevAll().eq(0).html());
+    });
         
-    });  
     
     //Récupération de l'id d'un commentaire signalé pour pouvoir le traiter en admin
     // et de l'id de l'auteur du commentaire pour pouvoir le bannir si besoin

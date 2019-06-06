@@ -1,7 +1,4 @@
-<?php 
-
-error_reporting(E_ALL);
-ini_set("display_errors", 1); 
+<?php
 
 class Reading_control {
 
@@ -64,7 +61,6 @@ class Reading_control {
 
     public function flag_comment($com_id, $author, $flag, $chapter_id, $num_chapter) 
     {
-
         $headers = 'FROM: '.$_SESSION['identifiant'].'';
         $mess = 'Le commentaire numéro '.$com_id.' de '.$author.' a été signalé';
         $feedback = 'le commentaire à bien été signalé';
@@ -78,7 +74,6 @@ class Reading_control {
 
         $myView = new View('reading');
         $myView->show(array ('feedback' => $feedback,'chapter_id' => $chapter_id, 'show_chapter' => $show_chapter, 'show_comments' => $show_comments) );
-      
 
     }
 

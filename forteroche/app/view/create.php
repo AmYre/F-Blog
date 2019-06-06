@@ -1,8 +1,5 @@
 <?php
 
-    error_reporting(E_ALL ^ E_NOTICE); 
-    ini_set("display_errors", 1); 
-
 $title = 'Inscription';
 $h1 = 'Formulaire d\'inscription';
 $h2 = 'Une fois inscrit vous aurez accès au tchat et aux commentaires';

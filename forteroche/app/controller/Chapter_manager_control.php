@@ -1,5 +1,4 @@
-<?php error_reporting(E_ALL);
-ini_set("display_errors", 1); 
+<?php
 
 class Chapter_manager_control{
 
@@ -76,16 +75,17 @@ class Chapter_manager_control{
             $myView->show(array ('feedback' => $feedback, 'select_chapter' => $select_chapter, 'show_comments' => $show_comments, 'check_comments' => $check_comments) );
         }
 
-        if ( isset($_POST['unflag_btn']) ) /*($com_id, $author, $flag, $chapter_id, $num_chapter) */
+        if ( isset($_POST['unflag_btn']) )
         {    
             $feedback = 'le signalement à bien été retiré';
             $com_id = $_POST['com_id'];
+            var_dump($com_id);
     
             $bdd = new Reading_bdd();
             $flag_com = $bdd->unflag_comments($com_id);
 
             $myBdd = new Chapters_bdd;
-            $select_chapter = $myBdd->select_chapter($chap_id, $num_chapter);
+            $select_chapter = $myBdd->select_chapter($chap_id, $num_chapter);var_dump($chap_id, $num_chapter);
             $show_comments = $myBdd->show_comments($chap_id);
             $check_comments = $myBdd->check_comments($chap_id);
     

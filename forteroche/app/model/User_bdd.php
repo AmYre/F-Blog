@@ -32,7 +32,7 @@ class User_bdd {
     public function update_author ($update_pseudo, $id)
     {
         $database = $this->database;
-        $update_author = $database->prepare("UPDATE comments SET author = ? WHERE author_id = ? ");
+        $update_author = $database->prepare("UPDATE comments SET author = ? WHERE author_id = ?");
         $update_author->execute(array($update_pseudo, $id));
 
         return $update_author;
@@ -42,27 +42,27 @@ class User_bdd {
     {
         $database = $this->database;
         $register_update = $database->prepare('UPDATE membres SET pseudo = ? WHERE pseudo = ?');
-        $update_registration = $register_update->execute( array( $update_pseudo, $pseudo ) );
+        $register_update->execute(array($update_pseudo, $pseudo));
 
-        return $update_registration;
+        return $register_update;
     }
 
     public function update_mail($update_mail, $mail)
     {
         $database = $this->database;
         $register_update = $database->prepare('UPDATE membres SET email = ? WHERE email = ?');
-        $update_registration = $register_update->execute( array( $update_mail, $mail ) );
+        $register_update->execute(array($update_mail, $mail));
 
-        return $update_registration;
+        return $register_update;
     }
 
     public function update_mdp($update_mdp, $pseudo)
     {
         $database = $this->database;
         $register_update = $database->prepare('UPDATE membres SET mdp = ? WHERE pseudo = ?');
-        $update_registration = $register_update->execute( array( password_hash($update_mdp, PASSWORD_DEFAULT), $pseudo ) );
+        $register_update->execute(array(password_hash($update_mdp, PASSWORD_DEFAULT), $pseudo));
 
-        return $update_registration;
+        return $register_update;
     }
     
 

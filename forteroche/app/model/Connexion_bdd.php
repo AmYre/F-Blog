@@ -10,7 +10,6 @@ class Connexion_bdd {
     }
 
     public function check_pseudo ($pseudo)
-
     {
         $database = $this->database;
         $check_pseudo = $database->prepare("SELECT pseudo FROM membres WHERE pseudo = ?");
@@ -21,7 +20,6 @@ class Connexion_bdd {
     }
     
     public function get_mdp($pseudo)
-
     {
         $database = $this->database;
         $check_mdp = $database->prepare("SELECT mdp FROM membres WHERE pseudo = ?");
@@ -32,7 +30,6 @@ class Connexion_bdd {
     }
     
     public function get_mail($pseudo)
-
     {
         $database = $this->database;
         $check_mail = $database->prepare("SELECT email FROM membres WHERE pseudo = ?");
@@ -43,7 +40,6 @@ class Connexion_bdd {
     }
 
     public function get_id($pseudo)
-
     {
         $database = $this->database;
         $check_id = $database->prepare("SELECT id FROM membres WHERE pseudo = ?");

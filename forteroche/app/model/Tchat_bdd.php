@@ -1,7 +1,7 @@
 <?php
 
-class Tchat_bdd{
-
+class Tchat_bdd
+{
     private $database;
 
     public function __construct()
@@ -12,8 +12,8 @@ class Tchat_bdd{
     public function insert_tchat ($pseudonyme, $mess)
     {
         $database = $this->database;
-        $save_tchat = $database->prepare('INSERT INTO tchat (pseudonyme, mess, timy) VALUES(?, ?, NOW())');
-        $insert_tchat = $save_tchat->execute(array(htmlspecialchars($pseudonyme), htmlspecialchars($mess)));
+        $insert_tchat = $database->prepare("INSERT INTO tchat (pseudonyme, mess, timy) VALUES(?, ?, NOW())");
+        $insert_tchat->execute(array(htmlspecialchars($pseudonyme), htmlspecialchars($mess)));
 
         return $insert_tchat;
     }
@@ -29,19 +29,19 @@ class Tchat_bdd{
     public function update_comments($comment_update, $com_id)
     {
         $database = $this->database;
-        $update_chapter = $database->prepare(" UPDATE tchat SET mess = ? WHERE id = ? ");
-        $updated_chapter = $update_chapter->execute(array( htmlspecialchars($comment_update), $com_id ));
+        $update_com = $database->prepare("UPDATE tchat SET mess = ? WHERE id = ?");
+        $update_com->execute(array( htmlspecialchars($comment_update), $com_id ));
 
-        return $updated_chapter;
+        return $update_com;
     }
 
     public function delete_comments($com_id)
     {
         $database = $this->database;
-        $delete_chapter = $database->prepare(' DELETE FROM tchat WHERE id = ? ');
-        $deleted_chapter = $delete_chapter->execute(array( $com_id ));
+        $delete_chapter = $database->prepare("DELETE FROM tchat WHERE id = ?");
+        $delete_chapter->execute(array( $com_id ));
 
-        return $deleted_chapter;
+        return $delete_chapter;
     }
 
 

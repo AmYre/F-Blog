@@ -1,8 +1,5 @@
 <?php
 
-    error_reporting(E_ALL ^ E_NOTICE); 
-    ini_set("display_errors", 1); 
-
 $title = 'Lecture en ligne';
 $h2 = 'N\'hésitez pas à laisser un commentaire en fin de chapitre pour partager vos ressentis';
 $style = '/forteroche/public/style.css';
@@ -61,19 +58,19 @@ ob_start(); ?>
                 {
                             echo '
                             <div class="shadow-lg p-3 mb-3 bg-white rounded mt-2">
-                                <p class="lead text-danger">Ce commentaire est en cours de signalement <i class="fas fa-exclamation-circle text-warning"></i></p>
-                                <textarea style="display:none" class="com_id" name="com_id">'.$comment['com_id'].'</textarea>
+                                <p class="lead text-danger">Ce commentaire est actuellement traité par nos équipes <i class="fas fa-exclamation-circle text-warning"></i></p>
+                                <textarea style="display:none" class="com_id" name="com_id">'.$comment['id'].'</textarea>
                                 <p class="tchat-pseudo gradient">'.$comment['author'].'</p>
                                 <p class="tchat-mess text-justify"><del class="blur">'.$comment['comment'].'</del></p>
-                                <p class="font-italic font-weight-ligh text-center blockquote-footer">Posté le '.$comment['com_timy'].'</p></div>';
+                                <p class="font-italic font-weight-ligh text-center blockquote-footer">Posté le '.$comment['timy'].'</p></div>';
 
                 }   else {
                          echo '
                                 <div class="shadow-lg p-3 mb-3 bg-white rounded mt-2">
-                                    <textarea style="display:none" class="com_id" name="com_id">'.$comment['com_id'].'</textarea>
+                                    <textarea style="display:none" class="com_id" name="com_id">'.$comment['id'].'</textarea>
                                     <p class="tchat-pseudo gradient">'.$comment['author'].'</p>
                                     <p class="tchat-mess text-justify">'.$comment['comment'].'</p>
-                                    <p class="font-italic font-weight-ligh text-center blockquote-footer">'.$comment['com_timy'].'</p>';
+                                    <p class="font-italic font-weight-ligh text-center blockquote-footer">Posté le '.$comment['timy'].'</p>';
 
                             if (isset($_SESSION['identifiant']) && $comment['author'] == $_SESSION['identifiant'])
                             {
@@ -87,7 +84,7 @@ ob_start(); ?>
                             else if (isset($_SESSION['identifiant']))
                             { 
                                     echo '
-                                    <form action="/forteroche/app/Reading/flag_comment/'.$comment['com_id'].'/'.$comment['author'].'/'.$comment['flag'].'/'.$chapter_id.'/'.$num_chapter.'" method="post"><button type="submit" name="flag_btn" class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="Tout abus peut mener à la suppression de votre compte">
+                                    <form action="/forteroche/app/Reading/flag_comment/'.$comment['id'].'/'.$comment['author'].'/'.$comment['flag'].'/'.$chapter_id.'/'.$num_chapter.'" method="post"><button type="submit" name="flag_btn" class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="Tout abus peut mener à la suppression de votre compte">
                                         Signaler
                                     </button> 
                                 </div>'; 
@@ -126,8 +123,7 @@ ob_start(); ?>
                         <div class="form-group">
                             <label>Mot de passe : 
                                 <input type="password" style="border: none" class="rounded shadow m-3 p-3 form-control" name="mdp" placeholder="Mot de passe"/> 
-                            </label>  
-                            <small class="text-danger"><?php echo $feedback; ?></small>
+                            </label>
                         </div>
                         <small id="create_btn" data-toggle="modal" data-target="#create_modal"><a href="#" class="create-btn text-warning">Se créer un compte</a></small> 
 
@@ -189,8 +185,7 @@ ob_start(); ?>
                                 <input type="password" name="conf_mdp" style="border: none" class="rounded shadow m-3 p-3 form-control" placeholder="Pour être sûr">
                             </label>
                         </div>
-
-                        <small class="form-text text-danger"><?php echo $feedback; ?></small>    
+   
                     </div>
 
                     <div class="modal-footer">

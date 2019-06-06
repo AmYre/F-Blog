@@ -1,6 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set("display_errors", 1); 
 
 class Write_control{
 
@@ -28,17 +26,16 @@ class Write_control{
 
     public function manage_chapters($book_id)
     {
-
         $myBdd = new Books_bdd();
         $book_chapters = $myBdd->show_book_chapters($book_id);
         while($chapters = $book_chapters->fetch())
-            {
-                echo '
-                <div class="shadow-lg p-3 m-3 rounded"> 
-                    <p class="tchat-pseudo gradient"> Chapitre n°'.$chapters['num_chapter'].' - '.$chapters['title'].'</p>
-                    <form action="/forteroche/app/Chapter_manager/show/'.$chapters['id'].'/'.$chapters['num_chapter'].'" method="post"><button class="btn btn-info">Gérer ce chapitre</button></form>
-                </div>';
-            }
+        {
+            echo '
+            <div class="shadow-lg p-3 m-3 rounded"> 
+                <p class="tchat-pseudo gradient"> Chapitre n°'.$chapters['num_chapter'].' - '.$chapters['title'].'</p>
+                <form action="/forteroche/app/Chapter_manager/show/'.$chapters['id'].'/'.$chapters['num_chapter'].'" method="post"><button class="btn btn-info">Gérer ce chapitre</button></form>
+            </div>';
+        }
         
     }
 
@@ -81,7 +78,6 @@ class Write_control{
         $myView->show(array ('feedback' => $feedback, 'books' => $books) );
     
     }
-
 
     public function insert_chapter () 
     {

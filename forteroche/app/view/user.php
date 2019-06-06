@@ -1,7 +1,5 @@
 <?php
 
-    error_reporting(E_ALL ^ E_NOTICE); 
-
 $title = 'Espace utilisateur';
 $h1 = 'Bienvenue sur votre espace, '.$_SESSION['identifiant'];
 $h2 = 'Gérez librement toute vos informations';

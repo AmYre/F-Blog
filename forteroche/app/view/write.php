@@ -1,8 +1,5 @@
 <?php
 
-    error_reporting(E_ALL); 
-    ini_set("display_errors", 1); 
-
 $title = 'Espace de Rédaction';
 $h1 = 'Espace de Rédaction - Forteroche';
 $h2 = 'TinyMCE est installé pour un plus grand confort d\'écriture';

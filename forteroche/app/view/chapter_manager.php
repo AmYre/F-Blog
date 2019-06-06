@@ -1,5 +1,4 @@
-<?php error_reporting(E_ALL);
-ini_set("display_errors", 1); 
+<?php 
 
 $title = 'Gestion de chapitres';
 $h1 = '';
@@ -46,7 +45,7 @@ ob_start(); ?>
                 echo '<div class="shadow-lg p-3 mb-2 bg-white lead rounded mt-2">
 
                 <textarea style="display:none" name="author_id">'.$comment['author_id'].'</textarea>
-                <textarea style="display:none" name="com_id">'.$comment['com_id'].'</textarea>
+                <textarea style="display:none" name="com_id">'.$comment['id'].'</textarea>
                 <p class="tchat-pseudo gradient">'.$comment['author'].' :</p>
                 <p class="tchat-mess text-dark text-justify">'.$comment['comment'].'</p>
                 <p class="font-italic font-weight-ligh text-center blockquote-footer">Posté le :   '.$comment['timy'].'</p>

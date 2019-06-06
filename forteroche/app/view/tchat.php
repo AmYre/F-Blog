@@ -1,7 +1,5 @@
 <?php
 
-    error_reporting(E_ALL); 
-
 $title = 'Tchat de la communauté';
 $h1 = 'Bienvenue sur le Tchat';
 $h2 = 'L\'espace de partage de la communauté des Rocheux';
@@ -91,7 +89,6 @@ ob_start(); ?>
                             <label>Mot de passe : 
                                 <input style="border: none" class="form-control rounded shadow m-3 p-3" type="password" name="mdp" placeholder="Mot de passe"/> 
                             </label>  
-                            <small class="text-danger"><?php echo $feedback; ?></small>
                         </div>
                         <small  id="create_btn" data-toggle="modal" data-target="#create_modal"><a href="#" class="text-warning create-btn">Se créer un compte</a></small>        
                     </div>

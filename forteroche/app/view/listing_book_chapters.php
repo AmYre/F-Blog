@@ -1,8 +1,5 @@
 <?php 
 
-    error_reporting(E_ALL ^ E_NOTICE); 
-    ini_set("display_errors", 1); 
-
 $title = 'Liste des chapitres de votre livre';
 
 $h2 = 'Ne ratez rien des dernières parutions en suivant nos réseaux sociaux <i class="fab fa-facebook"></i> <i class="fab fa-twitter"></i> <i class="fab fa-instagram"></i>';
