@@ -65,7 +65,7 @@ ob_start(); ?>
                                 <textarea style="display:none" class="com_id" name="com_id">'.$comment['com_id'].'</textarea>
                                 <p class="tchat-pseudo gradient">'.$comment['author'].'</p>
                                 <p class="tchat-mess text-justify"><del class="blur">'.$comment['comment'].'</del></p>
-                                <p class="font-italic font-weight-ligh text-center blockquote-footer">'.$comment['com_timy'].'</p></div>';
+                                <p class="font-italic font-weight-ligh text-center blockquote-footer">Posté le '.$comment['com_timy'].'</p></div>';
 
                 }   else {
                          echo '

@@ -37,11 +37,12 @@ class Reading_bdd {
     public function show_comments($id)
     {
         $database =  $this->database;
-        $show_comments = $database->query(
+        $show_comments = $database->prepare(
             "SELECT chapter_id, title, chapter, author, flag, comment, comments.id AS com_id, chapters.timy AS chap_timy, comments.timy AS com_timy
             FROM comments
             JOIN chapters ON (comments.chapter_id = chapters.id)
-            WHERE (comments.chapter_id = $id AND chapters.id = $id ) ORDER BY com_timy DESC");
+            WHERE (comments.chapter_id = ? AND chapters.id = ? ) ORDER BY com_timy DESC");
+        $show_comments->execute(array($id, $id));
 
         return $show_comments;
     }

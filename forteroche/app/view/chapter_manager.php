@@ -49,7 +49,7 @@ ob_start(); ?>
                 <textarea style="display:none" name="com_id">'.$comment['com_id'].'</textarea>
                 <p class="tchat-pseudo gradient">'.$comment['author'].' :</p>
                 <p class="tchat-mess text-dark text-justify">'.$comment['comment'].'</p>
-                <p class="font-italic font-weight-ligh text-center blockquote-footer">Posté le :   '.$comment['com_timy'].'</p>
+                <p class="font-italic font-weight-ligh text-center blockquote-footer">Posté le :   '.$comment['timy'].'</p>
                 <button type="button" name="update_com" class="modo_btn btn btn-info" data-toggle="modal" data-target="#moderate_modal">
                 Modérer le commentaire
                 </button>';
@@ -58,7 +58,6 @@ ob_start(); ?>
                 {
                     echo '<p class="lead text-danger">Ce commentaire à été signalé et nécessite votre intervention <i class="fas fa-exclamation-circle text-warning"></i></p></div>';
                 } else { echo '</div>';}
-        
 
             }
         ?> 

@@ -35,7 +35,8 @@ class Chapters_bdd{
     public function select_chapter($id, $num_chapter)
     {
         $database = $this->database;
-        $selected_chapter = $database->query("SELECT * FROM chapters WHERE id = $id AND num_chapter =$num_chapter");
+        $selected_chapter = $database->prepare("SELECT * FROM chapters WHERE id = ? AND num_chapter = ?");
+        $selected_chapter->execute(array($id, $num_chapter));
 
         return $selected_chapter;
     }
@@ -43,33 +44,30 @@ class Chapters_bdd{
     public function show_comments($chapter_id)
     {
         $database = $this->database;
-        $show_comments = $database->query(
-            "SELECT chapter_id, flag, title, chapter, author, author_id, comment, comments.id AS com_id, chapters.timy AS chap_timy, comments.timy AS com_timy
-            FROM comments
-            JOIN chapters ON (comments.chapter_id = chapters.id)
-            WHERE (comments.chapter_id = $chapter_id AND chapters.id = $chapter_id)");
+        $comments = $database->prepare("SELECT * FROM comments WHERE chapter_id = ?");
+        $comments->execute(array($chapter_id));
 
-        return $show_comments;
+        return $comments;
     }
 
     public function check_comments($chapter_id)
     {
         $database = $this->database;
-        $show_comments = $database->query("SELECT chapter_id, flag, title, chapter, author, comment, chapters.timy AS chap_timy, comments.timy AS com_timy 
+        $show_comments = $database->prepare("SELECT chapter_id, flag, title, chapter, author, comment, chapters.timy AS chap_timy, comments.timy AS com_timy 
         FROM comments 
         JOIN chapters ON (comments.chapter_id = chapters.id) 
-        WHERE (comments.chapter_id = $chapter_id AND chapters.id = $chapter_id )");
+        WHERE (comments.chapter_id = ? AND chapters.id = ? )");
+        $show_comments->execute(array($chapter_id, $chapter_id));
 
         $comments_exist = $show_comments->rowcount();
 
         return $comments_exist;
     }
-    
 
     public function update_chapter($chapter_update, $id)
     {
         $database = $this->database;
-        $update_chapter = $database->prepare(" UPDATE chapters SET chapter = ? WHERE id = ? ");
+        $update_chapter = $database->prepare("UPDATE chapters SET chapter = ? WHERE id = ?");
         $updated_chapter = $update_chapter->execute(array( $chapter_update, $id ));
 
         return $updated_chapter;
@@ -78,7 +76,7 @@ class Chapters_bdd{
     public function delete_chapter($id)
     {
         $database = $this->database;
-        $delete_chapter = $database->prepare(' DELETE FROM chapters WHERE id = ? ');
+        $delete_chapter = $database->prepare('DELETE FROM chapters WHERE id = ?');
         $deleted_chapter = $delete_chapter->execute(array( $id ));
 
         return $deleted_chapter;

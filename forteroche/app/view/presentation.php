@@ -57,36 +57,37 @@
                   </li>
               </ul>
 
-                  <ul class="navbar-nav mr-auto">
-                      <?php 
-                          if (isset ($_SESSION['identifiant']) && $_SESSION['identifiant'] == 'ADMIN' ) {
+              <ul class="navbar-nav mr-auto">
+                    <?php 
+                        if (isset ($_SESSION['identifiant']) && $_SESSION['identifiant'] == 'ADMIN' ) {
+                        echo '
+                    <li class="nav-item">
+                        <a id="admin" class="nav-link" href="/forteroche/app/Write/show"><i class="fas fa-user-cog"></i><span class="gradient">| ADMIN |<span></a>
+                    </li>
+                    <li class="nav-item"> <form action="/forteroche/app/User/disconnect" method="post">
+                        <button type="submit" class="btn btn-dark" name="disconnect_btn"><i class="fas fa-user-times"></i> Me déconnecter</button>
+                        </form>
+                    </li>'; } 
+                    
+                        elseif (isset ($_SESSION['identifiant'])) {
                             echo '
-                      <li class="nav-item">
-                          <a id="admin" class="nav-link" href="/forteroche/app/Write/show">ADMIN</a>
-                      </li>
-                      <li class="nav-item"> <form action="/forteroche/app/User/disconnect" method="post">
-                          <button type="submit" class="btn btn-dark" name="disconnect_btn"><i class="fas fa-user-times"></i> Me déconnecter</button>
-                          </form>
-                      </li>'; } 
-                      
-                          elseif (isset ($_SESSION['identifiant'])) {
-                              echo '
-                              <li class="nav-item">
-                                  <a id="connected" class="nav-link" href="/forteroche/app/User/show"><i class="far fa-user"></i> Mon Espace (<strong>'.$_SESSION['identifiant'].'</strong>)</a> 
-                              </li>
-                              <li class="nav-item"> <form action="/forteroche/app/User/disconnect" method="post">
-                                  <button type="submit" class="btn btn-dark" name="disconnect_btn"><i class="fas fa-user-times"></i> Me déconnecter</button>
-                                  </form>
-                              </li>'; 
-                          }else { echo '
-                              <li class="nav-item">
-                                  <a id="connect" class="nav-link" href="/forteroche/app/Connexion/show"><i class="far fa-user"></i> Se connecter</a>
-                              </li>
-                              <li class="nav-item">
-                                  <a id="create" class="nav-link" href="/forteroche/app/Create/show"><i class="fas fa-link"></i> Devenir Rocheux</a>
-                              </li>';}
-                      ?>
-                  </ul>
+                            <li class="nav-item">
+                                <a id="connected" class="nav-link" href="/forteroche/app/User/show"><i class="far fa-user"></i> Mon Espace (<span class="gradient">'.$_SESSION['identifiant'].'</span>)</a> 
+                            </li>
+                            <li class="nav-item"> <form action="/forteroche/app/User/disconnect" method="post">
+                                <button type="submit" class="btn btn-dark" name="disconnect_btn"><i class="fas fa-user-times"></i> Me déconnecter</button>
+                                </form>
+                            </li>'; 
+
+                        }else { echo '
+                            <li class="nav-item">
+                                <a id="connect" class="nav-link" href="/forteroche/app/Connexion/show"><i class="far fa-user"></i> Connexion</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="create" class="nav-link" href="/forteroche/app/Create/show"><i class="fas fa-link"></i> S\'inscrire</a>
+                            </li>';}
+                    ?>
+                </ul>
                   <a class="navbar-brand" href='/forteroche/app/Home/show'><img src="/forteroche/public/img/book.png" id="book-logo"></a>
                   <!-- BARRE DE RECHERCHE AJAX -->
               <!--<div class="form-inline my-2 my-lg-0">
